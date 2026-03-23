@@ -28,16 +28,19 @@ class OCIAuthFactory:
 
         if self.settings.auth_mode == "instance_principal":
             signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
-            config: Dict[str, Any] = {}
-            if self.settings.region:
-                config["region"] = self.settings.region
+            config: Dict[str, Any] = {"tenancy": signer.tenancy_id}
+            config["region"] = self.settings.region or signer.region
             return config, signer
 
         if self.settings.auth_mode == "resource_principal":
             signer = oci.auth.signers.get_resource_principals_signer()
-            config = {}
-            if self.settings.region:
-                config["region"] = self.settings.region
+            config: Dict[str, Any] = {}
+            signer_tenancy_id = getattr(signer, "tenancy_id", None)
+            if signer_tenancy_id:
+                config["tenancy"] = signer_tenancy_id
+            signer_region = getattr(signer, "region", None)
+            if self.settings.region or signer_region:
+                config["region"] = self.settings.region or signer_region
             return config, signer
 
         raise ConfigurationError("Unsupported auth mode: {0}".format(self.settings.auth_mode))

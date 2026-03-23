@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oci-iam-mcp"
+version = "0.1.0"
+description = "MCP server for OCI IAM inventory and policy risk analysis"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "mcp>=1.18.0",
+  "oci>=2.168.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.4.2",
+]
+
+[project.scripts]
+oci-iam-mcp = "oci_iam_mcp.server:main"
+oci-iam-repl = "oci_iam_mcp.repl:main"
+oci-iam-chat = "oci_iam_mcp.chat:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

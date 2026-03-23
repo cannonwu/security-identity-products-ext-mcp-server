@@ -1,4 +1,4 @@
-from oci_iam_mcp.services.policy_parser import parse_policy_statement
+from oci_sip_mcp.services.policy_parser import parse_policy_statement
 
 
 def test_parse_tenancy_wide_admin_statement():

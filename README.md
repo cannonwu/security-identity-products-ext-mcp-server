@@ -1,6 +1,6 @@
-# OCI IAM MCP Server
+# OCI SIP MCP Server
 
-This project provides a Python-based MCP server for Oracle Cloud Infrastructure Identity and Access Management.
+This project provides a Python-based MCP server for OCI SIP security posture inspection and OCI IAM policy analysis.
 
 Current scope:
 
@@ -13,8 +13,10 @@ Current scope:
 
 ```bash
 /opt/homebrew/bin/python3.11 -m venv .venv
-./.venv/bin/pip install -e .[dev]
+./.venv/bin/pip install -e '.[dev]'
 ```
+
+If you previously installed the package before the OCI SIP rename, rerun the install command so the new `oci-sip-*` scripts are created in `.venv/bin`.
 
 The server expects your OCI config and key file in the normal locations:
 
@@ -24,18 +26,20 @@ The server expects your OCI config and key file in the normal locations:
 ## Run
 
 ```bash
-./.venv/bin/oci-iam-mcp --profile DEFAULT
+./.venv/bin/oci-sip-mcp --profile DEFAULT
 ```
 
 This starts the server on stdio using the official MCP Python SDK.
 
-## Interactive terminal client
+## Developer REPL (Optional)
+
+For development and debugging, this repo also includes a small interactive MCP inspector:
 
 ```bash
-./.venv/bin/oci-iam-repl --profile DEFAULT
+./.venv/bin/oci-sip-repl --profile DEFAULT
 ```
 
-This starts a small terminal client that launches the MCP server as a subprocess and lets you:
+This launches the MCP server as a subprocess and lets you:
 
 - list tools
 - call tools with JSON arguments
@@ -43,32 +47,38 @@ This starts a small terminal client that launches the MCP server as a subprocess
 - render prompt templates
 - read resources
 
-Example commands inside the REPL:
+Example commands:
 
 ```text
 tools
 call analyze_all_policies
 call search_policy_statements {"subject":"any-user"}
 resources
-read oci-iam://policy-reference/basics
+read oci-sip://policy-reference/basics
 prompts
 prompt review_policy_for_risk {"policy_name":"MyPolicy"}
 quit
 ```
 
-Note: this REPL is an MCP inspector, not an LLM chat client. To chat in natural language, connect this server to an MCP host with a model, or add an API-backed chat client later.
+This REPL is intended for local inspection of tools, resources, and prompts. It is not the primary end-user experience and it is not an LLM chat client. For natural-language chat, use the terminal chat client below or connect the server to any MCP host with a model.
 
 ## Terminal chat client
 
-If you have exported `OPENAI_API_KEY` in your terminal, you can run:
+Before using the terminal chat client, export an OpenAI API key in the same terminal session:
 
 ```bash
-./.venv/bin/oci-iam-chat --profile DEFAULT
+export OPENAI_API_KEY="your_api_key_here"
+```
+
+Then run:
+
+```bash
+./.venv/bin/oci-sip-chat --profile DEFAULT
 ```
 
 This launches a terminal chat loop that:
 
-- starts the local OCI IAM MCP server,
+- starts the local OCI SIP MCP server,
 - exposes its tools to the OpenAI Responses API as function tools,
 - executes model-requested MCP tool calls,
 - and returns the tool outputs back to the model before printing the assistant reply.
@@ -76,10 +86,12 @@ This launches a terminal chat loop that:
 Optional flags:
 
 ```bash
-./.venv/bin/oci-iam-chat --profile DEFAULT --model gpt-5.2 --reasoning low
+./.venv/bin/oci-sip-chat --profile DEFAULT --model gpt-5.2 --reasoning low
 ```
 
 Type `/exit` to quit or `/tools` to print the available MCP-backed tools.
+
+Legacy `oci-iam-*` command aliases remain available for compatibility.
 
 ## Initial tools
 

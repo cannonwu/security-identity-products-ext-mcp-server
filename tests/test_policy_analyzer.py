@@ -1,6 +1,6 @@
-from oci_iam_mcp.models import PolicySummary
-from oci_iam_mcp.services.policy_analyzer import PolicyAnalyzer
-from oci_iam_mcp.services.policy_parser import parse_policy_statement
+from oci_sip_mcp.models import PolicySummary
+from oci_sip_mcp.services.policy_analyzer import PolicyAnalyzer
+from oci_sip_mcp.services.policy_parser import parse_policy_statement
 
 
 def make_policy(statement: str) -> PolicySummary:

@@ -1,4 +1,4 @@
-from oci_iam_mcp.chat import (
+from oci_sip_mcp.chat import (
     build_openai_tools,
     extract_function_calls,
     extract_stream_text_delta,

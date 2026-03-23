@@ -1,4 +1,4 @@
-from oci_iam_mcp.repl import parse_command, parse_json_arg
+from oci_sip_mcp.repl import parse_command, parse_json_arg
 
 
 def test_parse_command():

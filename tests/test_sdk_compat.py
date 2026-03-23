@@ -1,5 +1,5 @@
-from oci_iam_mcp.chat import get_structured_tool_content as get_chat_structured_tool_content
-from oci_iam_mcp.repl import get_structured_tool_content as get_repl_structured_tool_content
+from oci_sip_mcp.chat import get_structured_tool_content as get_chat_structured_tool_content
+from oci_sip_mcp.repl import get_structured_tool_content as get_repl_structured_tool_content
 
 
 class ResultCamel:

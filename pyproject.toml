@@ -22,9 +22,6 @@ dev = [
 oci-sip-mcp = "oci_sip_mcp.server:main"
 oci-sip-repl = "oci_sip_mcp.repl:main"
 oci-sip-chat = "oci_sip_mcp.chat:main"
-oci-iam-mcp = "oci_sip_mcp.server:main"
-oci-iam-repl = "oci_sip_mcp.repl:main"
-oci-iam-chat = "oci_sip_mcp.chat:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

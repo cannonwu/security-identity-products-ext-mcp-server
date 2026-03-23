@@ -16,8 +16,6 @@ Current scope:
 ./.venv/bin/pip install -e '.[dev]'
 ```
 
-If you previously installed the package before the OCI SIP rename, rerun the install command so the new `oci-sip-*` scripts are created in `.venv/bin`.
-
 The server expects your OCI config and key file in the normal locations:
 
 - `~/.oci/config`
@@ -90,8 +88,6 @@ Optional flags:
 ```
 
 Type `/exit` to quit or `/tools` to print the available MCP-backed tools.
-
-Legacy `oci-iam-*` command aliases remain available for compatibility.
 
 ## Initial tools
 

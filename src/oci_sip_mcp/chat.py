@@ -6,7 +6,9 @@ import argparse
 import asyncio
 import json
 import os
+import shutil
 import sys
+import textwrap
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -17,6 +19,14 @@ from mcp.client.stdio import stdio_client
 
 
 OPENAI_API_URL = "https://api.openai.com/v1/responses"
+CHAT_COMMANDS = {
+    "/help": "Show chat commands.",
+    "/tools": "List the MCP-backed tools available to the assistant.",
+    "/clear": "Clear the screen.",
+    "/status": "Show the active model and local MCP auth settings.",
+    "/exit": "Quit the chat client.",
+    "/quit": "Quit the chat client.",
+}
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -226,6 +236,69 @@ def build_system_instructions() -> str:
     )
 
 
+def format_heading(title: str) -> str:
+    return "\n{0}\n".format("= {0} =".format(title))
+
+
+def format_tool_list(tool_list: List[types.Tool]) -> str:
+    lines = []
+    for tool in tool_list:
+        lines.append("- {0}: {1}".format(tool.name, tool.description or ""))
+    return "\n".join(lines)
+
+
+def format_status(args: argparse.Namespace) -> str:
+    return "\n".join(
+        [
+            "Model: {0}".format(args.model),
+            "Reasoning: {0}".format(args.reasoning),
+            "OCI auth mode: {0}".format(args.auth_mode),
+            "OCI profile: {0}".format(args.profile),
+            "OCI region: {0}".format(args.region or "[default]"),
+        ]
+    )
+
+
+def print_wrapped_block(text: str, *, initial_indent: str = "", subsequent_indent: str = "") -> None:
+    if not text:
+        return
+    width = max(shutil.get_terminal_size(fallback=(100, 24)).columns - 2, 40)
+    for paragraph in text.splitlines():
+        if not paragraph.strip():
+            print()
+            continue
+        print(
+            textwrap.fill(
+                paragraph,
+                width=width,
+                initial_indent=initial_indent,
+                subsequent_indent=subsequent_indent,
+                replace_whitespace=False,
+                drop_whitespace=True,
+            )
+        )
+
+
+def print_welcome(args: argparse.Namespace) -> None:
+    print(format_heading("OCI SIP Chat"))
+    print("This is the chat client, not the REPL.")
+    print("Type a normal question to chat. Slash commands are optional.")
+    print("Try `/help`, `/tools`, or `/exit`.")
+    print()
+    print_wrapped_block(format_status(args))
+    print()
+
+
+def print_assistant_header() -> None:
+    print(format_heading("Assistant"), end="")
+
+
+def print_user_message(message: str) -> None:
+    print(format_heading("You"), end="")
+    print_wrapped_block(message)
+    print()
+
+
 def get_structured_tool_content(result: types.CallToolResult) -> Any:
     structured = getattr(result, "structuredContent", None)
     if structured is None:
@@ -233,9 +306,15 @@ def get_structured_tool_content(result: types.CallToolResult) -> Any:
     return structured
 
 
-async def execute_tool_calls(session: ClientSession, tool_calls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+async def execute_tool_calls(
+    session: ClientSession,
+    tool_calls: List[Dict[str, Any]],
+    on_tool_call: Callable[[str], None] | None = None,
+) -> List[Dict[str, Any]]:
     outputs: List[Dict[str, Any]] = []
     for call in tool_calls:
+        if on_tool_call is not None:
+            on_tool_call(call["name"])
         arguments = call.get("arguments", "{}")
         try:
             parsed_args = json.loads(arguments)
@@ -287,12 +366,23 @@ async def complete_turn(
         payload["previous_response_id"] = previous_response_id
 
     streamed_text = False
+    assistant_header_printed = False
 
     def on_text_delta(delta: str) -> None:
-        nonlocal streamed_text
+        nonlocal streamed_text, assistant_header_printed
         streamed_text = True
+        if not assistant_header_printed:
+            print_assistant_header()
+            assistant_header_printed = True
         sys.stdout.write(delta)
         sys.stdout.flush()
+
+    def on_tool_call(tool_name: str) -> None:
+        nonlocal assistant_header_printed
+        if not assistant_header_printed:
+            print_assistant_header()
+            assistant_header_printed = True
+        print("[tool] {0}".format(tool_name))
 
     response = await asyncio.to_thread(openai_stream_request, api_key, payload, on_text_delta)
     latest_response_id = response["id"]
@@ -302,7 +392,7 @@ async def complete_turn(
         if not tool_calls:
             return extract_text_output(response), latest_response_id, streamed_text
 
-        tool_outputs = await execute_tool_calls(session, tool_calls)
+        tool_outputs = await execute_tool_calls(session, tool_calls, on_tool_call=on_tool_call)
         payload = {
             "model": model,
             "previous_response_id": latest_response_id,
@@ -324,12 +414,11 @@ async def chat_loop(session: ClientSession, args: argparse.Namespace) -> None:
     available_tools = build_openai_tools(tools.tools)
     previous_response_id: str | None = None
 
-    print("Connected to OCI SIP MCP server with OpenAI chat.")
-    print("Type `/tools` to list tools or `/exit` to quit.")
+    print_welcome(args)
 
     while True:
         try:
-            prompt = await asyncio.to_thread(input, "chat> ")
+            prompt = await asyncio.to_thread(input, "You> ")
         except EOFError:
             print()
             return
@@ -339,11 +428,29 @@ async def chat_loop(session: ClientSession, args: argparse.Namespace) -> None:
             continue
         if prompt in {"/exit", "/quit"}:
             return
+        if prompt == "/help":
+            print(format_heading("Commands"), end="")
+            print_wrapped_block(
+                "\n".join("{0}  {1}".format(name, description) for name, description in CHAT_COMMANDS.items())
+            )
+            print()
+            continue
         if prompt == "/tools":
-            for tool in tools.tools:
-                print("{0}: {1}".format(tool.name, tool.description or ""))
+            print(format_heading("Tools"), end="")
+            print(format_tool_list(tools.tools))
+            print()
+            continue
+        if prompt == "/status":
+            print(format_heading("Status"), end="")
+            print_wrapped_block(format_status(args))
+            print()
+            continue
+        if prompt == "/clear":
+            print("\033[2J\033[H", end="")
+            print_welcome(args)
             continue
 
+        print_user_message(prompt)
         try:
             answer, previous_response_id, streamed_text = await complete_turn(
                 session=session,
@@ -359,9 +466,9 @@ async def chat_loop(session: ClientSession, args: argparse.Namespace) -> None:
             print("Error: {0}".format(exc), file=sys.stderr)
             continue
 
-        print()
         if not streamed_text:
-            print(answer or "[No text output returned]")
+            print_assistant_header()
+            print_wrapped_block(answer or "[No text output returned]")
         print()
 
 

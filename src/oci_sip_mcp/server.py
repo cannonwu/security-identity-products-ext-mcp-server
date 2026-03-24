@@ -38,6 +38,14 @@ def build_server(config: ServerConfig) -> FastMCP:
             "Use these tools to inspect OCI SIP posture. Prefer read-only inventory tools first, "
             "then use policy analysis tools to explain and reduce risky access."
         ),
+        host=config.host,
+        port=config.port,
+        mount_path=config.mount_path,
+        sse_path=config.sse_path,
+        message_path=config.message_path,
+        streamable_http_path=config.streamable_http_path,
+        json_response=config.json_response,
+        stateless_http=config.stateless_http,
     )
 
     tenancy_tools.register(server, identity, compartments, domains)
@@ -99,11 +107,15 @@ def build_server(config: ServerConfig) -> FastMCP:
     return server
 
 
+def run_server(server: FastMCP, config: ServerConfig) -> None:
+    server.run(transport=config.transport, mount_path=config.mount_path)
+
+
 def main(argv: list[str] | None = None) -> None:
     logging.basicConfig(level=logging.INFO)
     config = ServerConfig.from_args(argv)
     server = build_server(config)
-    server.run(transport="stdio")
+    run_server(server, config)
 
 
 if __name__ == "__main__":

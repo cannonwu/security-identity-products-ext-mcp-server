@@ -5,9 +5,10 @@ This project provides a Python-based MCP server for OCI SIP security posture ins
 Current scope:
 
 - OCI config-file authentication
+- OCI instance principal and resource principal authentication
 - IAM inventory tools for compartments, users, groups, dynamic groups, and policies
 - IAM policy parsing and risk analysis
-- Official Python MCP SDK over stdio
+- Official Python MCP SDK over stdio and remote HTTP transports
 
 ## Setup
 
@@ -28,6 +29,68 @@ The server expects your OCI config and key file in the normal locations:
 ```
 
 This starts the server on stdio using the official MCP Python SDK.
+
+## Remote transport
+
+The server can also run as a remote MCP endpoint so any compatible chat client can connect to it over HTTP.
+
+Example local test:
+
+```bash
+./.venv/bin/oci-sip-mcp \
+  --auth-mode config \
+  --transport streamable-http \
+  --host 127.0.0.1 \
+  --port 8000
+```
+
+Default remote endpoint:
+
+```text
+http://127.0.0.1:8000/mcp
+```
+
+Example OCI VM deployment using instance principal auth:
+
+```bash
+./.venv/bin/oci-sip-mcp \
+  --auth-mode instance_principal \
+  --transport streamable-http \
+  --host 0.0.0.0 \
+  --port 8000
+```
+
+If you want to test from your laptop before opening ingress publicly, keep the service bound to `127.0.0.1` on the VM and use SSH port forwarding:
+
+```bash
+ssh -L 8000:127.0.0.1:8000 opc@YOUR_VM_PUBLIC_IP
+```
+
+Then point your local MCP-capable client at:
+
+```text
+http://127.0.0.1:8000/mcp
+```
+
+Useful flags for remote hosting:
+
+- `--transport streamable-http` to enable the remote HTTP transport
+- `--host` and `--port` to control the listener address
+- `--streamable-http-path` to change the MCP endpoint path from the default `/mcp`
+- `--mount-path`, `--sse-path`, and `--message-path` if you need custom HTTP routing
+- `--json-response` and `--stateless-http` for clients or proxies that prefer those modes
+
+Environment variable equivalents are also supported:
+
+- `MCP_TRANSPORT`
+- `MCP_HOST`
+- `MCP_PORT`
+- `MCP_MOUNT_PATH`
+- `MCP_SSE_PATH`
+- `MCP_MESSAGE_PATH`
+- `MCP_STREAMABLE_HTTP_PATH`
+- `MCP_JSON_RESPONSE`
+- `MCP_STATELESS_HTTP`
 
 ## Developer REPL (Optional)
 
@@ -81,13 +144,21 @@ This launches a terminal chat loop that:
 - executes model-requested MCP tool calls,
 - and returns the tool outputs back to the model before printing the assistant reply.
 
+`oci-sip-chat` is the conversational client. You can ask normal questions in plain English. It is not limited to REPL-style commands.
+
 Optional flags:
 
 ```bash
 ./.venv/bin/oci-sip-chat --profile DEFAULT --model gpt-5.2 --reasoning low
 ```
 
-Type `/exit` to quit or `/tools` to print the available MCP-backed tools.
+Useful chat commands:
+
+- `/help` shows chat commands
+- `/tools` prints the available MCP-backed tools
+- `/status` shows the current chat/model/auth settings
+- `/clear` clears and redraws the chat screen
+- `/exit` quits
 
 ## Initial tools
 

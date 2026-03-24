@@ -1,4 +1,8 @@
+import argparse
+
 from oci_sip_mcp.chat import (
+    format_status,
+    format_tool_list,
     build_openai_tools,
     extract_function_calls,
     extract_stream_text_delta,
@@ -70,3 +74,27 @@ def test_extract_stream_text_delta_from_delta_event():
     payload = {"type": "response.output_text.delta", "delta": "Hello"}
 
     assert extract_stream_text_delta("response.output_text.delta", payload) == "Hello"
+
+
+def test_format_tool_list_renders_name_and_description():
+    tool = DummyTool("list_policies", "List policies", {"type": "object", "properties": {}})
+
+    result = format_tool_list([tool])
+
+    assert result == "- list_policies: List policies"
+
+
+def test_format_status_summarizes_active_chat_settings():
+    args = argparse.Namespace(
+        model="gpt-5.2",
+        reasoning="low",
+        auth_mode="instance_principal",
+        profile="DEFAULT",
+        region=None,
+    )
+
+    result = format_status(args)
+
+    assert "Model: gpt-5.2" in result
+    assert "OCI auth mode: instance_principal" in result
+    assert "OCI region: [default]" in result

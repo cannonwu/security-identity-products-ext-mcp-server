@@ -1,7 +1,9 @@
 from unittest.mock import MagicMock, patch
 
+from starlette.testclient import TestClient
+
 from oci_sip_mcp.config import ServerConfig
-from oci_sip_mcp.server import build_server, run_server
+from oci_sip_mcp.server import build_server, build_streamable_http_app, run_server
 
 
 @patch("oci_sip_mcp.server.policy_tools.register")
@@ -63,6 +65,57 @@ def test_run_server_uses_configured_transport_and_mount_path():
     server = MagicMock()
     config = ServerConfig(transport="streamable-http", mount_path="/gateway")
 
+    with patch("oci_sip_mcp.server.anyio.run") as anyio_run:
+        run_server(server, config)
+
+    anyio_run.assert_called_once()
+    server.run.assert_not_called()
+
+
+def test_run_server_uses_fastmcp_run_for_non_http_transports():
+    server = MagicMock()
+    config = ServerConfig(transport="stdio", mount_path="/gateway")
+
     run_server(server, config)
 
-    server.run.assert_called_once_with(transport="streamable-http", mount_path="/gateway")
+    server.run.assert_called_once_with(transport="stdio", mount_path="/gateway")
+
+
+@patch("oci_sip_mcp.server.policy_tools.register")
+@patch("oci_sip_mcp.server.principal_tools.register")
+@patch("oci_sip_mcp.server.tenancy_tools.register")
+@patch("oci_sip_mcp.server.PolicyAnalyzer")
+@patch("oci_sip_mcp.server.PolicyService")
+@patch("oci_sip_mcp.server.DomainService")
+@patch("oci_sip_mcp.server.PrincipalService")
+@patch("oci_sip_mcp.server.CompartmentService")
+@patch("oci_sip_mcp.server.IdentityClientWrapper")
+@patch("oci_sip_mcp.server.OCIAuthFactory")
+def test_streamable_http_app_handles_cors_preflight(
+    auth_factory_cls,
+    identity_cls,
+    compartment_service_cls,
+    principal_service_cls,
+    domain_service_cls,
+    policy_service_cls,
+    analyzer_cls,
+    register_tenancy_tools,
+    register_principal_tools,
+    register_policy_tools,
+):
+    auth_factory_cls.return_value.build.return_value = ({"region": "us-phoenix-1"}, MagicMock())
+    server = build_server(ServerConfig(transport="streamable-http"))
+    app = build_streamable_http_app(server)
+
+    with TestClient(app) as client:
+        response = client.options(
+            "/mcp",
+            headers={
+                "Origin": "http://localhost:3000",
+                "Access-Control-Request-Method": "POST",
+                "Access-Control-Request-Headers": "content-type,mcp-protocol-version",
+            },
+        )
+
+    assert response.status_code == 200
+    assert response.headers["access-control-allow-origin"] == "*"

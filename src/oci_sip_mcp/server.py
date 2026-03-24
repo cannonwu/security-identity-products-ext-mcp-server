@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+import anyio
 import json
 import logging
 from typing import Any
 
 from mcp.server.fastmcp import FastMCP
+from mcp.server.streamable_http import MCP_PROTOCOL_VERSION_HEADER, MCP_SESSION_ID_HEADER
+from starlette.middleware.cors import CORSMiddleware
 
 from .auth import OCIAuthFactory
 from .clients.identity import IdentityClientWrapper
@@ -107,8 +110,36 @@ def build_server(config: ServerConfig) -> FastMCP:
     return server
 
 
+def build_streamable_http_app(server: FastMCP) -> CORSMiddleware:
+    app = server.streamable_http_app()
+    return CORSMiddleware(
+        app=app,
+        allow_origins=["*"],
+        allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
+        allow_headers=["*", MCP_PROTOCOL_VERSION_HEADER, MCP_SESSION_ID_HEADER],
+        expose_headers=[MCP_PROTOCOL_VERSION_HEADER, MCP_SESSION_ID_HEADER],
+    )
+
+
 def run_server(server: FastMCP, config: ServerConfig) -> None:
+    if config.transport == "streamable-http":
+        anyio.run(run_streamable_http_server, server, config)
+        return
     server.run(transport=config.transport, mount_path=config.mount_path)
+
+
+async def run_streamable_http_server(server: FastMCP, config: ServerConfig) -> None:
+    import uvicorn
+
+    app = build_streamable_http_app(server)
+    uvicorn_config = uvicorn.Config(
+        app,
+        host=config.host,
+        port=config.port,
+        log_level=logging.getLevelName(logging.getLogger().getEffectiveLevel()).lower(),
+    )
+    uvicorn_server = uvicorn.Server(uvicorn_config)
+    await uvicorn_server.serve()
 
 
 def main(argv: list[str] | None = None) -> None:

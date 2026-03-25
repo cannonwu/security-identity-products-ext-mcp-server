@@ -1,58 +1,208 @@
-# OCI SIP MCP Server
+# OCI Security and Identity Products MCP Server
 
-This project provides a Python-based MCP server for OCI SIP security posture inspection and OCI IAM policy analysis.
+This repository contains the OCI Security and Identity Products MCP Server. It exposes read-only OCI IAM and identity data as MCP tools, applies deterministic analysis based on security best practices and domain expertise, and returns the results to whatever MCP-compatible chat client is driving it.
 
-Current scope:
+Today, this server is primarily useful for:
+- tenancy IAM inventory
+- policy inspection and search
+- deterministic policy risk analysis
+- identity domain discovery
 
-- OCI config-file authentication
-- OCI instance principal and resource principal authentication
-- IAM inventory tools for compartments, users, groups, dynamic groups, and policies
-- IAM policy parsing and risk analysis
-- Official Python MCP SDK over stdio and remote HTTP transports
+Longer term, this may also be used as an MCP endpoint behind OCI Console AI Chat or other enterprise chat experiences.
 
-## Setup
+The frontend determines presentation and consistent UI separately. For example, a React frontend client would contain the logic that renders different UI templates for different tool outputs while using this server as the live data and analysis layer.
+
+## What Works Today
+
+- OCI auth modes:
+  - config-file auth
+  - instance principal
+  - resource principal
+- MCP transports:
+  - `stdio` for interacting with co-deployed chat clients
+  - `streamable-http` for interacting with remote chat clients
+  - `sse`
+- Included terminal utilities:
+  - `oci-sip-mcp` for the MCP server
+  - `oci-sip-chat` for a built-in terminal chat client
+  - `oci-sip-repl` for manual tool and resource discovery
+- Current tools:
+  - `get_tenancy_summary`
+  - `list_compartments`
+  - `list_groups`
+  - `list_users`
+  - `list_dynamic_groups`
+  - `get_user_memberships`
+  - `get_group_membership`
+  - `list_policies`
+  - `search_policy_statements`
+  - `analyze_policy`
+  - `analyze_all_policies`
+  - `list_identity_domains`
+
+## Prerequisites
+
+- An OCI tenancy where you can deploy and manage compute instances, policies, and groups
+- Python 3.11+
+- `git`
+- An OpenAI API key if you want to use the built-in terminal chat client
+  Get one from: https://platform.openai.com/
+
+## Recommended Setup: OCI VM + Instance Principal
+
+### 1. Provision the VM
+
+Create an OCI compute instance that can use an instance principal. Do not use an "Always Free" VM shape; it is not sufficient. VM.Standard.E2.1 shape may work, but this has only been tested with the VM.Standard.E2.2 shape (image: Oracle Linux 9). Refer to this guide:
+https://oracle.sharepoint.com/:w:/r/teams/SIPProductManagement/Shared%20Documents/Identity-IAM/IAM%20PDs/AI%20for%20IAM/Eliminating%C2%A0Credentials-Secure%20AI%20Agent%20Access%20to%20OCI%20via%20Instance%20Identity.docx?d=w913952578047429298208cfb35340a9b&csf=1&web=1&e=SQJdcI
+
+### 2. SSH into the VM
 
 ```bash
-/opt/homebrew/bin/python3.11 -m venv .venv
+ssh -i /path/to/your/ssh/private/key opc@<compute-instance-public-ip>
+```
+
+### 3. Install system prerequisites
+
+Install Python 3.11+ and `git`.
+
+Example for Oracle Linux:
+
+```bash
+sudo dnf update -y
+sudo dnf install -y python3.11 python3.11-pip git
+```
+
+### 4. Validate OCI permissions first
+
+Confirm the VM is correctly permissioned. Install the OCI CLI and run a few read-only commands with instance principal auth.
+
+Example checks:
+
+```bash
+oci iam region-subscription list --auth instance_principal
+oci iam compartment list --auth instance_principal --compartment-id <tenancy_ocid> --compartment-id-in-subtree true --all
+oci iam policy list --auth instance_principal --compartment-id <tenancy_ocid> --all
+```
+
+If these fail with authorization errors, fix the dynamic group / policy setup first. Refer back to the above guide.
+
+### 5. Clone and install this repository on the VM
+
+Authenticate to GitHub for the clone if/when prompted (username + token, not your GitHub password): https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+
+```bash
+git clone <repo-url> ~/security-identity-products-ext-mcp-server
+cd ~/security-identity-products-ext-mcp-server
+
+python3.11 -m venv .venv
 ./.venv/bin/pip install -e '.[dev]'
 ```
 
-The server expects your OCI config and key file in the normal locations:
+## Connecting an External Chat Client Through an SSH Tunnel
 
-- `~/.oci/config`
-- the private key path referenced by that config file
+This is currently the recommended method of connecting an AI Chat Client to the SIP MCP Server:
 
-## Run
+### 1. Test the setup with the built-in chat client before using a remote chat client
+
+Open an SSH session to the VM. We will call this **Terminal A**.
 
 ```bash
-./.venv/bin/oci-sip-mcp --profile DEFAULT
+ssh -i /path/to/your/ssh/private/key opc@<compute-instance-public-ip>
+
+cd ~/security-identity-products-ext-mcp-server
+export OPENAI_API_KEY="your_api_key_here"
+./.venv/bin/oci-sip-chat --auth-mode instance_principal
 ```
 
-This starts the server on stdio using the official MCP Python SDK.
+Use this as a smoke test to confirm the instance principal permissions, MCP server install, Python dependencies, and tool behavior are all working before introducing a separate remote chat client. See the Sample Inputs section below.
 
-## Remote transport
+Note:
 
-The server can also run as a remote MCP endpoint so any compatible chat client can connect to it over HTTP.
+- `oci-sip-chat` is a built-in smoke test client
+- it starts its own local `stdio` MCP server
+- it does not test the HTTP server flow used by the remote chat client
+- it requires outbound access to the OpenAI API
 
-Example local test:
+### 2. Start the MCP server on the OCI VM
+
+Open a second SSH session to the same VM. We will call this **Terminal B** and keep it open.
 
 ```bash
+ssh -i /path/to/your/ssh/private/key opc@<compute-instance-public-ip>
+
+cd ~/security-identity-products-ext-mcp-server
+
 ./.venv/bin/oci-sip-mcp \
-  --auth-mode config \
+  --auth-mode instance_principal \
   --transport streamable-http \
   --host 127.0.0.1 \
   --port 8000
 ```
 
-Default remote endpoint:
+This starts the actual remote MCP endpoint that your external chat client will use. It stays private on the VM and avoids exposing port `8000` publicly.
+
+### 3. Connect your external chat client through an SSH tunnel
+
+On the machine where your external chat client is running, open a third terminal. We will call this **Terminal C**.
+
+```bash
+ssh -i /path/to/your/ssh/private/key -L 8000:127.0.0.1:8000 opc@<compute-instance-public-ip>
+```
+
+Then set the MCP endpoint in your chat client to:
 
 ```text
 http://127.0.0.1:8000/mcp
 ```
 
-Example OCI VM deployment using instance principal auth:
+### 4. You can now chat from your external chat client
+
+At this point your external chat client should be talking to the MCP server running on the OCI VM through the SSH tunnel.
+
+See sample inputs below.
+
+### Summary
+
+You should have the following open:
+
+- **Terminal A**: built-in chat client for validation; you can close it once you have confirmed things are working
+- **Terminal B**: running `oci-sip-mcp` on the OCI compute instance
+- **Terminal C**: SSH tunnel from your local machine to the VM
+- Your external chat client: configured with MCP endpoint `http://127.0.0.1:8000/mcp`
+
+Keep **Terminal B** open. Without it, the remote chat client will not be able to reach the MCP server.
+
+## Alternative 1: Deploy Chat Client on the Same VM
+
+If your chat client is also running on the same VM, you do not need an SSH tunnel.
+
+Start the MCP server on the VM:
 
 ```bash
+cd ~/security-identity-products-ext-mcp-server
+
+./.venv/bin/oci-sip-mcp \
+  --auth-mode instance_principal \
+  --transport streamable-http \
+  --host 127.0.0.1 \
+  --port 8000
+```
+
+Set the MCP endpoint in the chat client to:
+
+```text
+http://127.0.0.1:8000/mcp
+```
+
+## Alternative 2: Remote Chat Client Connects Over HTTP (Expose VM to the Internet)
+
+This method exposes your VM to the internet. You will need to configure the VM, subnet, security list or NSG, and host firewall accordingly.
+
+Start the MCP server on the VM:
+
+```bash
+cd ~/security-identity-products-ext-mcp-server
+
 ./.venv/bin/oci-sip-mcp \
   --auth-mode instance_principal \
   --transport streamable-http \
@@ -60,55 +210,40 @@ Example OCI VM deployment using instance principal auth:
   --port 8000
 ```
 
-If you want to test from your laptop before opening ingress publicly, keep the service bound to `127.0.0.1` on the VM and use SSH port forwarding:
-
-```bash
-ssh -L 8000:127.0.0.1:8000 opc@YOUR_VM_PUBLIC_IP
-```
-
-Then point your local MCP-capable client at:
+Set the MCP endpoint in the remote chat client to:
 
 ```text
-http://127.0.0.1:8000/mcp
+http://<compute-instance-public-ip>:8000/mcp
 ```
 
-Useful flags for remote hosting:
+## Sample Inputs
 
-- `--transport streamable-http` to enable the remote HTTP transport
-- `--host` and `--port` to control the listener address
-- `--streamable-http-path` to change the MCP endpoint path from the default `/mcp`
-- `--mount-path`, `--sse-path`, and `--message-path` if you need custom HTTP routing
-- `--json-response` and `--stateless-http` for clients or proxies that prefer those modes
+Useful commands inside chat:
 
-Environment variable equivalents are also supported:
+- `/help`
+- `/tools`
+- `/status`
+- `/clear`
+- `/exit`
 
-- `MCP_TRANSPORT`
-- `MCP_HOST`
-- `MCP_PORT`
-- `MCP_MOUNT_PATH`
-- `MCP_SSE_PATH`
-- `MCP_MESSAGE_PATH`
-- `MCP_STREAMABLE_HTTP_PATH`
-- `MCP_JSON_RESPONSE`
-- `MCP_STATELESS_HTTP`
+A few simple prompts to test with:
 
-## Developer REPL (Optional)
+- `analyze all policies`
+- `show me the highest risk policies in this tenancy`
+- `find policy statements that grant access to any-user`
+- `list all groups and dynamic groups`
+- `summarize this tenancy's IAM posture`
 
-For development and debugging, this repo also includes a small interactive MCP inspector:
+## Manually Discovering Tools with the REPL
+
+The repository also includes a simple REPL for manual MCP inspection.
 
 ```bash
-./.venv/bin/oci-sip-repl --profile DEFAULT
+cd ~/security-identity-products-ext-mcp-server
+./.venv/bin/oci-sip-repl --auth-mode instance_principal
 ```
 
-This launches the MCP server as a subprocess and lets you:
-
-- list tools
-- call tools with JSON arguments
-- list prompt templates
-- render prompt templates
-- read resources
-
-Example commands:
+Useful REPL commands:
 
 ```text
 tools
@@ -117,60 +252,8 @@ call search_policy_statements {"subject":"any-user"}
 resources
 read oci-sip://policy-reference/basics
 prompts
-prompt review_policy_for_risk {"policy_name":"MyPolicy"}
+prompt review_policy_for_risk {"policy_name":"<policy-name>"}
 quit
 ```
 
-This REPL is intended for local inspection of tools, resources, and prompts. It is not the primary end-user experience and it is not an LLM chat client. For natural-language chat, use the terminal chat client below or connect the server to any MCP host with a model.
-
-## Terminal chat client
-
-Before using the terminal chat client, export an OpenAI API key in the same terminal session:
-
-```bash
-export OPENAI_API_KEY="your_api_key_here"
-```
-
-Then run:
-
-```bash
-./.venv/bin/oci-sip-chat --profile DEFAULT
-```
-
-This launches a terminal chat loop that:
-
-- starts the local OCI SIP MCP server,
-- exposes its tools to the OpenAI Responses API as function tools,
-- executes model-requested MCP tool calls,
-- and returns the tool outputs back to the model before printing the assistant reply.
-
-`oci-sip-chat` is the conversational client. You can ask normal questions in plain English. It is not limited to REPL-style commands.
-
-Optional flags:
-
-```bash
-./.venv/bin/oci-sip-chat --profile DEFAULT --model gpt-5.2 --reasoning low
-```
-
-Useful chat commands:
-
-- `/help` shows chat commands
-- `/tools` prints the available MCP-backed tools
-- `/status` shows the current chat/model/auth settings
-- `/clear` clears and redraws the chat screen
-- `/exit` quits
-
-## Initial tools
-
-- `get_tenancy_summary`
-- `list_compartments`
-- `list_groups`
-- `list_users`
-- `list_dynamic_groups`
-- `get_user_memberships`
-- `get_group_membership`
-- `list_policies`
-- `search_policy_statements`
-- `analyze_policy`
-- `analyze_all_policies`
-- `list_identity_domains`
+The REPL is useful for debugging tools, prompts, and resources directly. It is not a natural-language chat interface.

@@ -1,0 +1,254 @@
+{
+  "service": "cloud-advisor",
+  "service_name": "Cloud Advisor",
+  "description": "Linked policy reference resource-types for Cloud Advisor.",
+  "resources": [
+    {
+      "resource_family": "optimizer-api-family",
+      "description": "Cloud Advisor aggregate resource-type",
+      "includes": [
+        "optimizer-category",
+        "optimizer-enrollment",
+        "optimizer-history",
+        "optimizer-profile",
+        "optimizer-profile-level",
+        "optimizer-recommendation",
+        "optimizer-recommendation-strategy",
+        "optimizer-resource-action",
+        "optimizer-resource-metadata",
+        "optimizer-workrequest"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "optimizer-category",
+      "description": "Optimizer category",
+      "verbs": {
+        "inspect": [
+          "ListCategories"
+        ],
+        "read": [
+          "ListCategories",
+          "GetCategory"
+        ],
+        "use": [
+          "ListCategories",
+          "GetCategory"
+        ],
+        "manage": [
+          "ListCategories",
+          "GetCategory"
+        ]
+      }
+    },
+    {
+      "resource_family": "optimizer-enrollment",
+      "description": "Optimizer enrollment",
+      "verbs": {
+        "inspect": [
+          "ListEnrollmentStatuses"
+        ],
+        "read": [
+          "ListEnrollmentStatuses",
+          "GetEnrollmentStatus"
+        ],
+        "use": [
+          "ListEnrollmentStatuses",
+          "GetEnrollmentStatus",
+          "UpdateEnrollmentStatus"
+        ],
+        "manage": [
+          "ListEnrollmentStatuses",
+          "GetEnrollmentStatus",
+          "UpdateEnrollmentStatus"
+        ]
+      }
+    },
+    {
+      "resource_family": "optimizer-history",
+      "description": "Optimizer history",
+      "verbs": {
+        "inspect": [
+          "ListHistories"
+        ],
+        "read": [
+          "ListHistories"
+        ],
+        "use": [
+          "ListHistories"
+        ],
+        "manage": [
+          "ListHistories"
+        ]
+      }
+    },
+    {
+      "resource_family": "optimizer-profile",
+      "description": "Optimizer profile",
+      "verbs": {
+        "inspect": [
+          "ListProfiles"
+        ],
+        "read": [
+          "ListProfiles",
+          "GetProfile"
+        ],
+        "use": [
+          "ListProfiles",
+          "GetProfile",
+          "UpdateProfile"
+        ],
+        "manage": [
+          "ListProfiles",
+          "GetProfile",
+          "UpdateProfile",
+          "CreateProfile",
+          "DeleteProfile"
+        ]
+      }
+    },
+    {
+      "resource_family": "optimizer-profile-level",
+      "description": "Optimizer profile level",
+      "verbs": {
+        "inspect": [
+          "ListProfileLevels"
+        ],
+        "read": [
+          "ListProfileLevels"
+        ],
+        "use": [
+          "ListProfileLevels"
+        ],
+        "manage": [
+          "ListProfileLevels"
+        ]
+      }
+    },
+    {
+      "resource_family": "optimizer-recommendation",
+      "description": "Optimizer recommendation",
+      "verbs": {
+        "inspect": [
+          "ListRecommendations"
+        ],
+        "read": [
+          "ListRecommendations",
+          "GetRecommendation"
+        ],
+        "use": [
+          "ListRecommendations",
+          "GetRecommendation",
+          "UpdateRecommendation"
+        ],
+        "manage": [
+          "ListRecommendations",
+          "GetRecommendation",
+          "UpdateRecommendation"
+        ]
+      }
+    },
+    {
+      "resource_family": "optimizer-recommendation-strategy",
+      "description": "Optimizer recommendation strategy",
+      "verbs": {
+        "inspect": [
+          "ListRecommendationStrategies"
+        ],
+        "read": [
+          "ListRecommendationStrategies"
+        ],
+        "use": [
+          "ListRecommendationStrategies"
+        ],
+        "manage": [
+          "ListRecommendationStrategies"
+        ]
+      }
+    },
+    {
+      "resource_family": "optimizer-resource-action",
+      "description": "Optimizer resource action",
+      "verbs": {
+        "inspect": [
+          "ListResourceActionQueryableFields",
+          "ListResourceActions",
+          "FilterResourceActions"
+        ],
+        "read": [
+          "ListResourceActionQueryableFields",
+          "ListResourceActions",
+          "FilterResourceActions",
+          "GetResourceAction"
+        ],
+        "use": [
+          "ListResourceActionQueryableFields",
+          "ListResourceActions",
+          "FilterResourceActions",
+          "GetResourceAction",
+          "UpdateResourceAction",
+          "BulkApplyRecommendations"
+        ],
+        "manage": [
+          "ListResourceActionQueryableFields",
+          "ListResourceActions",
+          "FilterResourceActions",
+          "GetResourceAction",
+          "UpdateResourceAction",
+          "BulkApplyRecommendations"
+        ]
+      }
+    },
+    {
+      "resource_family": "optimizer-resource-metadata",
+      "description": "Optimizer resource metadata",
+      "verbs": {
+        "inspect": [],
+        "read": [
+          "ListResourceActions",
+          "ListHistories",
+          "GetResourceAction"
+        ],
+        "use": [
+          "ListResourceActions",
+          "ListHistories",
+          "GetResourceAction"
+        ],
+        "manage": [
+          "ListResourceActions",
+          "ListHistories",
+          "GetResourceAction"
+        ]
+      }
+    },
+    {
+      "resource_family": "optimizer-workrequest",
+      "description": "Optimizer work request",
+      "verbs": {
+        "inspect": [
+          "ListWorkRequests",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "read": [
+          "ListWorkRequests",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "GetWorkRequest"
+        ],
+        "use": [
+          "ListWorkRequests",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "GetWorkRequest"
+        ],
+        "manage": [
+          "ListWorkRequests",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "GetWorkRequest"
+        ]
+      }
+    }
+  ]
+}

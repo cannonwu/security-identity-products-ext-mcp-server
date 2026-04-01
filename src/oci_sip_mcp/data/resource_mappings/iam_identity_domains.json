@@ -1,0 +1,805 @@
+{
+  "service": "iam-identity-domains",
+  "service_name": "IAM with Identity Domains",
+  "description": "OCI IAM with Identity Domains resource-type mappings from the Oracle IAM policy reference",
+  "source_pages": [
+    "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/iampolicyreference.htm"
+  ],
+  "resources": [
+    {
+      "resource_family": "authentication-policies",
+      "description": "Authentication policy settings",
+      "source_section": "Details for Verb + Resource-Type Combinations > authentication-policies",
+      "verbs": {
+        "manage": [
+          "UpdateAuthenticationPolicy"
+        ],
+        "use": [],
+        "read": [],
+        "inspect": [
+          "GetAuthenticationPolicy"
+        ]
+      },
+      "api_permission_tokens": {
+        "GetAuthenticationPolicy": [
+          "AUTHENTICATION_POLICY_INSPECT"
+        ],
+        "UpdateAuthenticationPolicy": [
+          "AUTHENTICATION_POLICY_UPDATE"
+        ]
+      }
+    },
+    {
+      "resource_family": "compartments",
+      "description": "Compartments",
+      "source_section": "Details for Verb + Resource-Type Combinations > compartments",
+      "verbs": {
+        "manage": [
+          "CreateCompartment",
+          "DeleteCompartment",
+          "RecoverCompartment"
+        ],
+        "use": [
+          "UpdateCompartment",
+          "GetWorkRequest"
+        ],
+        "read": [],
+        "inspect": [
+          "ListCompartments",
+          "GetCompartment",
+          "ListAvailabilityDomains",
+          "ListFaultDomains"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListCompartments": [
+          "COMPARTMENT_INSPECT"
+        ],
+        "GetCompartment": [
+          "COMPARTMENT_INSPECT"
+        ],
+        "ListAvailabilityDomains": [
+          "COMPARTMENT_INSPECT"
+        ],
+        "ListFaultDomains": [
+          "COMPARTMENT_INSPECT"
+        ],
+        "UpdateCompartment": [
+          "COMPARTMENT_UPDATE"
+        ],
+        "GetWorkRequest": [
+          "COMPARTMENT_READ"
+        ],
+        "CreateCompartment": [
+          "COMPARTMENT_CREATE"
+        ],
+        "DeleteCompartment": [
+          "COMPARTMENT_DELETE"
+        ],
+        "RecoverCompartment": [
+          "COMPARTMENT_RECOVER"
+        ]
+      }
+    },
+    {
+      "resource_family": "credentials",
+      "description": "SMTP credentials",
+      "source_section": "Details for Verb + Resource-Type Combinations > credentials",
+      "verbs": {
+        "manage": [
+          "CreateSmtpCredential",
+          "UpdateSmtpCredential",
+          "DeleteSmtpCredential"
+        ],
+        "use": [],
+        "read": [],
+        "inspect": [
+          "ListSmtpCredentials"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListSmtpCredentials": [
+          "CREDENTIAL_INSPECT"
+        ],
+        "CreateSmtpCredential": [
+          "CREDENTIAL_ADD"
+        ],
+        "UpdateSmtpCredential": [
+          "CREDENTIAL_UPDATE"
+        ],
+        "DeleteSmtpCredential": [
+          "CREDENTIAL_REMOVE"
+        ]
+      }
+    },
+    {
+      "resource_family": "domains",
+      "description": "Identity domains",
+      "source_section": "Details for Verb + Resource-Type Combinations > domains",
+      "verbs": {
+        "manage": [
+          "CreateDomain",
+          "DeleteDomain",
+          "ChangeDomainCompartment",
+          "ChangeSku",
+          "ReplicateDomainRegion",
+          "ActivateDomain",
+          "DeactivateDomain"
+        ],
+        "use": [
+          "UpdateDomain",
+          "GetIamWorkRequest"
+        ],
+        "read": [
+          "GetDomain",
+          "GetDomainLicenseTypes"
+        ],
+        "inspect": [
+          "ListDomains"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListDomains": [
+          "DOMAIN_INSPECT"
+        ],
+        "GetDomain": [
+          "DOMAIN_READ"
+        ],
+        "GetDomainLicenseTypes": [
+          "DOMAIN_LICENSETYPE_READ"
+        ],
+        "UpdateDomain": [
+          "DOMAIN_UPDATE"
+        ],
+        "GetIamWorkRequest": [
+          "IAM_WORKREQUEST_READ"
+        ],
+        "CreateDomain": [
+          "DOMAIN_CREATE"
+        ],
+        "DeleteDomain": [
+          "DOMAIN_DELETE"
+        ],
+        "ChangeDomainCompartment": [
+          "DOMAIN_MOVE"
+        ],
+        "ChangeSku": [
+          "DOMAIN_MOVE"
+        ],
+        "ReplicateDomainRegion": [
+          "DOMAIN_REPLICATE"
+        ],
+        "ActivateDomain": [
+          "DOMAIN_ACTIVATE"
+        ],
+        "DeactivateDomain": [
+          "DOMAIN_DEACTIVATE"
+        ]
+      }
+    },
+    {
+      "resource_family": "dynamic-groups",
+      "description": "Dynamic groups",
+      "source_section": "Details for Verb + Resource-Type Combinations > dynamic-groups",
+      "verbs": {
+        "manage": [
+          "CreateDynamicGroup",
+          "DeleteDynamicGroup"
+        ],
+        "use": [
+          "UpdateDynamicGroup"
+        ],
+        "read": [],
+        "inspect": [
+          "ListDynamicGroups",
+          "GetDynamicGroup"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListDynamicGroups": [
+          "DYNAMIC_GROUP_INSPECT"
+        ],
+        "GetDynamicGroup": [
+          "DYNAMIC_GROUP_INSPECT"
+        ],
+        "UpdateDynamicGroup": [
+          "DYNAMIC_GROUP_UPDATE"
+        ],
+        "CreateDynamicGroup": [
+          "DYNAMIC_GROUP_CREATE"
+        ],
+        "DeleteDynamicGroup": [
+          "DYNAMIC_GROUP_DELETE"
+        ]
+      }
+    },
+    {
+      "resource_family": "groups",
+      "description": "IAM groups",
+      "source_section": "Details for Verb + Resource-Type Combinations > groups",
+      "verbs": {
+        "manage": [
+          "CreateGroup",
+          "DeleteGroup"
+        ],
+        "use": [
+          "UpdateGroup",
+          "AddUserToGroup",
+          "RemoveUserFromGroup",
+          "AddIdpGroupMapping",
+          "DeleteIdpGroupMapping"
+        ],
+        "read": [],
+        "inspect": [
+          "ListGroups",
+          "GetGroup",
+          "GetUserGroupMembership",
+          "ListIdpGroupMappings",
+          "GetIdpGroupMapping"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListGroups": [
+          "GROUP_INSPECT"
+        ],
+        "GetGroup": [
+          "GROUP_INSPECT"
+        ],
+        "GetUserGroupMembership": [
+          "GROUP_INSPECT",
+          "USER_INSPECT"
+        ],
+        "ListIdpGroupMappings": [
+          "IDENTITY_PROVIDER_INSPECT",
+          "GROUP_INSPECT"
+        ],
+        "GetIdpGroupMapping": [
+          "IDENTITY_PROVIDER_INSPECT",
+          "GROUP_INSPECT"
+        ],
+        "UpdateGroup": [
+          "GROUP_UPDATE"
+        ],
+        "AddUserToGroup": [
+          "GROUP_UPDATE",
+          "USER_UPDATE"
+        ],
+        "RemoveUserFromGroup": [
+          "GROUP_UPDATE",
+          "USER_UPDATE"
+        ],
+        "AddIdpGroupMapping": [
+          "IDENTITY_PROVIDER_UPDATE",
+          "GROUP_UPDATE"
+        ],
+        "DeleteIdpGroupMapping": [
+          "IDENTITY_PROVIDER_UPDATE",
+          "GROUP_UPDATE"
+        ],
+        "CreateGroup": [
+          "GROUP_CREATE"
+        ],
+        "DeleteGroup": [
+          "GROUP_DELETE"
+        ]
+      }
+    },
+    {
+      "resource_family": "iamworkrequest",
+      "description": "Identity domain IAM work requests",
+      "source_section": "Permissions Required for Each API Operation > iamworkrequest",
+      "verbs": {
+        "manage": [],
+        "use": [],
+        "read": [
+          "GetIamWorkRequest"
+        ],
+        "inspect": [
+          "ListIamWorkRequests",
+          "ListWorkRequestErrors",
+          "ListIamWorkRequestLogs"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListIamWorkRequests": [
+          "IAM_WORKREQUEST_INSPECT"
+        ],
+        "ListWorkRequestErrors": [
+          "IAM_WORKREQUEST_INSPECT"
+        ],
+        "ListIamWorkRequestLogs": [
+          "IAM_WORKREQUEST_INSPECT"
+        ],
+        "GetIamWorkRequest": [
+          "IAM_WORKREQUEST_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "identity-providers",
+      "description": "Identity providers",
+      "source_section": "Details for Verb + Resource-Type Combinations > identity-providers",
+      "verbs": {
+        "manage": [
+          "UpdateIdentityProvider",
+          "CreateIdentityProvider",
+          "DeleteIdentityProvider",
+          "AddIdpGroupMapping",
+          "DeleteIdpGroupMapping"
+        ],
+        "use": [],
+        "read": [],
+        "inspect": [
+          "ListIdentityProviders",
+          "GetIdentityProvider",
+          "ListIdpGroupMappings",
+          "GetIdpGroupMapping"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListIdentityProviders": [
+          "IDENTITY_PROVIDER_INSPECT"
+        ],
+        "GetIdentityProvider": [
+          "IDENTITY_PROVIDER_INSPECT"
+        ],
+        "ListIdpGroupMappings": [
+          "IDENTITY_PROVIDER_INSPECT",
+          "GROUP_INSPECT"
+        ],
+        "GetIdpGroupMapping": [
+          "IDENTITY_PROVIDER_INSPECT",
+          "GROUP_INSPECT"
+        ],
+        "UpdateIdentityProvider": [
+          "IDENTITY_PROVIDER_UPDATE"
+        ],
+        "CreateIdentityProvider": [
+          "IDENTITY_PROVIDER_CREATE"
+        ],
+        "DeleteIdentityProvider": [
+          "IDENTITY_PROVIDER_DELETE"
+        ],
+        "AddIdpGroupMapping": [
+          "IDENTITY_PROVIDER_UPDATE",
+          "GROUP_UPDATE"
+        ],
+        "DeleteIdpGroupMapping": [
+          "IDENTITY_PROVIDER_UPDATE",
+          "GROUP_UPDATE"
+        ]
+      }
+    },
+    {
+      "resource_family": "network-sources",
+      "description": "Named network sources",
+      "source_section": "Details for Verb + Resource-Type Combinations > network-sources",
+      "verbs": {
+        "manage": [
+          "CreateNetworkSource",
+          "DeleteNetworkSource"
+        ],
+        "use": [
+          "UpdateNetworkSource"
+        ],
+        "read": [],
+        "inspect": [
+          "ListNetworkSources",
+          "GetNetworkSource"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListNetworkSources": [
+          "NETWORK_SOURCE_INSPECT"
+        ],
+        "GetNetworkSource": [
+          "NETWORK_SOURCE_INSPECT"
+        ],
+        "UpdateNetworkSource": [
+          "NETWORK_SOURCE_UPDATE"
+        ],
+        "CreateNetworkSource": [
+          "NETWORK_SOURCE_CREATE"
+        ],
+        "DeleteNetworkSource": [
+          "NETWORK_SOURCE_DELETE"
+        ]
+      }
+    },
+    {
+      "resource_family": "policies",
+      "description": "IAM policies",
+      "source_section": "Details for Verb + Resource-Type Combinations > policies",
+      "verbs": {
+        "manage": [
+          "UpdatePolicy",
+          "CreatePolicy",
+          "DeletePolicy"
+        ],
+        "use": [],
+        "read": [],
+        "inspect": [
+          "ListPolicies",
+          "GetPolicy"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListPolicies": [
+          "POLICY_READ"
+        ],
+        "GetPolicy": [
+          "POLICY_READ"
+        ],
+        "UpdatePolicy": [
+          "POLICY_UPDATE"
+        ],
+        "CreatePolicy": [
+          "POLICY_CREATE"
+        ],
+        "DeletePolicy": [
+          "POLICY_DELETE"
+        ]
+      }
+    },
+    {
+      "resource_family": "tag-defaults",
+      "description": "Tag defaults",
+      "source_section": "Details for Verb + Resource-Type Combinations > tag-defaults",
+      "verbs": {
+        "manage": [
+          "CreateTagDefault",
+          "UpdateTagDefault",
+          "DeleteTagDefault"
+        ],
+        "use": [],
+        "read": [],
+        "inspect": [
+          "ListTagDefaults",
+          "GetTagDefault"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListTagDefaults": [
+          "TAG_DEFAULT_INSPECT",
+          "TAG_NAMESPACE_READ"
+        ],
+        "GetTagDefault": [
+          "TAG_DEFAULT_INSPECT",
+          "TAG_NAMESPACE_READ"
+        ],
+        "CreateTagDefault": [
+          "TAG_DEFAULT_MANAGE"
+        ],
+        "UpdateTagDefault": [
+          "TAG_DEFAULT_MANAGE"
+        ],
+        "DeleteTagDefault": [
+          "TAG_DEFAULT_MANAGE"
+        ]
+      }
+    },
+    {
+      "resource_family": "tag-namespaces",
+      "description": "Tag namespaces and defined tags",
+      "source_section": "Details for Verb + Resource-Type Combinations > tag-namespaces",
+      "verbs": {
+        "manage": [
+          "UpdateTagNamespace",
+          "CreateTagNamespace",
+          "ChangeTagNamespaceCompartment",
+          "CascadeDeleteTagNamespace",
+          "DeleteTagNamespace",
+          "DeleteTag",
+          "BulkDeleteTags"
+        ],
+        "use": [
+          "CreateTag",
+          "UpdateTag"
+        ],
+        "read": [],
+        "inspect": [
+          "BulkEditTags",
+          "ListTagNamespaces",
+          "GetTagNamespace",
+          "ListTags",
+          "ListCostTrackingTags",
+          "GetTag",
+          "GetTaggingWorkRequest",
+          "ListTaggingWorkRequest",
+          "ListTaggingWorkRequestErrors",
+          "ListTaggingWorkRequestLogs"
+        ]
+      },
+      "api_permission_tokens": {
+        "BulkEditTags": [
+          "TAG_NAMESPACE_INSPECT"
+        ],
+        "ListTagNamespaces": [
+          "TAG_NAMESPACE_INSPECT"
+        ],
+        "GetTagNamespace": [
+          "TAG_NAMESPACE_INSPECT"
+        ],
+        "ListTags": [
+          "TAG_NAMESPACE_INSPECT"
+        ],
+        "ListCostTrackingTags": [
+          "TAG_NAMESPACE_INSPECT"
+        ],
+        "GetTag": [
+          "TAG_NAMESPACE_INSPECT"
+        ],
+        "GetTaggingWorkRequest": [
+          "TAG_NAMESPACE_INSPECT"
+        ],
+        "ListTaggingWorkRequest": [
+          "TAG_NAMESPACE_INSPECT"
+        ],
+        "ListTaggingWorkRequestErrors": [
+          "TAG_NAMESPACE_INSPECT"
+        ],
+        "ListTaggingWorkRequestLogs": [
+          "TAG_NAMESPACE_INSPECT"
+        ],
+        "CreateTag": [
+          "TAG_NAMESPACE_USE"
+        ],
+        "UpdateTag": [
+          "TAG_NAMESPACE_USE"
+        ],
+        "UpdateTagNamespace": [
+          "TAG_NAMESPACE_UPDATE"
+        ],
+        "CreateTagNamespace": [
+          "TAG_NAMESPACE_CREATE"
+        ],
+        "ChangeTagNamespaceCompartment": [
+          "TAG_NAMESPACE_MOVE"
+        ],
+        "CascadeDeleteTagNamespace": [
+          "TAG_NAMESPACE_DELETE"
+        ],
+        "DeleteTagNamespace": [
+          "TAG_NAMESPACE_DELETE"
+        ],
+        "DeleteTag": [
+          "TAG_NAMESPACE_DELETE"
+        ],
+        "BulkDeleteTags": [
+          "TAG_NAMESPACE_DELETE"
+        ]
+      }
+    },
+    {
+      "resource_family": "tenancies",
+      "description": "Tenancy metadata and region subscriptions",
+      "source_section": "Details for Verb + Resource-Type Combinations > tenancies",
+      "verbs": {
+        "manage": [
+          "CreateRegionSubscription"
+        ],
+        "use": [],
+        "read": [],
+        "inspect": [
+          "ListRegionSubscriptions",
+          "GetTenancy",
+          "ListRegions"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListRegionSubscriptions": [
+          "TENANCY_INSPECT"
+        ],
+        "GetTenancy": [
+          "TENANCY_INSPECT"
+        ],
+        "ListRegions": [
+          "TENANCY_INSPECT"
+        ],
+        "CreateRegionSubscription": [
+          "TENANCY_UPDATE"
+        ]
+      }
+    },
+    {
+      "resource_family": "users",
+      "description": "IAM users and user credentials other than SMTP",
+      "source_section": "Details for Verb + Resource-Type Combinations > users",
+      "verbs": {
+        "manage": [
+          "CreateUser",
+          "DeleteUser",
+          "UpdateUserState",
+          "UploadApiKey",
+          "DeleteApiKey",
+          "CreateOrResetUIPassword",
+          "UpdateSwiftPassword",
+          "CreateSwiftPassword",
+          "DeleteSwiftPassword",
+          "UpdateAuthToken",
+          "CreateAuthToken",
+          "DeleteAuthToken",
+          "CreateOAuthClientCredential",
+          "UpdateOAuthClientCredential",
+          "DeleteOAuthClientCredential",
+          "CreateSecretKey",
+          "UpdateCustomerSecretKey",
+          "DeleteCustomerSecretKey",
+          "LinkSupportAccount",
+          "UnlinkSupportAccount",
+          "CreateMfaTotpDevice",
+          "ActivateMfaTotpDevice",
+          "DeleteMfaTotpDevice"
+        ],
+        "use": [
+          "UpdateUser",
+          "AddUserToGroup",
+          "RemoveUserFromGroup"
+        ],
+        "read": [
+          "ListApiKeys",
+          "ListSwiftPasswords",
+          "ListAuthTokens",
+          "ListCustomerSecretKeys",
+          "ListOAuthClientCredentials",
+          "ListMfaTotpDevices"
+        ],
+        "inspect": [
+          "ListUsers",
+          "GetUser",
+          "GetUserGroupMembership"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListUsers": [
+          "USER_INSPECT"
+        ],
+        "GetUser": [
+          "USER_INSPECT"
+        ],
+        "GetUserGroupMembership": [
+          "USER_INSPECT",
+          "GROUP_INSPECT"
+        ],
+        "ListApiKeys": [
+          "USER_READ"
+        ],
+        "ListSwiftPasswords": [
+          "USER_READ"
+        ],
+        "ListAuthTokens": [
+          "USER_READ"
+        ],
+        "ListCustomerSecretKeys": [
+          "USER_READ"
+        ],
+        "ListOAuthClientCredentials": [
+          "USER_READ"
+        ],
+        "ListMfaTotpDevices": [
+          "USER_READ"
+        ],
+        "UpdateUser": [
+          "USER_UPDATE"
+        ],
+        "AddUserToGroup": [
+          "GROUP_UPDATE",
+          "USER_UPDATE"
+        ],
+        "RemoveUserFromGroup": [
+          "GROUP_UPDATE",
+          "USER_UPDATE"
+        ],
+        "CreateUser": [
+          "USER_CREATE"
+        ],
+        "DeleteUser": [
+          "USER_DELETE"
+        ],
+        "UpdateUserState": [
+          "USER_UPDATE",
+          "USER_UNBLOCK"
+        ],
+        "UploadApiKey": [
+          "USER_UPDATE",
+          "USER_APIKEY_ADD"
+        ],
+        "DeleteApiKey": [
+          "USER_UPDATE",
+          "USER_APIKEY_REMOVE"
+        ],
+        "CreateOrResetUIPassword": [
+          "USER_UPDATE",
+          "USER_UIPASS_RESET"
+        ],
+        "UpdateSwiftPassword": [
+          "USER_UPDATE",
+          "USER_SWIFTPASS_RESET"
+        ],
+        "CreateSwiftPassword": [
+          "USER_UPDATE",
+          "USER_SWIFTPASS_SET"
+        ],
+        "DeleteSwiftPassword": [
+          "USER_UPDATE",
+          "USER_SWIFTPASS_REMOVE"
+        ],
+        "UpdateAuthToken": [
+          "USER_UPDATE",
+          "USER_AUTHTOKEN_RESET"
+        ],
+        "CreateAuthToken": [
+          "USER_UPDATE",
+          "USER_AUTHTOKEN_SET"
+        ],
+        "DeleteAuthToken": [
+          "USER_UPDATE",
+          "USER_AUTHTOKEN_REMOVE"
+        ],
+        "CreateOAuthClientCredential": [
+          "USER_UPDATE",
+          "USER_OAUTH2_CLIENT_CRED_CREATE"
+        ],
+        "UpdateOAuthClientCredential": [
+          "USER_UPDATE",
+          "USER_OAUTH2_CLIENT_CRED_UPDATE"
+        ],
+        "DeleteOAuthClientCredential": [
+          "USER_UPDATE",
+          "USER_OAUTH2_CLIENT_CRED_REMOVE"
+        ],
+        "CreateSecretKey": [
+          "USER_UPDATE",
+          "USER_SECRETKEY_ADD"
+        ],
+        "UpdateCustomerSecretKey": [
+          "USER_UPDATE",
+          "USER_SECRETKEY_UPDATE"
+        ],
+        "DeleteCustomerSecretKey": [
+          "USER_UPDATE",
+          "USER_SECRETKEY_REMOVE"
+        ],
+        "LinkSupportAccount": [
+          "USER_SUPPORT_ACCOUNT_LINK"
+        ],
+        "UnlinkSupportAccount": [
+          "USER_SUPPORT_ACCOUNT_UNLINK"
+        ],
+        "CreateMfaTotpDevice": [
+          "USER_TOTPDEVICE_ADD"
+        ],
+        "ActivateMfaTotpDevice": [
+          "USER_TOTPDEVICE_UPDATE"
+        ],
+        "DeleteMfaTotpDevice": [
+          "USER_TOTPDEVICE_REMOVE"
+        ]
+      }
+    },
+    {
+      "resource_family": "workrequest",
+      "description": "Generic IAM work requests",
+      "source_section": "Permissions Required for Each API Operation > workrequest",
+      "verbs": {
+        "manage": [],
+        "use": [],
+        "read": [
+          "GetWorkRequest"
+        ],
+        "inspect": [
+          "ListWorkRequests"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListWorkRequests": [
+          "COMPARTMENT_INSPECT"
+        ],
+        "GetWorkRequest": [
+          "COMPARTMENT_READ"
+        ]
+      },
+      "notes": "Oracle distinguishes iamworkrequest from workrequest. GetWorkRequest is explicitly documented with COMPARTMENT_READ; ListWorkRequests is included here to support inspect-level work request listing in the Identity client."
+    }
+  ]
+}

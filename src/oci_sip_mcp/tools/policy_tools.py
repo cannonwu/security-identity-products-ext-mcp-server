@@ -4,11 +4,17 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
 
+from ..services.policy_access_analyzer import PolicyAccessAnalyzer
 from ..services.policy_analyzer import PolicyAnalyzer
 from ..services.policies import PolicyService
 
 
-def register(server, policies: PolicyService, analyzer: PolicyAnalyzer) -> None:
+def register(
+    server,
+    policies: PolicyService,
+    analyzer: PolicyAnalyzer,
+    access_analyzer: PolicyAccessAnalyzer,
+) -> None:
     @server.tool()
     def list_policies() -> List[Dict[str, Any]]:
         """List IAM policies with parsed OCI statements."""
@@ -43,6 +49,22 @@ def register(server, policies: PolicyService, analyzer: PolicyAnalyzer) -> None:
             raise ValueError("Provide a valid `policy_id` or exact `policy_name`.")
         findings = [item.to_dict() for item in analyzer.analyze_policy(policy)]
         return {"policy": policy.to_dict(), "findings": findings}
+
+    @server.tool()
+    def analyze_policy_api_access(
+        policy_id: Optional[str] = None,
+        policy_name: Optional[str] = None,
+        evaluation_context: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        """Analyze one live IAM policy and map its statements to concrete OCI API access."""
+        policy = None
+        if policy_id:
+            policy = policies.get_policy_by_id(policy_id)
+        elif policy_name:
+            policy = policies.get_policy_by_name(policy_name)
+        if policy is None:
+            raise ValueError("Provide a valid `policy_id` or exact `policy_name`.")
+        return access_analyzer.analyze_policy_access(policy, evaluation_context=evaluation_context)
 
     @server.tool()
     def analyze_all_policies() -> Dict[str, Any]:

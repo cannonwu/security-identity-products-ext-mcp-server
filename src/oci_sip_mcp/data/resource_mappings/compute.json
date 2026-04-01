@@ -1,0 +1,307 @@
+{
+  "service": "compute",
+  "service_name": "Compute",
+  "description": "Oracle Cloud Compute service - VMs, images, shapes, etc.",
+  "source_pages": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-ResourceTypes.htm",
+      "description": "Core services resource types for Compute, Networking, and Block Volume",
+      "fetched_on": "2026-03-19"
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-Details_for_Verb__ResourceType_Combinations.htm",
+      "description": "Core services verb/resource combinations",
+      "fetched_on": "2026-03-19"
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-Permissions_Required_for_Each_API_Operation.htm",
+      "description": "Core services API operations and required permissions",
+      "fetched_on": "2026-03-23"
+    }
+  ],
+  "resources": [
+    {
+      "resource_family": "instances",
+      "description": "Virtual Machine Instances",
+      "source_section": "Core Services API Operations / instance-family",
+      "api_permission_tokens": {
+        "ListInstances": [
+          "INSTANCE_READ",
+          "COMPUTE_CLUSTER_READ"
+        ],
+        "ListInstanceDevices": [
+          "INSTANCE_READ"
+        ],
+        "GetInstance": [
+          "INSTANCE_READ"
+        ],
+        "GetInstanceMaintenanceReboot": [
+          "INSTANCE_READ"
+        ],
+        "UpdateInstance": [
+          "INSTANCE_UPDATE"
+        ],
+        "InstanceAction": [
+          "INSTANCE_POWER_ACTIONS"
+        ],
+        "LaunchInstance": [
+          "INSTANCE_CREATE",
+          "INSTANCE_IMAGE_READ",
+          "VNIC_CREATE",
+          "VNIC_ATTACH",
+          "SUBNET_ATTACH",
+          "NETWORK_SECURITY_GROUP_UPDATE_MEMBERS",
+          "VNIC_ASSOCIATE_NETWORK_SECURITY_GROUP",
+          "COMPUTE_CLUSTER_LAUNCH_INSTANCE"
+        ],
+        "TerminateInstance": [
+          "INSTANCE_DELETE",
+          "VNIC_DELETE",
+          "SUBNET_DETACH",
+          "VOLUME_ATTACHMENT_DELETE",
+          "VOLUME_WRITE",
+          "INSTANCE_DETACH_VOLUME"
+        ],
+        "ChangeInstanceCompartment": [
+          "INSTANCE_MOVE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "ListInstances",
+          "ListInstanceDevices",
+          "GetInstance",
+          "GetInstanceMaintenanceReboot",
+          "UpdateInstance",
+          "InstanceAction",
+          "LaunchInstance",
+          "TerminateInstance",
+          "ChangeInstanceCompartment"
+        ],
+        "use": [
+          "ListInstances",
+          "ListInstanceDevices",
+          "GetInstance",
+          "GetInstanceMaintenanceReboot",
+          "UpdateInstance",
+          "InstanceAction"
+        ],
+        "read": [
+          "ListInstances",
+          "ListInstanceDevices",
+          "GetInstance",
+          "GetInstanceMaintenanceReboot"
+        ],
+        "inspect": [
+          "ListInstances",
+          "GetInstance"
+        ]
+      }
+    },
+    {
+      "resource_family": "images",
+      "description": "Custom VM images",
+      "source_section": "Core Services API Operations / instance-images",
+      "api_permission_tokens": {
+        "ListImages": [
+          "INSTANCE_IMAGE_INSPECT"
+        ],
+        "GetImage": [
+          "INSTANCE_IMAGE_INSPECT"
+        ],
+        "CreateImage": [
+          "INSTANCE_IMAGE_CREATE",
+          "INSTANCE_CREATE_IMAGE"
+        ],
+        "UpdateImage": [
+          "INSTANCE_IMAGE_UPDATE"
+        ],
+        "DeleteImage": [
+          "INSTANCE_IMAGE_DELETE"
+        ],
+        "ChangeImageCompartment": [
+          "INSTANCE_IMAGE_MOVE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "ListImages",
+          "GetImage",
+          "CreateImage",
+          "UpdateImage",
+          "DeleteImage",
+          "ChangeImageCompartment"
+        ],
+        "use": [
+          "ListImages",
+          "GetImage",
+          "UpdateImage"
+        ],
+        "read": [
+          "ListImages",
+          "GetImage"
+        ],
+        "inspect": [
+          "ListImages",
+          "GetImage"
+        ]
+      }
+    },
+    {
+      "resource_family": "shapes",
+      "description": "VM shapes (instance types)",
+      "source_section": "Core Services API Operations",
+      "api_permission_tokens": {
+        "ListShapes": [
+          "INSTANCE_INSPECT"
+        ]
+      },
+      "verbs": {
+        "manage": [],
+        "use": [
+          "ListShapes"
+        ],
+        "read": [
+          "ListShapes"
+        ],
+        "inspect": [
+          "ListShapes"
+        ]
+      }
+    },
+    {
+      "resource_family": "volume-attachments",
+      "description": "Block storage volume attachments to instances",
+      "source_section": "Core Services API Operations / volume-attachments",
+      "api_permission_tokens": {
+        "ListVolumeAttachments": [
+          "VOLUME_ATTACHMENT_INSPECT",
+          "VOLUME_INSPECT",
+          "INSTANCE_INSPECT"
+        ],
+        "GetVolumeAttachment": [
+          "VOLUME_ATTACHMENT_INSPECT",
+          "INSTANCE_INSPECT"
+        ],
+        "AttachVolume": [
+          "VOLUME_ATTACHMENT_CREATE",
+          "VOLUME_WRITE",
+          "INSTANCE_ATTACH_VOLUME"
+        ],
+        "DetachVolume": [
+          "VOLUME_ATTACHMENT_DELETE",
+          "VOLUME_WRITE",
+          "INSTANCE_DETACH_VOLUME"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "ListVolumeAttachments",
+          "GetVolumeAttachment",
+          "AttachVolume",
+          "DetachVolume"
+        ],
+        "use": [
+          "ListVolumeAttachments",
+          "GetVolumeAttachment",
+          "AttachVolume",
+          "DetachVolume"
+        ],
+        "read": [
+          "ListVolumeAttachments",
+          "GetVolumeAttachment"
+        ],
+        "inspect": [
+          "ListVolumeAttachments",
+          "GetVolumeAttachment"
+        ]
+      }
+    },
+    {
+      "resource_family": "vnic-attachments",
+      "description": "Virtual NIC attachments to instances",
+      "source_section": "Core Services API Operations / virtual-network-family",
+      "api_permission_tokens": {
+        "ListVnicAttachments": [
+          "VNIC_ATTACHMENT_READ",
+          "INSTANCE_INSPECT"
+        ],
+        "GetVnicAttachment": [
+          "VNIC_ATTACHMENT_READ"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "ListVnicAttachments",
+          "GetVnicAttachment"
+        ],
+        "use": [
+          "ListVnicAttachments",
+          "GetVnicAttachment"
+        ],
+        "read": [
+          "ListVnicAttachments",
+          "GetVnicAttachment"
+        ],
+        "inspect": [
+          "ListVnicAttachments",
+          "GetVnicAttachment"
+        ]
+      }
+    },
+    {
+      "resource_family": "dedicated-vm-hosts",
+      "description": "Dedicated VM hosts",
+      "source_section": "Dedicated Virtual Machine Host API Operations",
+      "api_permission_tokens": {
+        "ListDedicatedVmHosts": [
+          "DEDICATED_VM_HOST_INSPECT"
+        ],
+        "GetDedicatedVmHost": [
+          "DEDICATED_VM_HOST_READ"
+        ],
+        "ListDedicatedVmHostInstances": [
+          "DEDICATED_VM_HOST_READ"
+        ],
+        "UpdateDedicatedVmHost": [
+          "AUTO_SCALING_CONFIGURATION_CREATE",
+          "INSTANCE_POOL_UPDATE"
+        ],
+        "CreateDedicatedVmHost": [
+          "DEDICATED_VM_HOST_CREATE"
+        ],
+        "DeleteDedicatedVmHost": [
+          "DEDICATED_VM_HOST_DELETE"
+        ],
+        "ChangeDedicatedVmHostCompartment": [
+          "DEDICATED_VM_HOST_MOVE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "ListDedicatedVmHosts",
+          "GetDedicatedVmHost",
+          "ListDedicatedVmHostInstances",
+          "UpdateDedicatedVmHost",
+          "CreateDedicatedVmHost",
+          "DeleteDedicatedVmHost",
+          "ChangeDedicatedVmHostCompartment"
+        ],
+        "use": [
+          "ListDedicatedVmHosts",
+          "GetDedicatedVmHost",
+          "ListDedicatedVmHostInstances",
+          "UpdateDedicatedVmHost"
+        ],
+        "read": [
+          "ListDedicatedVmHosts",
+          "GetDedicatedVmHost",
+          "ListDedicatedVmHostInstances"
+        ],
+        "inspect": [
+          "ListDedicatedVmHosts"
+        ]
+      }
+    }
+  ]
+}

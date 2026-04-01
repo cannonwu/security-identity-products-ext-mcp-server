@@ -1,0 +1,253 @@
+{
+  "service": "dns",
+  "service_name": "DNS Service",
+  "description": "Linked policy reference resource-types for DNS.",
+  "resources": [
+    {
+      "resource_family": "dns",
+      "description": "DNS aggregate resource-type",
+      "includes": [
+        "dns-zones",
+        "dns-records",
+        "dns-steering-policies",
+        "dns-steering-policy-attachments",
+        "dns-tsig-keys",
+        "dns-views",
+        "dns-resolvers",
+        "dns-resolver-endpoint"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "dns-zones",
+      "description": "DNS zones",
+      "verbs": {
+        "inspect": [
+          "ListZones"
+        ],
+        "read": [
+          "ListZones",
+          "GetZone",
+          "GetZoneRecords"
+        ],
+        "use": [
+          "ListZones",
+          "GetZone",
+          "GetZoneRecords",
+          "UpdateZone",
+          "UpdateZoneRecords",
+          "PatchZoneRecords",
+          "CreateSteeringPolicyAttachment",
+          "DeleteSteeringPolicyAttachment"
+        ],
+        "manage": [
+          "ListZones",
+          "GetZone",
+          "GetZoneRecords",
+          "UpdateZone",
+          "UpdateZoneRecords",
+          "PatchZoneRecords",
+          "CreateSteeringPolicyAttachment",
+          "DeleteSteeringPolicyAttachment",
+          "CreateZone",
+          "DeleteZone",
+          "ChangeZoneCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "dns-records",
+      "description": "DNS records",
+      "verbs": {
+        "inspect": [],
+        "read": [
+          "GetDomainRecords",
+          "GetRRSet",
+          "GetZoneRecords"
+        ],
+        "use": [
+          "GetDomainRecords",
+          "GetRRSet",
+          "GetZoneRecords",
+          "PatchDomainRecords",
+          "UpdateDomainRecords",
+          "DeleteRRSet",
+          "PatchRRSet",
+          "UpdateRRSet",
+          "UpdateZoneRecords",
+          "PatchZoneRecords",
+          "UpdateSteeringPolicyAttachment"
+        ],
+        "manage": [
+          "GetDomainRecords",
+          "GetRRSet",
+          "GetZoneRecords",
+          "PatchDomainRecords",
+          "UpdateDomainRecords",
+          "DeleteRRSet",
+          "PatchRRSet",
+          "UpdateRRSet",
+          "UpdateZoneRecords",
+          "PatchZoneRecords",
+          "UpdateSteeringPolicyAttachment"
+        ]
+      }
+    },
+    {
+      "resource_family": "dns-steering-policies",
+      "description": "DNS steering policies",
+      "verbs": {
+        "inspect": [
+          "ListSteeringPolicies"
+        ],
+        "read": [
+          "ListSteeringPolicies",
+          "GetSteeringPolicy"
+        ],
+        "use": [
+          "ListSteeringPolicies",
+          "GetSteeringPolicy",
+          "UpdateSteeringPolicy"
+        ],
+        "manage": [
+          "ListSteeringPolicies",
+          "GetSteeringPolicy",
+          "UpdateSteeringPolicy",
+          "CreateSteeringPolicy",
+          "DeleteSteeringPolicy",
+          "ChangeSteeringPolicyCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "dns-steering-policy-attachments",
+      "description": "DNS steering policy attachments",
+      "verbs": {
+        "inspect": [
+          "ListSteeringPolicyAttachments"
+        ],
+        "read": [
+          "ListSteeringPolicyAttachments",
+          "GetSteeringPolicyAttachment"
+        ],
+        "use": [
+          "ListSteeringPolicyAttachments",
+          "GetSteeringPolicyAttachment",
+          "CreateSteeringPolicyAttachment",
+          "UpdateSteeringPolicyAttachment",
+          "DeleteSteeringPolicyAttachment"
+        ],
+        "manage": [
+          "ListSteeringPolicyAttachments",
+          "GetSteeringPolicyAttachment",
+          "CreateSteeringPolicyAttachment",
+          "UpdateSteeringPolicyAttachment",
+          "DeleteSteeringPolicyAttachment"
+        ]
+      }
+    },
+    {
+      "resource_family": "dns-tsig-keys",
+      "description": "DNS TSIG keys",
+      "verbs": {
+        "inspect": [
+          "ListTsigKeys"
+        ],
+        "read": [
+          "ListTsigKeys",
+          "GetTsigKey"
+        ],
+        "use": [
+          "ListTsigKeys",
+          "GetTsigKey",
+          "UpdateTsigKey"
+        ],
+        "manage": [
+          "ListTsigKeys",
+          "GetTsigKey",
+          "UpdateTsigKey",
+          "CreateTsigKey",
+          "DeleteTsigKey",
+          "ChangeTsigKeyCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "dns-views",
+      "description": "DNS views",
+      "verbs": {
+        "inspect": [
+          "ListViews"
+        ],
+        "read": [
+          "ListViews",
+          "GetView"
+        ],
+        "use": [
+          "ListViews",
+          "GetView",
+          "UpdateView"
+        ],
+        "manage": [
+          "ListViews",
+          "GetView",
+          "UpdateView",
+          "CreateView",
+          "DeleteView",
+          "ChangeViewCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "dns-resolvers",
+      "description": "DNS resolvers",
+      "verbs": {
+        "inspect": [
+          "ListResolvers"
+        ],
+        "read": [
+          "ListResolvers",
+          "GetResolver"
+        ],
+        "use": [
+          "ListResolvers",
+          "GetResolver",
+          "UpdateResolver"
+        ],
+        "manage": [
+          "ListResolvers",
+          "GetResolver",
+          "UpdateResolver",
+          "CreateResolver",
+          "DeleteResolver",
+          "ChangeResolverCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "dns-resolver-endpoint",
+      "description": "DNS resolver endpoint",
+      "verbs": {
+        "inspect": [
+          "ListResolverEndpoints"
+        ],
+        "read": [
+          "ListResolverEndpoints",
+          "GetResolverEndpoint"
+        ],
+        "use": [
+          "ListResolverEndpoints",
+          "GetResolverEndpoint",
+          "UpdateResolverEndpoint"
+        ],
+        "manage": [
+          "ListResolverEndpoints",
+          "GetResolverEndpoint",
+          "UpdateResolverEndpoint",
+          "CreateResolverEndpoint",
+          "DeleteResolverEndpoint"
+        ]
+      }
+    }
+  ]
+}

@@ -6,6 +6,7 @@ Today, this server is primarily useful for:
 - tenancy IAM inventory
 - policy inspection and search
 - deterministic policy risk analysis
+- live policy-to-API access analysis
 - identity domain discovery
 
 Longer term, this may also be used as an MCP endpoint behind OCI Console AI Chat or other enterprise chat experiences.
@@ -37,8 +38,13 @@ The frontend determines presentation and consistent UI separately. For example, 
   - `list_policies`
   - `search_policy_statements`
   - `analyze_policy`
+  - `analyze_policy_api_access`
   - `analyze_all_policies`
   - `list_identity_domains`
+- Policy access analysis behavior:
+  - maps IAM statements to concrete OCI API operations using bundled resource mapping data
+  - supports allow, deny, and permission-set syntax
+  - returns evaluation warnings when a condition clause needs runtime context or references an unmapped resource
 
 ## Prerequisites
 
@@ -95,6 +101,18 @@ git clone <repo-url> ~/security-identity-products-ext-mcp-server
 cd ~/security-identity-products-ext-mcp-server
 
 python3.11 -m venv .venv
+./.venv/bin/pip install -e '.[dev]'
+```
+
+The editable install includes the bundled OCI resource mapping JSON files used by `analyze_policy_api_access`, so there is no extra data download step.
+
+## Updating the Server Version on the VM
+
+Once changes are pushed to GitHub, on the VM, from your repo directory, run:
+
+```bash
+cd ~/security-identity-products-ext-mcp-server
+git pull
 ./.venv/bin/pip install -e '.[dev]'
 ```
 
@@ -229,6 +247,7 @@ Useful commands inside chat:
 A few simple prompts to test with:
 
 - `analyze all policies`
+- `show me which OCI APIs are granted by policy <policy-name>`
 - `show me the highest risk policies in this tenancy`
 - `find policy statements that grant access to any-user`
 - `list all groups and dynamic groups`
@@ -248,6 +267,8 @@ Useful REPL commands:
 ```text
 tools
 call analyze_all_policies
+call analyze_policy_api_access {"policy_name":"<policy-name>"}
+call analyze_policy_api_access {"policy_name":"<policy-name>","evaluation_context":{"request.region":"us-phoenix-1"}}
 call search_policy_statements {"subject":"any-user"}
 resources
 read oci-sip://policy-reference/basics

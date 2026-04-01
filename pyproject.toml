@@ -26,6 +26,9 @@ oci-sip-chat = "oci_sip_mcp.chat:main"
 [tool.setuptools]
 package-dir = {"" = "src"}
 
+[tool.setuptools.package-data]
+"oci_sip_mcp" = ["data/resource_mappings/*.json"]
+
 [tool.setuptools.packages.find]
 where = ["src"]
 

@@ -1,0 +1,59 @@
+{
+  "service": "oracle-policy-reference",
+  "service_name": "Oracle Policy Reference Top-Level Index",
+  "description": "Top-level family resource types from the OCI IAM policy reference page. Detailed linked resource-types are split into service-specific files.",
+  "source": "https://docs.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm#Resource",
+  "resources": [
+    {
+      "resource_family": "all-resources",
+      "description": "All Oracle Cloud Infrastructure resource-types",
+      "includes": [
+        "compute-management-family",
+        "database-family",
+        "object-family",
+        "virtual-network-family",
+        "volume-family",
+        "dns",
+        "cluster-family",
+        "email-family",
+        "file-family",
+        "optimizer-api-family",
+        "stack-monitoring-family",
+        "appmgmt-family"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "data-catalog-family",
+      "description": "Data Catalog family resource-type",
+      "verbs": {}
+    },
+    {
+      "resource_family": "data-science-family",
+      "description": "Data Science family resource-type",
+      "verbs": {}
+    },
+    {
+      "resource_family": "database-family",
+      "description": "Database family resource-type",
+      "includes": [
+        "db-systems",
+        "databases",
+        "db-backups",
+        "db-nodes",
+        "exadata-infrastructures",
+        "autonomous-databases",
+        "autonomous-backups"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "datasafe-family-resources",
+      "description": "Data Safe family resource-type",
+      "includes": [
+        "data-safe-family"
+      ],
+      "verbs": {}
+    }
+  ]
+}

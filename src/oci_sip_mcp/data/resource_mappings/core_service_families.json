@@ -1,0 +1,1351 @@
+{
+  "service": "core-service-families",
+  "service_name": "Core Service Families",
+  "description": "Core OCI IAM family resource types and linked individual resource-type placeholders.",
+  "source_pages": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-ResourceTypes.htm",
+      "description": "Core services resource types for Networking, Compute, and Block Volume",
+      "fetched_on": "2026-03-19"
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-Details_for_Verb__ResourceType_Combinations.htm",
+      "description": "Core services verb/resource combinations",
+      "fetched_on": "2026-03-19"
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-Permissions_Required_for_Each_API_Operation.htm",
+      "description": "Core services API operations and required permissions",
+      "fetched_on": "2026-03-19"
+    }
+  ],
+  "resources": [
+    {
+      "resource_family": "compute-management-family",
+      "description": "Core compute management family",
+      "includes": [
+        "instance-family",
+        "volume-family",
+        "virtual-network-family"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "instance-family",
+      "description": "Compute instance family resource-type",
+      "includes": [
+        "instances",
+        "images",
+        "shapes",
+        "vnic-attachments",
+        "app-catalog-listing",
+        "console-histories",
+        "instance-console-connection",
+        "instance-images"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "instance-agent-family",
+      "description": "Instance agent family resource-type",
+      "includes": [
+        "instance-agent-plugins"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "instance-agent-command-family",
+      "description": "Instance agent command family resource-type",
+      "includes": [
+        "instance-agent-commands"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "virtual-network-family",
+      "description": "Virtual network family resource-type",
+      "includes": [
+        "virtual-networks",
+        "vcns",
+        "subnets",
+        "security-lists",
+        "network-security-groups",
+        "drgs",
+        "drg-attachments",
+        "internet-gateways",
+        "route-tables",
+        "byoiprange",
+        "capture-filters",
+        "cpes",
+        "cross-connect-groups",
+        "cross-connects",
+        "dhcp-options",
+        "drg-object",
+        "drg-route-distributions",
+        "drg-route-tables",
+        "ipsec-connections",
+        "ipv6s",
+        "ipam",
+        "local-peering-gateways",
+        "nat-gateways",
+        "private-ips",
+        "publicippool",
+        "public-ips",
+        "remote-peering-connections",
+        "service-gateways",
+        "virtual-circuits",
+        "vlans",
+        "vnics",
+        "vtaps"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "volume-family",
+      "description": "Volume family resource-type",
+      "includes": [
+        "volumes",
+        "volume-attachments",
+        "volume-backups",
+        "boot-volume-backups",
+        "backup-policies",
+        "backup-policy-assignments",
+        "volume-groups",
+        "volume-group-backups"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "app-catalog-listing",
+      "description": "App catalog listings",
+      "verbs": {
+        "inspect": [
+          "ListAppCatalogListings"
+        ],
+        "read": [
+          "ListAppCatalogListings",
+          "GetAppCatalogListing",
+          "GetAppCatalogListingResourceVersion"
+        ],
+        "use": [
+          "ListAppCatalogListings",
+          "GetAppCatalogListing",
+          "GetAppCatalogListingResourceVersion"
+        ],
+        "manage": [
+          "ListAppCatalogListings",
+          "GetAppCatalogListing",
+          "GetAppCatalogListingResourceVersion"
+        ]
+      }
+    },
+    {
+      "resource_family": "console-histories",
+      "description": "Compute console histories",
+      "verbs": {
+        "inspect": [
+          "ListConsoleHistories"
+        ],
+        "read": [
+          "ListConsoleHistories",
+          "GetConsoleHistory",
+          "CaptureConsoleHistory"
+        ],
+        "use": [
+          "ListConsoleHistories",
+          "GetConsoleHistory",
+          "CaptureConsoleHistory"
+        ],
+        "manage": [
+          "ListConsoleHistories",
+          "GetConsoleHistory",
+          "CaptureConsoleHistory",
+          "CreateConsoleHistory",
+          "DeleteConsoleHistory"
+        ]
+      }
+    },
+    {
+      "resource_family": "instance-console-connection",
+      "description": "Instance console connections",
+      "verbs": {
+        "inspect": [
+          "ListInstanceConsoleConnections"
+        ],
+        "read": [
+          "ListInstanceConsoleConnections",
+          "GetInstanceConsoleConnection"
+        ],
+        "use": [
+          "ListInstanceConsoleConnections",
+          "GetInstanceConsoleConnection"
+        ],
+        "manage": [
+          "ListInstanceConsoleConnections",
+          "GetInstanceConsoleConnection",
+          "CreateInstanceConsoleConnection",
+          "DeleteInstanceConsoleConnection"
+        ]
+      }
+    },
+    {
+      "resource_family": "instance-images",
+      "description": "Instance images",
+      "verbs": {
+        "inspect": [
+          "ListImages"
+        ],
+        "read": [
+          "ListImages",
+          "GetImage"
+        ],
+        "use": [
+          "ListImages",
+          "GetImage"
+        ],
+        "manage": [
+          "ListImages",
+          "GetImage",
+          "CreateImage",
+          "DeleteImage",
+          "ChangeImageCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "instance-configurations",
+      "description": "Instance configurations",
+      "verbs": {
+        "inspect": [
+          "ListInstanceConfigurations"
+        ],
+        "read": [
+          "ListInstanceConfigurations",
+          "GetInstanceConfiguration"
+        ],
+        "use": [
+          "ListInstanceConfigurations",
+          "GetInstanceConfiguration",
+          "UpdateInstanceConfiguration"
+        ],
+        "manage": [
+          "ListInstanceConfigurations",
+          "GetInstanceConfiguration",
+          "UpdateInstanceConfiguration",
+          "CreateInstanceConfiguration",
+          "DeleteInstanceConfiguration",
+          "ChangeInstanceConfigurationCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "instance-pools",
+      "description": "Instance pools",
+      "verbs": {
+        "inspect": [
+          "ListInstancePools"
+        ],
+        "read": [
+          "ListInstancePools",
+          "GetInstancePool"
+        ],
+        "use": [
+          "ListInstancePools",
+          "GetInstancePool",
+          "UpdateInstancePool",
+          "AttachInstancePoolInstance",
+          "DetachInstancePoolInstance"
+        ],
+        "manage": [
+          "ListInstancePools",
+          "GetInstancePool",
+          "UpdateInstancePool",
+          "AttachInstancePoolInstance",
+          "DetachInstancePoolInstance",
+          "CreateInstancePool",
+          "DeleteInstancePool",
+          "ChangeInstancePoolCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "cluster-networks",
+      "description": "Cluster networks",
+      "verbs": {
+        "inspect": [
+          "ListClusterNetworks"
+        ],
+        "read": [
+          "ListClusterNetworks",
+          "GetClusterNetwork"
+        ],
+        "use": [
+          "ListClusterNetworks",
+          "GetClusterNetwork",
+          "UpdateClusterNetwork"
+        ],
+        "manage": [
+          "ListClusterNetworks",
+          "GetClusterNetwork",
+          "UpdateClusterNetwork",
+          "CreateClusterNetwork",
+          "DeleteClusterNetwork",
+          "ChangeClusterNetworkCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "instance-agent-plugins",
+      "description": "Instance agent plugins",
+      "verbs": {
+        "inspect": [
+          "ListInstanceagentAvailablePlugins"
+        ],
+        "read": [
+          "ListInstanceagentAvailablePlugins",
+          "GetInstanceAgentPlugin"
+        ],
+        "use": [
+          "ListInstanceagentAvailablePlugins",
+          "GetInstanceAgentPlugin",
+          "UpdateInstanceAgentPlugin"
+        ],
+        "manage": [
+          "ListInstanceagentAvailablePlugins",
+          "GetInstanceAgentPlugin",
+          "UpdateInstanceAgentPlugin"
+        ]
+      }
+    },
+    {
+      "resource_family": "instance-agent-commands",
+      "description": "Instance agent commands",
+      "verbs": {
+        "inspect": [
+          "ListInstanceAgentCommands"
+        ],
+        "read": [
+          "ListInstanceAgentCommands",
+          "GetInstanceAgentCommand",
+          "GetInstanceAgentCommandExecution"
+        ],
+        "use": [
+          "ListInstanceAgentCommands",
+          "GetInstanceAgentCommand",
+          "GetInstanceAgentCommandExecution",
+          "CancelInstanceAgentCommand"
+        ],
+        "manage": [
+          "ListInstanceAgentCommands",
+          "GetInstanceAgentCommand",
+          "GetInstanceAgentCommandExecution",
+          "CreateInstanceAgentCommand",
+          "CancelInstanceAgentCommand"
+        ]
+      }
+    },
+    {
+      "resource_family": "auto-scaling-configurations",
+      "description": "Autoscaling configurations",
+      "verbs": {
+        "inspect": [
+          "ListAutoScalingConfigurations"
+        ],
+        "read": [
+          "ListAutoScalingConfigurations",
+          "GetAutoScalingConfiguration"
+        ],
+        "use": [
+          "ListAutoScalingConfigurations",
+          "GetAutoScalingConfiguration",
+          "UpdateAutoScalingConfiguration"
+        ],
+        "manage": [
+          "ListAutoScalingConfigurations",
+          "GetAutoScalingConfiguration",
+          "UpdateAutoScalingConfiguration",
+          "CreateAutoScalingConfiguration",
+          "DeleteAutoScalingConfiguration"
+        ]
+      }
+    },
+    {
+      "resource_family": "compute-capacity-reports",
+      "description": "Compute capacity reports",
+      "verbs": {
+        "inspect": [
+          "ListComputeCapacityReservationInstances"
+        ],
+        "read": [
+          "ListComputeCapacityReservationInstances",
+          "GetComputeCapacityReport"
+        ],
+        "use": [
+          "ListComputeCapacityReservationInstances",
+          "GetComputeCapacityReport"
+        ],
+        "manage": [
+          "ListComputeCapacityReservationInstances",
+          "GetComputeCapacityReport"
+        ]
+      }
+    },
+    {
+      "resource_family": "compute-capacity-reservations",
+      "description": "Compute capacity reservations",
+      "verbs": {
+        "inspect": [
+          "ListComputeCapacityReservations"
+        ],
+        "read": [
+          "ListComputeCapacityReservations",
+          "GetComputeCapacityReservation"
+        ],
+        "use": [
+          "ListComputeCapacityReservations",
+          "GetComputeCapacityReservation",
+          "UpdateComputeCapacityReservation"
+        ],
+        "manage": [
+          "ListComputeCapacityReservations",
+          "GetComputeCapacityReservation",
+          "UpdateComputeCapacityReservation",
+          "CreateComputeCapacityReservation",
+          "DeleteComputeCapacityReservation",
+          "ChangeComputeCapacityReservationCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "compute-clusters",
+      "description": "Compute clusters",
+      "verbs": {
+        "inspect": [
+          "ListComputeClusters"
+        ],
+        "read": [
+          "ListComputeClusters",
+          "GetComputeCluster"
+        ],
+        "use": [
+          "ListComputeClusters",
+          "GetComputeCluster",
+          "UpdateComputeCluster"
+        ],
+        "manage": [
+          "ListComputeClusters",
+          "GetComputeCluster",
+          "UpdateComputeCluster",
+          "CreateComputeCluster",
+          "DeleteComputeCluster",
+          "ChangeComputeClusterCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "compute-global-image-capability-schema",
+      "description": "Compute global image capability schema",
+      "verbs": {
+        "inspect": [
+          "ListComputeGlobalImageCapabilitySchemas"
+        ],
+        "read": [
+          "ListComputeGlobalImageCapabilitySchemas",
+          "GetComputeGlobalImageCapabilitySchema"
+        ],
+        "use": [
+          "ListComputeGlobalImageCapabilitySchemas",
+          "GetComputeGlobalImageCapabilitySchema"
+        ],
+        "manage": [
+          "ListComputeGlobalImageCapabilitySchemas",
+          "GetComputeGlobalImageCapabilitySchema",
+          "UpdateComputeGlobalImageCapabilitySchema"
+        ]
+      }
+    },
+    {
+      "resource_family": "compute-image-capability-schema",
+      "description": "Compute image capability schema",
+      "verbs": {
+        "inspect": [
+          "ListComputeImageCapabilitySchemas"
+        ],
+        "read": [
+          "ListComputeImageCapabilitySchemas",
+          "GetComputeImageCapabilitySchema"
+        ],
+        "use": [
+          "ListComputeImageCapabilitySchemas",
+          "GetComputeImageCapabilitySchema",
+          "UpdateComputeImageCapabilitySchema"
+        ],
+        "manage": [
+          "ListComputeImageCapabilitySchemas",
+          "GetComputeImageCapabilitySchema",
+          "UpdateComputeImageCapabilitySchema",
+          "DeleteComputeImageCapabilitySchema"
+        ]
+      }
+    },
+    {
+      "resource_family": "work-requests",
+      "description": "Core service work requests",
+      "verbs": {
+        "inspect": [
+          "ListWorkRequests"
+        ],
+        "read": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "use": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "manage": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ]
+      }
+    },
+    {
+      "resource_family": "byoiprange",
+      "description": "BYOIP ranges",
+      "verbs": {
+        "inspect": [
+          "ListByoipRanges"
+        ],
+        "read": [
+          "ListByoipRanges",
+          "GetByoipRange"
+        ],
+        "use": [
+          "ListByoipRanges",
+          "GetByoipRange",
+          "UpdateByoipRange"
+        ],
+        "manage": [
+          "ListByoipRanges",
+          "GetByoipRange",
+          "UpdateByoipRange",
+          "CreateByoipRange",
+          "DeleteByoipRange",
+          "ChangeByoipRangeCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "capture-filters",
+      "description": "Capture filters",
+      "verbs": {
+        "inspect": [
+          "ListCaptureFilters"
+        ],
+        "read": [
+          "ListCaptureFilters",
+          "GetCaptureFilter"
+        ],
+        "use": [
+          "ListCaptureFilters",
+          "GetCaptureFilter",
+          "UpdateCaptureFilter"
+        ],
+        "manage": [
+          "ListCaptureFilters",
+          "GetCaptureFilter",
+          "UpdateCaptureFilter",
+          "CreateCaptureFilter",
+          "DeleteCaptureFilter",
+          "ChangeCaptureFilterCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "cpes",
+      "description": "Customer premises equipment",
+      "verbs": {
+        "inspect": [
+          "ListCpes"
+        ],
+        "read": [
+          "ListCpes",
+          "GetCpe"
+        ],
+        "use": [
+          "ListCpes",
+          "GetCpe",
+          "UpdateCpe"
+        ],
+        "manage": [
+          "ListCpes",
+          "GetCpe",
+          "UpdateCpe",
+          "CreateCpe",
+          "DeleteCpe",
+          "ChangeCpeCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "cross-connect-groups",
+      "description": "Cross-connect groups",
+      "verbs": {
+        "inspect": [
+          "ListCrossConnectGroups"
+        ],
+        "read": [
+          "ListCrossConnectGroups",
+          "GetCrossConnectGroup"
+        ],
+        "use": [
+          "ListCrossConnectGroups",
+          "GetCrossConnectGroup",
+          "UpdateCrossConnectGroup"
+        ],
+        "manage": [
+          "ListCrossConnectGroups",
+          "GetCrossConnectGroup",
+          "UpdateCrossConnectGroup",
+          "CreateCrossConnectGroup",
+          "DeleteCrossConnectGroup",
+          "ChangeCrossConnectGroupCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "cross-connects",
+      "description": "Cross-connects",
+      "verbs": {
+        "inspect": [
+          "ListCrossConnects"
+        ],
+        "read": [
+          "ListCrossConnects",
+          "GetCrossConnect"
+        ],
+        "use": [
+          "ListCrossConnects",
+          "GetCrossConnect",
+          "UpdateCrossConnect"
+        ],
+        "manage": [
+          "ListCrossConnects",
+          "GetCrossConnect",
+          "UpdateCrossConnect",
+          "CreateCrossConnect",
+          "DeleteCrossConnect",
+          "ChangeCrossConnectCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "dhcp-options",
+      "description": "DHCP options",
+      "verbs": {
+        "inspect": [
+          "ListDhcpOptions"
+        ],
+        "read": [
+          "ListDhcpOptions",
+          "GetDhcpOptions"
+        ],
+        "use": [
+          "ListDhcpOptions",
+          "GetDhcpOptions",
+          "UpdateDhcpOptions"
+        ],
+        "manage": [
+          "ListDhcpOptions",
+          "GetDhcpOptions",
+          "UpdateDhcpOptions",
+          "CreateDhcpOptions",
+          "DeleteDhcpOptions",
+          "ChangeDhcpOptionsCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "drg-object",
+      "description": "DRG object",
+      "verbs": {
+        "inspect": [
+          "ListDrgs"
+        ],
+        "read": [
+          "ListDrgs",
+          "GetDrg"
+        ],
+        "use": [
+          "ListDrgs",
+          "GetDrg",
+          "UpdateDrg"
+        ],
+        "manage": [
+          "ListDrgs",
+          "GetDrg",
+          "UpdateDrg",
+          "CreateDrg",
+          "DeleteDrg",
+          "ChangeDrgCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "drg-route-distributions",
+      "description": "DRG route distributions",
+      "verbs": {
+        "inspect": [
+          "ListDrgRouteDistributions"
+        ],
+        "read": [
+          "ListDrgRouteDistributions",
+          "GetDrgRouteDistribution"
+        ],
+        "use": [
+          "ListDrgRouteDistributions",
+          "GetDrgRouteDistribution",
+          "UpdateDrgRouteDistribution"
+        ],
+        "manage": [
+          "ListDrgRouteDistributions",
+          "GetDrgRouteDistribution",
+          "UpdateDrgRouteDistribution",
+          "CreateDrgRouteDistribution",
+          "DeleteDrgRouteDistribution"
+        ]
+      }
+    },
+    {
+      "resource_family": "drg-route-tables",
+      "description": "DRG route tables",
+      "verbs": {
+        "inspect": [
+          "ListDrgRouteTables"
+        ],
+        "read": [
+          "ListDrgRouteTables",
+          "GetDrgRouteTable"
+        ],
+        "use": [
+          "ListDrgRouteTables",
+          "GetDrgRouteTable",
+          "UpdateDrgRouteTable"
+        ],
+        "manage": [
+          "ListDrgRouteTables",
+          "GetDrgRouteTable",
+          "UpdateDrgRouteTable",
+          "CreateDrgRouteTable",
+          "DeleteDrgRouteTable"
+        ]
+      }
+    },
+    {
+      "resource_family": "ipsec-connections",
+      "description": "IPSec connections",
+      "verbs": {
+        "inspect": [
+          "ListIPSecConnections"
+        ],
+        "read": [
+          "ListIPSecConnections",
+          "GetIPSecConnection"
+        ],
+        "use": [
+          "ListIPSecConnections",
+          "GetIPSecConnection",
+          "UpdateIPSecConnection"
+        ],
+        "manage": [
+          "ListIPSecConnections",
+          "GetIPSecConnection",
+          "UpdateIPSecConnection",
+          "CreateIPSecConnection",
+          "DeleteIPSecConnection",
+          "ChangeIPSecConnectionCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "ipv6s",
+      "description": "IPv6 resources",
+      "verbs": {
+        "inspect": [
+          "ListIpv6s"
+        ],
+        "read": [
+          "ListIpv6s",
+          "GetIpv6"
+        ],
+        "use": [
+          "ListIpv6s",
+          "GetIpv6"
+        ],
+        "manage": [
+          "ListIpv6s",
+          "GetIpv6",
+          "CreateIpv6",
+          "DeleteIpv6",
+          "ChangeIpv6Compartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "ipam",
+      "description": "IP address management",
+      "verbs": {
+        "inspect": [
+          "ListIpams"
+        ],
+        "read": [
+          "ListIpams",
+          "GetIpam"
+        ],
+        "use": [
+          "ListIpams",
+          "GetIpam",
+          "UpdateIpam"
+        ],
+        "manage": [
+          "ListIpams",
+          "GetIpam",
+          "UpdateIpam",
+          "CreateIpam",
+          "DeleteIpam"
+        ]
+      }
+    },
+    {
+      "resource_family": "local-peering-gateways",
+      "description": "Local peering gateways",
+      "verbs": {
+        "inspect": [
+          "ListLocalPeeringGateways"
+        ],
+        "read": [
+          "ListLocalPeeringGateways",
+          "GetLocalPeeringGateway"
+        ],
+        "use": [
+          "ListLocalPeeringGateways",
+          "GetLocalPeeringGateway",
+          "UpdateLocalPeeringGateway",
+          "ConnectLocalPeeringGateways"
+        ],
+        "manage": [
+          "ListLocalPeeringGateways",
+          "GetLocalPeeringGateway",
+          "UpdateLocalPeeringGateway",
+          "ConnectLocalPeeringGateways",
+          "CreateLocalPeeringGateway",
+          "DeleteLocalPeeringGateway",
+          "ChangeLocalPeeringGatewayCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "nat-gateways",
+      "description": "NAT gateways",
+      "verbs": {
+        "inspect": [
+          "ListNatGateways"
+        ],
+        "read": [
+          "ListNatGateways",
+          "GetNatGateway"
+        ],
+        "use": [
+          "ListNatGateways",
+          "GetNatGateway",
+          "UpdateNatGateway"
+        ],
+        "manage": [
+          "ListNatGateways",
+          "GetNatGateway",
+          "UpdateNatGateway",
+          "CreateNatGateway",
+          "DeleteNatGateway",
+          "ChangeNatGatewayCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "private-ips",
+      "description": "Private IPs",
+      "verbs": {
+        "inspect": [
+          "ListPrivateIps"
+        ],
+        "read": [
+          "ListPrivateIps",
+          "GetPrivateIp"
+        ],
+        "use": [
+          "ListPrivateIps",
+          "GetPrivateIp",
+          "UpdatePrivateIp"
+        ],
+        "manage": [
+          "ListPrivateIps",
+          "GetPrivateIp",
+          "UpdatePrivateIp"
+        ]
+      }
+    },
+    {
+      "resource_family": "publicippool",
+      "description": "Public IP pools",
+      "verbs": {
+        "inspect": [
+          "ListPublicIpPools"
+        ],
+        "read": [
+          "ListPublicIpPools",
+          "GetPublicIpPool"
+        ],
+        "use": [
+          "ListPublicIpPools",
+          "GetPublicIpPool",
+          "UpdatePublicIpPool"
+        ],
+        "manage": [
+          "ListPublicIpPools",
+          "GetPublicIpPool",
+          "UpdatePublicIpPool",
+          "CreatePublicIpPool",
+          "DeletePublicIpPool",
+          "ChangePublicIpPoolCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "public-ips",
+      "description": "Public IPs",
+      "verbs": {
+        "inspect": [
+          "ListPublicIps"
+        ],
+        "read": [
+          "ListPublicIps",
+          "GetPublicIp"
+        ],
+        "use": [
+          "ListPublicIps",
+          "GetPublicIp",
+          "UpdatePublicIp"
+        ],
+        "manage": [
+          "ListPublicIps",
+          "GetPublicIp",
+          "UpdatePublicIp",
+          "CreatePublicIp",
+          "DeletePublicIp",
+          "ChangePublicIpCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "remote-peering-connections",
+      "description": "Remote peering connections",
+      "verbs": {
+        "inspect": [
+          "ListRemotePeeringConnections"
+        ],
+        "read": [
+          "ListRemotePeeringConnections",
+          "GetRemotePeeringConnection"
+        ],
+        "use": [
+          "ListRemotePeeringConnections",
+          "GetRemotePeeringConnection",
+          "UpdateRemotePeeringConnection",
+          "ConnectRemotePeeringConnections"
+        ],
+        "manage": [
+          "ListRemotePeeringConnections",
+          "GetRemotePeeringConnection",
+          "UpdateRemotePeeringConnection",
+          "ConnectRemotePeeringConnections",
+          "CreateRemotePeeringConnection",
+          "DeleteRemotePeeringConnection",
+          "ChangeRemotePeeringConnectionCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "service-gateways",
+      "description": "Service gateways",
+      "verbs": {
+        "inspect": [
+          "ListServiceGateways"
+        ],
+        "read": [
+          "ListServiceGateways",
+          "GetServiceGateway"
+        ],
+        "use": [
+          "ListServiceGateways",
+          "GetServiceGateway",
+          "UpdateServiceGateway"
+        ],
+        "manage": [
+          "ListServiceGateways",
+          "GetServiceGateway",
+          "UpdateServiceGateway",
+          "CreateServiceGateway",
+          "DeleteServiceGateway",
+          "ChangeServiceGatewayCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "virtual-circuits",
+      "description": "Virtual circuits",
+      "verbs": {
+        "inspect": [
+          "ListVirtualCircuits"
+        ],
+        "read": [
+          "ListVirtualCircuits",
+          "GetVirtualCircuit"
+        ],
+        "use": [
+          "ListVirtualCircuits",
+          "GetVirtualCircuit",
+          "UpdateVirtualCircuit"
+        ],
+        "manage": [
+          "ListVirtualCircuits",
+          "GetVirtualCircuit",
+          "UpdateVirtualCircuit",
+          "CreateVirtualCircuit",
+          "DeleteVirtualCircuit",
+          "ChangeVirtualCircuitCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "vlans",
+      "description": "VLANs",
+      "verbs": {
+        "inspect": [
+          "ListVlans"
+        ],
+        "read": [
+          "ListVlans",
+          "GetVlan"
+        ],
+        "use": [
+          "ListVlans",
+          "GetVlan",
+          "UpdateVlan"
+        ],
+        "manage": [
+          "ListVlans",
+          "GetVlan",
+          "UpdateVlan",
+          "CreateVlan",
+          "DeleteVlan",
+          "ChangeVlanCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "vnics",
+      "description": "VNICs",
+      "verbs": {
+        "inspect": [
+          "ListVnicAttachments"
+        ],
+        "read": [
+          "ListVnicAttachments",
+          "GetVnicAttachment",
+          "GetVnic"
+        ],
+        "use": [
+          "ListVnicAttachments",
+          "GetVnicAttachment",
+          "GetVnic"
+        ],
+        "manage": [
+          "ListVnicAttachments",
+          "GetVnicAttachment",
+          "GetVnic"
+        ]
+      }
+    },
+    {
+      "resource_family": "vtaps",
+      "description": "VTAP resources",
+      "verbs": {
+        "inspect": [
+          "ListVtaps"
+        ],
+        "read": [
+          "ListVtaps",
+          "GetVtap"
+        ],
+        "use": [
+          "ListVtaps",
+          "GetVtap",
+          "UpdateVtap"
+        ],
+        "manage": [
+          "ListVtaps",
+          "GetVtap",
+          "UpdateVtap",
+          "CreateVtap",
+          "DeleteVtap",
+          "ChangeVtapCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "volumes",
+      "description": "Block volumes",
+      "source_section": "Core Services API Operations / volume-family",
+      "api_permission_tokens": {
+        "ListVolumes": ["VOLUME_INSPECT"],
+        "GetVolume": ["VOLUME_INSPECT"],
+        "UpdateVolume": ["VOLUME_UPDATE"],
+        "CreateVolume": ["VOLUME_CREATE"],
+        "DeleteVolume": ["VOLUME_DELETE"],
+        "ChangeVolumeCompartment": ["VOLUME_MOVE"]
+      },
+      "verbs": {
+        "inspect": [
+          "ListVolumes"
+        ],
+        "read": [
+          "ListVolumes",
+          "GetVolume"
+        ],
+        "use": [
+          "ListVolumes",
+          "GetVolume",
+          "UpdateVolume"
+        ],
+        "manage": [
+          "ListVolumes",
+          "GetVolume",
+          "UpdateVolume",
+          "CreateVolume",
+          "DeleteVolume",
+          "ChangeVolumeCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "volume-backups",
+      "description": "Block volume backups",
+      "source_section": "Core Services API Operations / volume-family",
+      "api_permission_tokens": {
+        "ListVolumeBackups": ["VOLUME_BACKUP_INSPECT", "VOLUME_INSPECT"],
+        "GetVolumeBackup": ["VOLUME_BACKUP_INSPECT", "VOLUME_INSPECT"],
+        "UpdateVolumeBackup": ["VOLUME_BACKUP_UPDATE", "VOLUME_INSPECT"],
+        "CopyVolumeBackup": ["VOLUME_BACKUP_COPY"],
+        "CreateVolumeBackup": ["VOLUME_BACKUP_CREATE", "VOLUME_WRITE"],
+        "DeleteVolumeBackup": ["VOLUME_BACKUP_DELETE", "VOLUME_INSPECT"],
+        "ChangeVolumeBackupCompartment": ["VOLUME_BACKUP_MOVE"]
+      },
+      "verbs": {
+        "inspect": [
+          "ListVolumeBackups"
+        ],
+        "read": [
+          "ListVolumeBackups",
+          "GetVolumeBackup"
+        ],
+        "use": [
+          "ListVolumeBackups",
+          "GetVolumeBackup",
+          "CopyVolumeBackup"
+        ],
+        "manage": [
+          "ListVolumeBackups",
+          "GetVolumeBackup",
+          "CopyVolumeBackup",
+          "CreateVolumeBackup",
+          "DeleteVolumeBackup",
+          "ChangeVolumeBackupCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "boot-volume-backups",
+      "description": "Boot volume backups",
+      "source_section": "Core Services API Operations / volume-family",
+      "api_permission_tokens": {
+        "ListBootVolumeBackups": ["BOOT_VOLUME_BACKUP_INSPECT", "VOLUME_INSPECT"],
+        "GetBootVolumeBackup": ["BOOT_VOLUME_BACKUP_INSPECT", "VOLUME_INSPECT"],
+        "UpdateBootVolumeBackup": ["BOOT_VOLUME_BACKUP_UPDATE", "VOLUME_INSPECT"],
+        "CopyBootVolumeBackup": ["BOOT_VOLUME_BACKUP_COPY"],
+        "CreateBootVolumeBackup": ["BOOT_VOLUME_BACKUP_CREATE", "VOLUME_WRITE"],
+        "DeleteBootVolumeBackup": ["BOOT_VOLUME_BACKUP_DELETE", "VOLUME_INSPECT"],
+        "ChangeVolumeBackupCompartment": ["BOOT_VOLUME_BACKUP_MOVE"]
+      },
+      "verbs": {
+        "inspect": [
+          "ListBootVolumeBackups"
+        ],
+        "read": [
+          "ListBootVolumeBackups",
+          "GetBootVolumeBackup"
+        ],
+        "use": [
+          "ListBootVolumeBackups",
+          "GetBootVolumeBackup",
+          "CopyBootVolumeBackup"
+        ],
+        "manage": [
+          "ListBootVolumeBackups",
+          "GetBootVolumeBackup",
+          "CopyBootVolumeBackup",
+          "CreateBootVolumeBackup",
+          "DeleteBootVolumeBackup",
+          "ChangeBootVolumeBackupCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "backup-policies",
+      "description": "Volume backup policies",
+      "source_section": "Core Services API Operations / volume-family",
+      "api_permission_tokens": {
+        "ListVolumeBackupPolicies": ["BACKUP_POLICIES_INSPECT"],
+        "GetVolumeBackupPolicy": ["BACKUP_POLICIES_INSPECT"],
+        "UpdateVolumeBackupPolicy": ["BACKUP_POLICIES_UPDATE"],
+        "CreateVolumeBackupPolicy": ["BACKUP_POLICIES_CREATE"],
+        "DeleteVolumeBackupPolicy": ["BACKUP_POLICIES_DELETE"]
+      },
+      "verbs": {
+        "inspect": [
+          "ListVolumeBackupPolicies"
+        ],
+        "read": [
+          "ListVolumeBackupPolicies",
+          "GetVolumeBackupPolicy"
+        ],
+        "use": [
+          "ListVolumeBackupPolicies",
+          "GetVolumeBackupPolicy",
+          "UpdateVolumeBackupPolicy"
+        ],
+        "manage": [
+          "ListVolumeBackupPolicies",
+          "GetVolumeBackupPolicy",
+          "UpdateVolumeBackupPolicy",
+          "CreateVolumeBackupPolicy",
+          "DeleteVolumeBackupPolicy"
+        ]
+      }
+    },
+    {
+      "resource_family": "backup-policy-assignments",
+      "description": "Volume backup policy assignments",
+      "source_section": "Core Services API Operations / volume-family",
+      "api_permission_tokens": {
+        "GetVolumeBackupPolicyAssetAssignment": ["BACKUP_POLICY_ASSIGNMENT_INSPECT", "VOLUME_INSPECT"],
+        "GetVolumeBackupPolicyAssignment": ["BACKUP_POLICY_ASSIGNMENT_INSPECT"],
+        "CreateVolumeBackupPolicyAssignment": ["BACKUP_POLICY_ASSIGNMENT_CREATE"],
+        "DeleteVolumeBackupPolicyAssignment": ["BACKUP_POLICY_ASSIGNMENT_DELETE"]
+      },
+      "verbs": {
+        "inspect": [
+          "GetVolumeBackupPolicyAssetAssignment"
+        ],
+        "read": [
+          "GetVolumeBackupPolicyAssetAssignment"
+        ],
+        "use": [
+          "GetVolumeBackupPolicyAssetAssignment",
+          "CreateVolumeBackupPolicyAssignment",
+          "DeleteVolumeBackupPolicyAssignment"
+        ],
+        "manage": [
+          "GetVolumeBackupPolicyAssetAssignment",
+          "CreateVolumeBackupPolicyAssignment",
+          "DeleteVolumeBackupPolicyAssignment"
+        ]
+      }
+    },
+    {
+      "resource_family": "volume-groups",
+      "description": "Volume groups",
+      "source_section": "Core Services API Operations / volume-family",
+      "api_permission_tokens": {
+        "ListVolumeGroups": ["VOLUME_GROUP_INSPECT"],
+        "GetVolumeGroup": ["VOLUME_GROUP_INSPECT"],
+        "UpdateVolumeGroup": ["VOLUME_GROUP_UPDATE", "VOLUME_INSPECT"],
+        "CreateVolumeGroup": ["VOLUME_GROUP_CREATE"],
+        "DeleteVolumeGroup": ["VOLUME_GROUP_DELETE"],
+        "ChangeVolumeGroupCompartment": ["VOLUME_GROUP_MOVE"]
+      },
+      "verbs": {
+        "inspect": [
+          "ListVolumeGroups"
+        ],
+        "read": [
+          "ListVolumeGroups",
+          "GetVolumeGroup"
+        ],
+        "use": [
+          "ListVolumeGroups",
+          "GetVolumeGroup",
+          "UpdateVolumeGroup"
+        ],
+        "manage": [
+          "ListVolumeGroups",
+          "GetVolumeGroup",
+          "UpdateVolumeGroup",
+          "CreateVolumeGroup",
+          "DeleteVolumeGroup",
+          "ChangeVolumeGroupCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "volume-group-backups",
+      "description": "Volume group backups",
+      "source_section": "Core Services API Operations / volume-family",
+      "api_permission_tokens": {
+        "ListVolumeGroupBackups": ["VOLUME_GROUP_BACKUP_INSPECT"],
+        "GetVolumeGroupBackup": ["VOLUME_GROUP_BACKUP_INSPECT"],
+        "UpdateVolumeGroupBackup": ["VOLUME_GROUP_BACKUP_UPDATE"],
+        "CopyVolumeGroupBackup": ["VOLUME_GROUP_BACKUP_UPDATE"],
+        "CreateVolumeGroupBackup": ["VOLUME_GROUP_BACKUP_CREATE", "VOLUME_GROUP_INSPECT", "VOLUME_WRITE"],
+        "DeleteVolumeGroupBackup": ["VOLUME_GROUP_BACKUP_DELETE"],
+        "ChangeVolumeGroupBackupCompartment": ["VOLUME_GROUP_BACKUP_MOVE", "VOLUME_BACKUP_MOVE"]
+      },
+      "verbs": {
+        "inspect": [
+          "ListVolumeGroupBackups"
+        ],
+        "read": [
+          "ListVolumeGroupBackups",
+          "GetVolumeGroupBackup"
+        ],
+        "use": [
+          "ListVolumeGroupBackups",
+          "GetVolumeGroupBackup",
+          "CopyVolumeGroupBackup"
+        ],
+        "manage": [
+          "ListVolumeGroupBackups",
+          "GetVolumeGroupBackup",
+          "CopyVolumeGroupBackup",
+          "CreateVolumeGroupBackup",
+          "DeleteVolumeGroupBackup",
+          "ChangeVolumeGroupBackupCompartment"
+        ]
+      }
+    }
+  ]
+}

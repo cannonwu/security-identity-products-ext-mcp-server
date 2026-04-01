@@ -1,0 +1,232 @@
+{
+  "service": "key-management",
+  "service_name": "Key Management",
+  "description": "Oracle Cloud Key Management service - vaults, keys, and key delegation",
+  "source_pages": [
+    "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/keypolicyreference.htm"
+  ],
+  "resources": [
+    {
+      "resource_family": "key-delegate",
+      "description": "Key delegation operations for vaults",
+      "source_section": "Details for Verb + Resource-Type Combinations > key-delegate",
+      "verbs": {
+        "use": [
+          "Encrypt",
+          "GenerateDataEncryptionKey",
+          "Decrypt"
+        ]
+      },
+      "api_permission_tokens": {
+        "Encrypt": [
+          "KEY_ASSOCIATE"
+        ],
+        "GenerateDataEncryptionKey": [
+          "KEY_ASSOCIATE"
+        ],
+        "Decrypt": [
+          "KEY_ASSOCIATE"
+        ]
+      }
+    },
+    {
+      "resource_family": "vaults",
+      "description": "Key vaults",
+      "source_section": "Details for Verb + Resource-Type Combinations > vaults",
+      "verbs": {
+        "manage": [
+          "CreateVault",
+          "UpdateVault",
+          "ScheduleVaultDeletion",
+          "CancelVaultDeletion",
+          "ChangeVaultCompartment",
+          "BackupVault",
+          "RestoreVaultFromFile",
+          "RestoreVaultFromObjectStore",
+          "CreateVaultReplica",
+          "DeleteVaultReplica"
+        ],
+        "use": [
+          "GetVault",
+          "GetVaultUsage"
+        ],
+        "read": [
+          "GetVault",
+          "GetVaultUsage",
+          "ListVaults"
+        ],
+        "inspect": [
+          "ListVaults"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListVaults": [
+          "VAULT_INSPECT"
+        ],
+        "GetVault": [
+          "VAULT_READ"
+        ],
+        "GetVaultUsage": [
+          "VAULT_READ"
+        ],
+        "CreateVault": [
+          "VAULT_CREATE"
+        ],
+        "UpdateVault": [
+          "VAULT_UPDATE"
+        ],
+        "ScheduleVaultDeletion": [
+          "VAULT_DELETE"
+        ],
+        "CancelVaultDeletion": [
+          "VAULT_DELETE"
+        ],
+        "ChangeVaultCompartment": [
+          "VAULT_MOVE"
+        ],
+        "BackupVault": [
+          "VAULT_BACKUP"
+        ],
+        "RestoreVaultFromFile": [
+          "VAULT_RESTORE"
+        ],
+        "RestoreVaultFromObjectStore": [
+          "VAULT_RESTORE"
+        ],
+        "ListVaultReplicas": [
+          "VAULT_INSPECT"
+        ],
+        "CreateVaultReplica": [
+          "VAULT_REPLICATE"
+        ],
+        "DeleteVaultReplica": [
+          "VAULT_REPLICATE"
+        ],
+        "CreateKey": [
+          "VAULT_CREATE_KEY"
+        ],
+        "ImportKey": [
+          "VAULT_IMPORT_KEY"
+        ],
+        "CreateSecret": [
+          "VAULT_CREATE_SECRET"
+        ]
+      }
+    },
+    {
+      "resource_family": "keys",
+      "description": "Encryption keys",
+      "source_section": "Details for Verb + Resource-Type Combinations > keys",
+      "verbs": {
+        "manage": [
+          "CreateKey",
+          "UpdateKey",
+          "EnableKey",
+          "DisableKey",
+          "ScheduleKeyDeletion",
+          "CancelKeyDeletion",
+          "ChangeKeyCompartment",
+          "CreateKeyVersion",
+          "ImportKey",
+          "ImportKeyVersion",
+          "BackupKey",
+          "RestoreKeyFromFile",
+          "RestoreKeyFromObjectStore"
+        ],
+        "use": [
+          "GetKey",
+          "GetKeyVersion",
+          "Decrypt",
+          "Encrypt",
+          "GenerateDataEncryptionKey",
+          "ExportKey",
+          "Sign",
+          "Verify"
+        ],
+        "read": [
+          "GetKey",
+          "ListKeys",
+          "GetKeyVersion",
+          "ListKeyVersions"
+        ],
+        "inspect": [
+          "ListKeys",
+          "ListKeyVersions"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListKeys": [
+          "KEY_INSPECT"
+        ],
+        "ListKeyVersions": [
+          "KEY_INSPECT"
+        ],
+        "GetKey": [
+          "KEY_READ"
+        ],
+        "GetKeyVersion": [
+          "KEY_READ"
+        ],
+        "Encrypt": [
+          "KEY_ENCRYPT"
+        ],
+        "Decrypt": [
+          "KEY_DECRYPT"
+        ],
+        "GenerateDataEncryptionKey": [
+          "KEY_ENCRYPT"
+        ],
+        "ExportKey": [
+          "KEY_EXPORT"
+        ],
+        "Sign": [
+          "KEY_SIGN"
+        ],
+        "Verify": [
+          "KEY_VERIFY"
+        ],
+        "CreateKey": [
+          "KEY_CREATE",
+          "VAULT_CREATE_KEY"
+        ],
+        "EnableKey": [
+          "KEY_UPDATE"
+        ],
+        "DisableKey": [
+          "KEY_UPDATE"
+        ],
+        "UpdateKey": [
+          "KEY_UPDATE"
+        ],
+        "ScheduleKeyDeletion": [
+          "KEY_DELETE"
+        ],
+        "CancelKeyDeletion": [
+          "KEY_DELETE"
+        ],
+        "ChangeKeyCompartment": [
+          "KEY_MOVE"
+        ],
+        "CreateKeyVersion": [
+          "KEY_ROTATE"
+        ],
+        "ImportKey": [
+          "KEY_IMPORT",
+          "VAULT_IMPORT_KEY"
+        ],
+        "ImportKeyVersion": [
+          "KEY_IMPORT"
+        ],
+        "BackupKey": [
+          "KEY_BACKUP"
+        ],
+        "RestoreKeyFromFile": [
+          "KEY_RESTORE"
+        ],
+        "RestoreKeyFromObjectStore": [
+          "KEY_RESTORE"
+        ]
+      }
+    }
+  ]
+}

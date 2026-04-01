@@ -1,0 +1,415 @@
+{
+  "service": "certificates",
+  "service_name": "Certificates Service",
+  "description": "Oracle Cloud Certificates service - certificate authorities, certificates, bundles, and associations",
+  "source_pages": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/certificatespolicyreference.htm",
+      "description": "Certificates policy reference covering resource types, verb/resource combinations, and permissions required for each API operation",
+      "fetched_on": "2026-03-23"
+    }
+  ],
+  "resources": [
+    {
+      "resource_family": "leaf-certificates",
+      "description": "Leaf certificates",
+      "source_section": "Details for the Certificates Service / leaf-certificates",
+      "api_permission_tokens": {
+        "ListCertificates": [
+          "CERTIFICATE_INSPECT"
+        ],
+        "GetCertificate": [
+          "CERTIFICATE_READ"
+        ],
+        "UpdateCertificate": [
+          "CERTIFICATE_UPDATE",
+          "CERTIFICATE_AUTHORITY_APPLY"
+        ],
+        "CreateCertificate": [
+          "CERTIFICATE_CREATE",
+          "CERTIFICATE_AUTHORITY_APPLY"
+        ],
+        "ChangeCertificateCompartment": [
+          "CERTIFICATE_MOVE"
+        ],
+        "ScheduleCertificateDeletion": [
+          "CERTIFICATE_DELETE"
+        ],
+        "CancelCertificateDeletion": [
+          "CERTIFICATE_DELETE"
+        ]
+      },
+      "verbs": {
+        "inspect": [
+          "ListCertificates"
+        ],
+        "read": [
+          "GetCertificate"
+        ],
+        "use": [
+          "UpdateCertificate"
+        ],
+        "manage": [
+          "CreateCertificate",
+          "ChangeCertificateCompartment",
+          "ScheduleCertificateDeletion",
+          "CancelCertificateDeletion"
+        ]
+      }
+    },
+    {
+      "resource_family": "leaf-certificate-versions",
+      "description": "Leaf certificate versions",
+      "source_section": "Details for the Certificates Service / leaf-certificate-versions",
+      "api_permission_tokens": {
+        "ListCertificateVersions": [
+          "CERTIFICATE_VERSION_INSPECT"
+        ],
+        "GetCertificateVersion": [
+          "CERTIFICATE_VERSION_READ"
+        ],
+        "RevokeCertificateVersion": [
+          "CERTIFICATE_VERSION_REVOKE",
+          "CERTIFICATE_UPDATE",
+          "CERTIFICATE_AUTHORITY_APPLY"
+        ],
+        "ScheduleCertificateVersionDeletion": [
+          "CERTIFICATE_VERSION_DELETE",
+          "CERTIFICATE_UPDATE"
+        ],
+        "CancelCertificateVersionDeletion": [
+          "CERTIFICATE_VERSION_DELETE",
+          "CERTIFICATE_UPDATE"
+        ]
+      },
+      "verbs": {
+        "inspect": [
+          "ListCertificateVersions"
+        ],
+        "read": [
+          "GetCertificateVersion"
+        ],
+        "use": [],
+        "manage": [
+          "RevokeCertificateVersion",
+          "ScheduleCertificateVersionDeletion",
+          "CancelCertificateVersionDeletion"
+        ]
+      }
+    },
+    {
+      "resource_family": "leaf-certificate-bundles",
+      "description": "Leaf certificate bundles",
+      "source_section": "Details for the Certificates Service / leaf-certificate-bundles",
+      "api_permission_tokens": {
+        "ListCertificateBundleVersions": [
+          "CERTIFICATE_BUNDLE_INSPECT"
+        ],
+        "GetCertificateBundle": [
+          "CERTIFICATE_BUNDLE_READ"
+        ]
+      },
+      "verbs": {
+        "inspect": [
+          "ListCertificateBundleVersions"
+        ],
+        "read": [
+          "GetCertificateBundle"
+        ],
+        "use": [],
+        "manage": []
+      }
+    },
+    {
+      "resource_family": "certificate-authorities",
+      "description": "Certificate authorities",
+      "source_section": "Details for the Certificates Service / certificate-authorities",
+      "api_permission_tokens": {
+        "ListCertificateAuthorities": [
+          "CERTIFICATE_AUTHORITY_INSPECT"
+        ],
+        "GetCertificateAuthority": [
+          "CERTIFICATE_AUTHORITY_READ"
+        ],
+        "UpdateCertificateAuthority": [
+          "CERTIFICATE_AUTHORITY_UPDATE",
+          "CERTIFICATE_AUTHORITY_APPLY"
+        ],
+        "CreateCertificateAuthority": [
+          "CERTIFICATE_AUTHORITY_CREATE",
+          "CERTIFICATE_AUTHORITY_APPLY"
+        ],
+        "ChangeCertificateAuthorityCompartment": [
+          "CERTIFICATE_AUTHORITY_MOVE"
+        ],
+        "ScheduleCertificateAuthorityDeletion": [
+          "CERTIFICATE_AUTHORITY_DELETE"
+        ],
+        "CancelCertificateAuthorityDeletion": [
+          "CERTIFICATE_AUTHORITY_DELETE"
+        ]
+      },
+      "verbs": {
+        "inspect": [
+          "ListCertificateAuthorities"
+        ],
+        "read": [
+          "GetCertificateAuthority"
+        ],
+        "use": [
+          "UpdateCertificateAuthority"
+        ],
+        "manage": [
+          "CreateCertificateAuthority",
+          "ChangeCertificateAuthorityCompartment",
+          "ScheduleCertificateAuthorityDeletion",
+          "CancelCertificateAuthorityDeletion"
+        ]
+      }
+    },
+    {
+      "resource_family": "certificate-authority-versions",
+      "description": "Certificate authority versions",
+      "source_section": "Details for the Certificates Service / certificate-authority-versions",
+      "api_permission_tokens": {
+        "ListCertificateAuthorityVersions": [
+          "CERTIFICATE_AUTHORITY_VERSION_INSPECT"
+        ],
+        "GetCertificateAuthorityVersion": [
+          "CERTIFICATE_AUTHORITY_VERSION_READ"
+        ],
+        "RevokeCertificateAuthorityVersion": [
+          "CERTIFICATE_AUTHORITY_VERSION_REVOKE",
+          "CERTIFICATE_AUTHORITY_UPDATE",
+          "CERTIFICATE_AUTHORITY_APPLY"
+        ],
+        "ScheduleCertificateAuthorityVersionDeletion": [
+          "CERTIFICATE_AUTHORITY_VERSION_DELETE",
+          "CERTIFICATE_AUTHORITY_UPDATE"
+        ],
+        "CancelCertificateAuthorityVersionDeletion": [
+          "CERTIFICATE_AUTHORITY_VERSION_DELETE",
+          "CERTIFICATE_AUTHORITY_UPDATE"
+        ]
+      },
+      "verbs": {
+        "inspect": [
+          "ListCertificateAuthorityVersions"
+        ],
+        "read": [
+          "GetCertificateAuthorityVersion"
+        ],
+        "use": [],
+        "manage": [
+          "RevokeCertificateAuthorityVersion",
+          "ScheduleCertificateAuthorityVersionDeletion",
+          "CancelCertificateAuthorityVersionDeletion"
+        ]
+      }
+    },
+    {
+      "resource_family": "certificate-authority-bundles",
+      "description": "Certificate authority bundles",
+      "source_section": "Details for the Certificates Service / certificate-authority-bundles",
+      "api_permission_tokens": {
+        "ListCertificateAuthorityBundleVersions": [
+          "CERTIFICATE_AUTHORITY_BUNDLE_INSPECT"
+        ],
+        "GetCertificateAuthorityBundle": [
+          "CERTIFICATE_AUTHORITY_BUNDLE_READ"
+        ]
+      },
+      "verbs": {
+        "inspect": [
+          "ListCertificateAuthorityBundleVersions"
+        ],
+        "read": [
+          "GetCertificateAuthorityBundle"
+        ],
+        "use": [],
+        "manage": []
+      }
+    },
+    {
+      "resource_family": "certificate-authority-delegates",
+      "description": "Certificate authority delegates",
+      "source_section": "Details for the Certificates Service / certificate-authority-delegates",
+      "verbs": {
+        "inspect": [],
+        "read": [],
+        "use": [],
+        "manage": []
+      }
+    },
+    {
+      "resource_family": "cabundles",
+      "description": "CA bundles",
+      "source_section": "Details for the Certificates Service / cabundles",
+      "api_permission_tokens": {
+        "ListCaBundles": [
+          "CABUNDLE_INSPECT"
+        ],
+        "GetCaBundle": [
+          "CABUNDLE_READ"
+        ],
+        "UpdateCaBundle": [
+          "CABUNDLE_UPDATE"
+        ],
+        "CreateCaBundle": [
+          "CABUNDLE_CREATE"
+        ],
+        "DeleteCaBundle": [
+          "CABUNDLE_DELETE"
+        ],
+        "ChangeCaBundleCompartment": [
+          "CABUNDLE_MOVE"
+        ]
+      },
+      "verbs": {
+        "inspect": [
+          "ListCaBundles"
+        ],
+        "read": [
+          "GetCaBundle"
+        ],
+        "use": [
+          "UpdateCaBundle"
+        ],
+        "manage": [
+          "CreateCaBundle",
+          "DeleteCaBundle",
+          "ChangeCaBundleCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "certificate-associations",
+      "description": "Certificate associations",
+      "source_section": "Details for the Certificates Service / certificate-associations",
+      "api_permission_tokens": {
+        "ListAssociations": [
+          "CERTIFICATE_ASSOCIATION_INSPECT"
+        ],
+        "GetAssociation": [
+          "CERTIFICATE_ASSOCIATION_READ"
+        ],
+        "CreateAssociation": [
+          "CERTIFICATE_ASSOCIATION_CREATE"
+        ],
+        "DeleteAssociation": [
+          "CERTIFICATE_ASSOCIATION_DELETE"
+        ]
+      },
+      "verbs": {
+        "inspect": [
+          "ListAssociations"
+        ],
+        "read": [
+          "GetAssociation"
+        ],
+        "use": [],
+        "manage": [
+          "CreateAssociation",
+          "DeleteAssociation"
+        ]
+      }
+    },
+    {
+      "resource_family": "certificate-authority-associations",
+      "description": "Certificate authority associations",
+      "source_section": "Details for the Certificates Service / certificate-authority-associations",
+      "api_permission_tokens": {
+        "ListAssociations": [
+          "CERTIFICATE_AUTHORITY_ASSOCIATION_INSPECT"
+        ],
+        "GetAssociation": [
+          "CERTIFICATE_AUTHORITY_ASSOCIATION_READ"
+        ],
+        "CreateAssociation": [
+          "CERTIFICATE_AUTHORITY_ASSOCIATION_CREATE"
+        ],
+        "DeleteAssociation": [
+          "CERTIFICATE_AUTHORITY_ASSOCIATION_DELETE"
+        ]
+      },
+      "verbs": {
+        "inspect": [
+          "ListAssociations"
+        ],
+        "read": [
+          "GetAssociation"
+        ],
+        "use": [],
+        "manage": [
+          "CreateAssociation",
+          "DeleteAssociation"
+        ]
+      }
+    },
+    {
+      "resource_family": "cabundle-associations",
+      "description": "CA bundle associations",
+      "source_section": "Details for the Certificates Service / cabundle-associations",
+      "api_permission_tokens": {
+        "ListAssociations": [
+          "CABUNDLE_ASSOCIATION_INSPECT"
+        ],
+        "GetAssociation": [
+          "CABUNDLE_ASSOCIATION_READ"
+        ],
+        "CreateAssociation": [
+          "CABUNDLE_ASSOCIATION_CREATE"
+        ],
+        "DeleteAssociation": [
+          "CABUNDLE_ASSOCIATION_DELETE"
+        ]
+      },
+      "verbs": {
+        "inspect": [
+          "ListAssociations"
+        ],
+        "read": [
+          "GetAssociation"
+        ],
+        "use": [],
+        "manage": [
+          "CreateAssociation",
+          "DeleteAssociation"
+        ]
+      }
+    },
+    {
+      "resource_family": "leaf-certificate-family",
+      "description": "Aggregate resource type for leaf certificate resources",
+      "source_section": "Details for the Certificates Service / Aggregate Resource-Types / leaf-certificate-family",
+      "includes": [
+        "leaf-certificates",
+        "leaf-certificate-versions",
+        "leaf-certificate-bundles",
+        "cabundles",
+        "certificate-associations",
+        "cabundle-associations"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "certificate-authority-family",
+      "description": "Aggregate resource type for certificate authority and certificate resources",
+      "source_section": "Details for the Certificates Service / Aggregate Resource-Types / certificate-authority-family",
+      "includes": [
+        "certificate-authorities",
+        "certificate-authority-versions",
+        "certificate-authority-bundles",
+        "certificate-authority-delegates",
+        "leaf-certificates",
+        "leaf-certificate-versions",
+        "leaf-certificate-bundles",
+        "cabundles",
+        "certificate-associations",
+        "certificate-authority-associations",
+        "cabundle-associations"
+      ],
+      "verbs": {}
+    }
+  ]
+}

@@ -1,0 +1,553 @@
+{
+  "service": "database",
+  "service_name": "Oracle Database",
+  "description": "Oracle Cloud Database - DBaaS, Exadata, Oracle Database, etc.",
+  "source_pages": [
+    {
+      "url": "https://docs.oracle.com/en/cloud/paas/base-database/iam-policy-details/index.html#GUID-C93A9F41-EE5B-4349-93C4-4A7C40C1E822",
+      "description": "Oracle Base Database Service IAM policy details, including API operations and required permissions",
+      "fetched_on": "2026-03-19"
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm#Resource",
+      "description": "OCI Policy Reference top-level resource families"
+    }
+  ],
+  "resources": [
+    {
+      "resource_family": "db-systems",
+      "description": "Database Systems (DBaaS instances)",
+      "source_section": "Database API Operations",
+      "api_permission_tokens": {
+        "ListDbSystems": [
+          "DB_SYSTEM_INSPECT"
+        ],
+        "GetDbSystem": [
+          "DB_SYSTEM_INSPECT"
+        ],
+        "ListDbSystemPatches": [
+          "DB_SYSTEM_INSPECT"
+        ],
+        "ListDbSystemPatchHistoryEntries": [
+          "DB_SYSTEM_INSPECT"
+        ],
+        "GetDbSystemPatch": [
+          "DB_SYSTEM_INSPECT"
+        ],
+        "GetDbSystemPatchHistoryEntry": [
+          "DB_SYSTEM_INSPECT"
+        ],
+        "UpdateDbSystem": [
+          "DB_SYSTEM_INSPECT",
+          "DB_SYSTEM_UPDATE"
+        ],
+        "LaunchDbSystem": [
+          "DB_SYSTEM_CREATE",
+          "DB_HOME_CREATE",
+          "DATABASE_CREATE",
+          "VNIC_CREATE",
+          "VNIC_ATTACH",
+          "SUBNET_ATTACH"
+        ],
+        "TerminateDbSystem": [
+          "DB_SYSTEM_DELETE",
+          "DB_HOME_DELETE",
+          "DATABASE_DELETE",
+          "VNIC_DETACH",
+          "VNIC_DELETE",
+          "SUBNET_DETACH"
+        ],
+        "ChangeDbSystemCompartment": [
+          "DB_SYSTEM_UPDATE",
+          "DB_HOME_UPDATE",
+          "DATABASE_UPDATE",
+          "DB_BACKUP_INSPECT"
+        ],
+        "DeleteDbSystem": [
+          "DB_SYSTEM_DELETE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "GetDbSystem",
+          "ListDbSystems",
+          "LaunchDbSystem",
+          "CreateDbSystem",
+          "UpdateDbSystem",
+          "TerminateDbSystem",
+          "DeleteDbSystem",
+          "StartDbSystem",
+          "StopDbSystem",
+          "RebootDbSystem",
+          "ListDbSystemPatches",
+          "ListDbSystemPatchHistoryEntries",
+          "GetDbSystemPatch",
+          "GetDbSystemPatchHistoryEntry",
+          "ResetDatabaseAdminPassword",
+          "ChangeDbSystemCompartment"
+        ],
+        "use": [
+          "GetDbSystem",
+          "ListDbSystems",
+          "StartDbSystem",
+          "StopDbSystem"
+        ],
+        "read": [
+          "GetDbSystem",
+          "ListDbSystems"
+        ],
+        "inspect": [
+          "GetDbSystem",
+          "ListDbSystems",
+          "ListDbSystemPatches",
+          "ListDbSystemPatchHistoryEntries",
+          "GetDbSystemPatch",
+          "GetDbSystemPatchHistoryEntry"
+        ]
+      }
+    },
+    {
+      "resource_family": "db-homes",
+      "description": "Database Homes",
+      "source_section": "Database API Operations",
+      "api_permission_tokens": {
+        "ListDbHomes": [
+          "DB_HOME_INSPECT"
+        ],
+        "GetDbHome": [
+          "DB_HOME_INSPECT"
+        ],
+        "ListDbHomePatches": [
+          "DB_HOME_INSPECT"
+        ],
+        "ListDbHomePatchHistoryEntries": [
+          "DB_HOME_INSPECT"
+        ],
+        "GetDbHomePatch": [
+          "DB_HOME_INSPECT"
+        ],
+        "GetDbHomePatchHistoryEntry": [
+          "DB_HOME_INSPECT"
+        ],
+        "CreateDbHome": [
+          "DB_SYSTEM_INSPECT",
+          "DB_SYSTEM_UPDATE",
+          "DB_HOME_CREATE",
+          "DATABASE_CREATE"
+        ],
+        "UpdateDbHome": [
+          "DB_HOME_UPDATE"
+        ],
+        "DeleteDbHome": [
+          "DB_SYSTEM_UPDATE",
+          "DB_HOME_DELETE",
+          "DATABASE_DELETE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "ListDbHomes",
+          "GetDbHome",
+          "ListDbHomePatches",
+          "ListDbHomePatchHistoryEntries",
+          "GetDbHomePatch",
+          "GetDbHomePatchHistoryEntry",
+          "CreateDbHome",
+          "UpdateDbHome",
+          "DeleteDbHome"
+        ],
+        "use": [
+          "ListDbHomes",
+          "GetDbHome",
+          "UpdateDbHome"
+        ],
+        "read": [
+          "ListDbHomes",
+          "GetDbHome"
+        ],
+        "inspect": [
+          "ListDbHomes",
+          "GetDbHome",
+          "ListDbHomePatches",
+          "ListDbHomePatchHistoryEntries",
+          "GetDbHomePatch",
+          "GetDbHomePatchHistoryEntry"
+        ]
+      }
+    },
+    {
+      "resource_family": "databases",
+      "description": "Individual Databases within Database Systems",
+      "source_section": "Database API Operations",
+      "api_permission_tokens": {
+        "ListDatabases": [
+          "DATABASE_INSPECT"
+        ],
+        "GetDatabase": [
+          "DATABASE_INSPECT"
+        ],
+        "GetDataGuardAssociation": [
+          "DATABASE_INSPECT"
+        ],
+        "ListDataGuardAssociations": [
+          "DATABASE_INSPECT"
+        ],
+        "UpdateDatabase": [
+          "DATABASE_UPDATE"
+        ],
+        "CreateDataGuardAssociation": [
+          "DB_SYSTEM_UPDATE",
+          "DB_HOME_CREATE",
+          "DB_HOME_UPDATE",
+          "DATABASE_CREATE",
+          "DATABASE_UPDATE"
+        ],
+        "SwitchoverDataGuardAssociation": [
+          "DATABASE_UPDATE"
+        ],
+        "FailoverDataGuardAssociation": [
+          "DATABASE_UPDATE"
+        ],
+        "ReinstateDataGuardAssociation": [
+          "DATABASE_UPDATE"
+        ],
+        "MigrateVaultKey": [
+          "DATABASE_UPDATE"
+        ],
+        "RotateVaultKey": [
+          "DATABASE_UPDATE"
+        ],
+        "RestoreDatabase": [
+          "DB_BACKUP_INSPECT",
+          "DB_BACKUP_CONTENT_READ",
+          "DATABASE_CONTENT_WRITE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "GetDatabase",
+          "ListDatabases",
+          "CreateDatabase",
+          "UpdateDatabase",
+          "DeleteDatabase",
+          "GetDatabaseFromBackup",
+          "RestoreDatabase",
+          "ChangeDatabase",
+          "SetDefaultDatabase",
+          "ChangeDatabaseCompartment"
+        ],
+        "use": [
+          "GetDatabase",
+          "ListDatabases"
+        ],
+        "read": [
+          "GetDatabase",
+          "ListDatabases"
+        ],
+        "inspect": [
+          "GetDatabase",
+          "ListDatabases"
+        ]
+      }
+    },
+    {
+      "resource_family": "pluggable-databases",
+      "description": "Pluggable Databases (PDBs)",
+      "source_section": "Pluggable Database API Operations",
+      "api_permission_tokens": {
+        "ListPluggableDatabases": [
+          "PLUGGABLE_DATABASE_INSPECT"
+        ],
+        "ListPluggableDatabase": [
+          "PLUGGABLE_DATABASE_INSPECT"
+        ],
+        "GetPluggableDatabase": [
+          "PLUGGABLE_DATABASE_INSPECT"
+        ],
+        "CreatePluggableDatabase": [
+          "DATABASE_INSPECT",
+          "DATABASE_UPDATE",
+          "PLUGGABLE_DATABASE_CREATE"
+        ],
+        "UpdatePluggableDatabase": [
+          "PLUGGABLE_DATABASE_INSPECT",
+          "PLUGGABLE_DATABASE_UPDATE"
+        ],
+        "StartPluggableDatabase": [
+          "PLUGGABLE_DATABASE_INSPECT",
+          "PLUGGABLE_DATABASE_UPDATE"
+        ],
+        "StopPluggableDatabase": [
+          "PLUGGABLE_DATABASE_INSPECT",
+          "PLUGGABLE_DATABASE_UPDATE"
+        ],
+        "DeletePluggableDatabase": [
+          "DATABASE_INSPECT",
+          "DATABASE_UPDATE",
+          "PLUGGABLE_DATABASE_DELETE"
+        ],
+        "LocalClonePluggableDatabase": [
+          "DATABASE_INSPECT",
+          "DATABASE_UPDATE",
+          "PLUGGABLE_DATABASE_INSPECT",
+          "PLUGGABLE_DATABASE_UPDATE",
+          "PLUGGABLE_DATABASE_CONTENT_READ",
+          "PLUGGABLE_DATABASE_CREATE",
+          "PLUGGABLE_DATABASE_CONTENT_WRITE"
+        ],
+        "RemoteClonePluggableDatabase": [
+          "DATABASE_INSPECT",
+          "DATABASE_UPDATE",
+          "PLUGGABLE_DATABASE_INSPECT",
+          "PLUGGABLE_DATABASE_UPDATE",
+          "PLUGGABLE_DATABASE_CONTENT_READ",
+          "PLUGGABLE_DATABASE_CREATE",
+          "PLUGGABLE_DATABASE_CONTENT_WRITE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "ListPluggableDatabases",
+          "GetPluggableDatabase",
+          "CreatePluggableDatabase",
+          "UpdatePluggableDatabase",
+          "StartPluggableDatabase",
+          "StopPluggableDatabase",
+          "DeletePluggableDatabase",
+          "LocalClonePluggableDatabase",
+          "RemoteClonePluggableDatabase"
+        ],
+        "use": [
+          "ListPluggableDatabases",
+          "GetPluggableDatabase",
+          "UpdatePluggableDatabase",
+          "StartPluggableDatabase",
+          "StopPluggableDatabase"
+        ],
+        "read": [
+          "ListPluggableDatabases",
+          "GetPluggableDatabase"
+        ],
+        "inspect": [
+          "ListPluggableDatabases",
+          "GetPluggableDatabase"
+        ]
+      }
+    },
+    {
+      "resource_family": "database-software-image",
+      "description": "Database software images",
+      "source_section": "Resource-Types",
+      "api_permission_tokens": {},
+      "verbs": {
+        "manage": [],
+        "use": [],
+        "read": [],
+        "inspect": []
+      }
+    },
+    {
+      "resource_family": "db-backups",
+      "description": "Database Backups",
+      "source_section": "Database API Operations",
+      "api_permission_tokens": {
+        "GetBackup": [
+          "DB_BACKUP_INSPECT"
+        ],
+        "ListBackups": [
+          "DB_BACKUP_INSPECT"
+        ],
+        "CreateBackup": [
+          "DB_BACKUP_CREATE",
+          "DATABASE_CONTENT_READ"
+        ],
+        "DeleteBackup": [
+          "DB_BACKUP_DELETE",
+          "DB_BACKUP_INSPECT"
+        ],
+        "RestoreDatabase": [
+          "DB_BACKUP_INSPECT",
+          "DB_BACKUP_CONTENT_READ",
+          "DATABASE_CONTENT_WRITE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "GetBackup",
+          "ListBackups",
+          "CreateBackup",
+          "UpdateBackup",
+          "DeleteBackup",
+          "ChangeBackupCompartment"
+        ],
+        "use": [
+          "GetBackup",
+          "ListBackups"
+        ],
+        "read": [
+          "GetBackup",
+          "ListBackups"
+        ],
+        "inspect": [
+          "GetBackup",
+          "ListBackups"
+        ]
+      }
+    },
+    {
+      "resource_family": "db-nodes",
+      "description": "Database Nodes",
+      "source_section": "Database API Operations",
+      "api_permission_tokens": {
+        "GetDbNode": [
+          "DB_NODE_INSPECT"
+        ],
+        "DbNodeAction": [
+          "DB_NODE_POWER_ACTIONS"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "GetDbNode",
+          "ListDbNodes",
+          "DbNodeAction",
+          "DbNodeActionStart",
+          "DbNodeActionStop",
+          "DbNodeActionReboot"
+        ],
+        "use": [
+          "GetDbNode",
+          "ListDbNodes",
+          "DbNodeActionStart",
+          "DbNodeActionStop"
+        ],
+        "read": [
+          "GetDbNode",
+          "ListDbNodes"
+        ],
+        "inspect": [
+          "GetDbNode",
+          "ListDbNodes"
+        ]
+      }
+    },
+    {
+      "resource_family": "exadata-infrastructures",
+      "description": "Exadata Infrastructure",
+      "verbs": {
+        "manage": [
+          "GetExadataInfrastructure",
+          "ListExadataInfrastructures",
+          "CreateExadataInfrastructure",
+          "UpdateExadataInfrastructure",
+          "DeleteExadataInfrastructure",
+          "ActivateExadataInfrastructure",
+          "ChangeExadataInfrastructureCompartment"
+        ],
+        "use": [
+          "GetExadataInfrastructure",
+          "ListExadataInfrastructures"
+        ],
+        "read": [
+          "GetExadataInfrastructure",
+          "ListExadataInfrastructures"
+        ],
+        "inspect": [
+          "GetExadataInfrastructure",
+          "ListExadataInfrastructures"
+        ]
+      }
+    },
+    {
+      "resource_family": "autonomous-databases",
+      "description": "Autonomous Databases",
+      "verbs": {
+        "manage": [
+          "GetAutonomousDatabase",
+          "ListAutonomousDatabases",
+          "CreateAutonomousDatabase",
+          "UpdateAutonomousDatabase",
+          "DeleteAutonomousDatabase",
+          "StartAutonomousDatabase",
+          "StopAutonomousDatabase",
+          "RestartAutonomousDatabase",
+          "RotateAutonomousDatabaseEncryptionKey",
+          "ChangeAutonomousDatabaseCompartment"
+        ],
+        "use": [
+          "GetAutonomousDatabase",
+          "ListAutonomousDatabases",
+          "StartAutonomousDatabase",
+          "StopAutonomousDatabase"
+        ],
+        "read": [
+          "GetAutonomousDatabase",
+          "ListAutonomousDatabases"
+        ],
+        "inspect": [
+          "GetAutonomousDatabase",
+          "ListAutonomousDatabases"
+        ]
+      }
+    },
+    {
+      "resource_family": "autonomous-backups",
+      "description": "Autonomous Database Backups",
+      "verbs": {
+        "manage": [
+          "GetAutonomousBackup",
+          "ListAutonomousBackups",
+          "CreateAutonomousBackup",
+          "DeleteAutonomousBackup",
+          "ChangeAutonomousBackupCompartment"
+        ],
+        "use": [
+          "GetAutonomousBackup",
+          "ListAutonomousBackups"
+        ],
+        "read": [
+          "GetAutonomousBackup",
+          "ListAutonomousBackups"
+        ],
+        "inspect": [
+          "GetAutonomousBackup",
+          "ListAutonomousBackups"
+        ]
+      }
+    },
+    {
+      "resource_family": "database-family",
+      "description": "All database resources",
+      "source_section": "Aggregate Resource-Type",
+      "verbs": {
+        "manage": [
+          "GetDbSystem", "ListDbSystems", "CreateDbSystem", "UpdateDbSystem", "DeleteDbSystem",
+          "ListDbHomes", "GetDbHome", "CreateDbHome", "UpdateDbHome", "DeleteDbHome",
+          "GetDatabase", "ListDatabases", "CreateDatabase", "UpdateDatabase", "DeleteDatabase",
+          "ListPluggableDatabases", "GetPluggableDatabase", "CreatePluggableDatabase", "UpdatePluggableDatabase", "DeletePluggableDatabase",
+          "GetBackup", "ListBackups", "CreateBackup", "UpdateBackup", "DeleteBackup",
+          "GetDbNode", "ListDbNodes", "DbNodeActionStart", "DbNodeActionStop", "DbNodeActionReboot",
+          "GetExadataInfrastructure", "ListExadataInfrastructures", "CreateExadataInfrastructure", "UpdateExadataInfrastructure", "DeleteExadataInfrastructure",
+          "GetAutonomousDatabase", "ListAutonomousDatabases", "CreateAutonomousDatabase", "UpdateAutonomousDatabase", "DeleteAutonomousDatabase",
+          "GetAutonomousBackup", "ListAutonomousBackups", "CreateAutonomousBackup", "DeleteAutonomousBackup",
+          "StartDbSystem", "StopDbSystem", "StartAutonomousDatabase", "StopAutonomousDatabase"
+        ],
+        "use": [
+          "GetDbSystem", "ListDbSystems", "GetDbHome", "ListDbHomes", "GetDatabase", "ListDatabases", "GetPluggableDatabase", "ListPluggableDatabases", "GetBackup", "ListBackups",
+          "GetDbNode", "ListDbNodes", "GetExadataInfrastructure", "ListExadataInfrastructures",
+          "GetAutonomousDatabase", "ListAutonomousDatabases", "GetAutonomousBackup", "ListAutonomousBackups",
+          "StartDbSystem", "StopDbSystem", "StartAutonomousDatabase", "StopAutonomousDatabase"
+        ],
+        "read": [
+          "GetDbSystem", "ListDbSystems", "GetDbHome", "ListDbHomes", "GetDatabase", "ListDatabases", "GetPluggableDatabase", "ListPluggableDatabases", "GetBackup", "ListBackups",
+          "GetDbNode", "ListDbNodes", "GetExadataInfrastructure", "ListExadataInfrastructures",
+          "GetAutonomousDatabase", "ListAutonomousDatabases", "GetAutonomousBackup", "ListAutonomousBackups"
+        ],
+        "inspect": [
+          "GetDbSystem", "ListDbSystems", "GetDbHome", "ListDbHomes", "GetDatabase", "ListDatabases", "GetPluggableDatabase", "ListPluggableDatabases", "GetDbNode", "ListDbNodes",
+          "GetExadataInfrastructure", "ListExadataInfrastructures", "GetAutonomousDatabase", "ListAutonomousDatabases"
+        ]
+      }
+    }
+  ]
+}

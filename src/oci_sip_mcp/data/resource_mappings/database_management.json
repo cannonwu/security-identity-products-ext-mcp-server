@@ -1,0 +1,1825 @@
+{
+  "service": "database-management",
+  "service_name": "Database Management",
+  "description": "Oracle Cloud Database Management service resource families and API-to-permission mappings",
+  "source_pages": [
+    "https://docs.oracle.com/en-us/iaas/database-management/doc/policy-details-database-management.html"
+  ],
+  "resources": [
+    {
+      "resource_family": "dbmgmt-jobs",
+      "description": "Database Management jobs",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-jobs",
+      "verbs": {
+        "inspect": [
+          "ListJobs"
+        ],
+        "read": [
+          "GetJob",
+          "ListJobRuns",
+          "GetJobRun",
+          "ListJobExecutions",
+          "GetJobExecution",
+          "SummarizeJobExecutionsStatuses"
+        ],
+        "use": [],
+        "manage": [
+          "ChangeJobCompartment",
+          "DeleteJob",
+          "UpdateJob",
+          "CreateJob",
+          "ImplementOptimizerStatisticsAdvisorRecommendations"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListJobs": [
+          "DBMGMT_JOB_INSPECT"
+        ],
+        "GetJob": [
+          "DBMGMT_JOB_READ"
+        ],
+        "ListJobRuns": [
+          "DBMGMT_JOB_READ"
+        ],
+        "GetJobRun": [
+          "DBMGMT_JOB_READ"
+        ],
+        "ListJobExecutions": [
+          "DBMGMT_JOB_READ"
+        ],
+        "GetJobExecution": [
+          "DBMGMT_JOB_READ"
+        ],
+        "SummarizeJobExecutionsStatuses": [
+          "DBMGMT_JOB_READ"
+        ],
+        "ChangeJobCompartment": [
+          "DBMGMT_JOB_MOVE"
+        ],
+        "DeleteJob": [
+          "DBMGMT_JOB_DELETE"
+        ],
+        "UpdateJob": [
+          "DBMGMT_JOB_UPDATE"
+        ],
+        "CreateJob": [
+          "DBMGMT_JOB_CREATE",
+          "DBMGMT_MANAGED_DB_CONTENT_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE",
+          "DBMGMT_MANAGED_DB_GROUP_DB_CONTENT_READ",
+          "DBMGMT_MANAGED_DB_GROUP_DB_CONTENT_WRITE"
+        ],
+        "ImplementOptimizerStatisticsAdvisorRecommendations": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE",
+          "DBMGMT_JOB_CREATE"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-managed-database-groups",
+      "description": "Database Management managed database groups",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-managed-database-groups",
+      "verbs": {
+        "inspect": [
+          "ListManagedDatabaseGroups"
+        ],
+        "read": [
+          "GetManagedDatabaseGroup",
+          "GetDatabaseFleetBackupMetrics",
+          "GetDatabaseFleetDataguardMetrics",
+          "GetDatabaseFleetHaOverviewMetrics",
+          "GetDatabaseFleetHealthMetrics"
+        ],
+        "use": [
+          "UpdateManagedDatabaseGroup"
+        ],
+        "manage": [
+          "ChangeManagedDatabaseGroupCompartment",
+          "CreateManagedDatabaseGroup",
+          "DeleteManagedDatabaseGroup",
+          "AddManagedDatabaseToManagedDatabaseGroup",
+          "RemoveManagedDatabaseFromManagedDatabaseGroup"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListManagedDatabaseGroups": [
+          "DBMGMT_MANAGED_DB_GROUP_INSPECT"
+        ],
+        "GetManagedDatabaseGroup": [
+          "DBMGMT_MANAGED_DB_GROUP_READ"
+        ],
+        "GetDatabaseFleetBackupMetrics": [
+          "DBMGMT_MANAGED_DB_GROUP_READ",
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetDatabaseFleetDataguardMetrics": [
+          "DBMGMT_MANAGED_DB_GROUP_READ",
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetDatabaseFleetHaOverviewMetrics": [
+          "DBMGMT_MANAGED_DB_GROUP_READ",
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetDatabaseFleetHealthMetrics": [
+          "DBMGMT_MANAGED_DB_GROUP_READ",
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "UpdateManagedDatabaseGroup": [
+          "DBMGMT_MANAGED_DB_GROUP_UPDATE"
+        ],
+        "ChangeManagedDatabaseGroupCompartment": [
+          "DBMGMT_MANAGED_DB_GROUP_MOVE"
+        ],
+        "CreateManagedDatabaseGroup": [
+          "DBMGMT_MANAGED_DB_GROUP_CREATE"
+        ],
+        "DeleteManagedDatabaseGroup": [
+          "DBMGMT_MANAGED_DB_GROUP_DELETE"
+        ],
+        "AddManagedDatabaseToManagedDatabaseGroup": [
+          "DBMGMT_MANAGED_DB_GROUP_ADD_DATABASE",
+          "DBMGMT_MANAGED_DB_UPDATE"
+        ],
+        "RemoveManagedDatabaseFromManagedDatabaseGroup": [
+          "DBMGMT_MANAGED_DB_GROUP_REMOVE_DATABASE",
+          "DBMGMT_MANAGED_DB_UPDATE"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-managed-databases",
+      "description": "Database Management managed databases",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-managed-databases",
+      "verbs": {
+        "inspect": [
+          "ListManagedDatabases"
+        ],
+        "read": [
+          "GetAwrDbReport",
+          "GetAwrDbSqlReport",
+          "GetClusterCacheMetric",
+          "GetDatabaseFleetBackupMetrics",
+          "GetDatabaseFleetDataguardMetrics",
+          "GetDatabaseFleetHaOverviewMetrics",
+          "GetDatabaseFleetHealthMetrics",
+          "GetDatabaseHaBackupDetails",
+          "GetDatabaseHomeMetrics",
+          "GetDataguardPerformanceMetrics",
+          "GetManagedDatabase",
+          "GetPdbMetrics",
+          "GetPeerDatabaseMetrics",
+          "GetPreferredCredential",
+          "GetTablespace",
+          "ListAwrDbs",
+          "ListAwrDbSnapshots",
+          "ListPreferredCredentials",
+          "ListTablespaces",
+          "SummarizeAwrDbCpuUsages",
+          "SummarizeAwrDbMetrics",
+          "SummarizeAwrDbParameterChanges",
+          "SummarizeAwrDbParameters",
+          "SummarizeAwrDbSnapshotRanges",
+          "SummarizeAwrDbSysstats",
+          "SummarizeAwrDbTopWaitEvents",
+          "SummarizeAwrDbWaitEventBuckets",
+          "SummarizeAwrDbWaitEvents",
+          "TestPreferredCredential"
+        ],
+        "use": [
+          "AddmTasks",
+          "ChangeDatabaseParameters",
+          "ChangeDatafiles",
+          "ChangePlanRetention",
+          "ChangeSpaceBudget",
+          "ChangeSqlPlanBaselinesAttributes",
+          "CloneSqlTuningTask",
+          "CoalesceTablespace",
+          "ConfigureAutomaticCaptureFilters",
+          "ConfigureAutomaticSpmEvolveAdvisorTask",
+          "CreateSqlTuningSet",
+          "CreateTablespace",
+          "DeletePreferredCredential",
+          "DeleteTablespace",
+          "DisableAutomaticInitialPlanCapture",
+          "DisableAutomaticSpmEvolveAdvisorTask",
+          "DisableHighFrequencyAutomaticSpmEvolveAdvisorTask",
+          "DisableSqlPlanBaselinesUsage",
+          "DropSqlPlanBaselines",
+          "DropSqlsInSqlTuningSet",
+          "DropSqlTuningSet",
+          "DropSqlTuningTask",
+          "EnableAutomaticInitialPlanCapture",
+          "EnableAutomaticSpmEvolveAdvisorTask",
+          "EnableHighFrequencyAutomaticSpmEvolveAdvisorTask",
+          "EnableSqlPlanBaselinesUsage",
+          "FetchSqlTuningSet",
+          "GenerateAwrSnapshot",
+          "GetExecutionPlanStatsComparision",
+          "GetOptimizerStatisticsAdvisorExecution",
+          "GetOptimizerStatisticsAdvisorExecutionScript",
+          "GetOptimizerStatisticsCollectionOperation",
+          "GetSqlExecutionPlan",
+          "GetSqlPlanBaseline",
+          "GetSqlPlanBaselineConfiguration",
+          "GetSqlTuningAdvisorTaskSummaryReport",
+          "GetUser",
+          "ListAlertLogs",
+          "ListAttentionLogs",
+          "ListConsumerGroupPrivileges",
+          "ListCursorCacheStatements",
+          "ListDataAccessContainers",
+          "ListDatabaseParameters",
+          "ListObjectPrivileges",
+          "ListOptimizerStatisticsAdvisorExecutions",
+          "ListOptimizerStatisticsCollectionAggregations",
+          "ListOptimizerStatisticsCollectionOperations",
+          "ListProxiedForUsers",
+          "ListProxyUsers",
+          "ListRoles",
+          "ListSpmJobs",
+          "ListSqlPlanBaselines",
+          "ListSqlTuningAdvisorTaskFindings",
+          "ListSqlTuningAdvisorTaskRecommendations",
+          "ListSqlTuningAdvisorTasks",
+          "ListSqlTuningSets",
+          "ListSystemPrivileges",
+          "ListTableStatistics",
+          "ListUsers",
+          "LoadSqlPlanBaselinesFromAwr",
+          "LoadSqlPlanBaselinesFromCursorCache",
+          "LoadSqlTuningSet",
+          "ModifySnapshotSettings",
+          "ResetDatabaseParameters",
+          "RunHistoricAddm",
+          "SaveSqlTuningSetAs",
+          "ShrinkTablespace",
+          "StartSqlTuningTask",
+          "SummarizeSqlPlanBaselines",
+          "SummarizeSqlPlanBaselinesByLastExecution",
+          "UpdateManagedDatabase",
+          "UpdatePreferredCredential",
+          "UpdateTablespace",
+          "ValidateBasicFilter"
+        ],
+        "manage": []
+      },
+      "api_permission_tokens": {
+        "ListManagedDatabases": [
+          "DBMGMT_MANAGED_DB_INSPECT"
+        ],
+        "GetAwrDbReport": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetAwrDbSqlReport": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetClusterCacheMetric": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetDatabaseFleetBackupMetrics": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetDatabaseFleetDataguardMetrics": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetDatabaseFleetHaOverviewMetrics": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetDatabaseFleetHealthMetrics": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetDatabaseHaBackupDetails": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetDatabaseHomeMetrics": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetDataguardPerformanceMetrics": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetManagedDatabase": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetPdbMetrics": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetPeerDatabaseMetrics": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetPreferredCredential": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "GetTablespace": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "ListAwrDbs": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "ListAwrDbSnapshots": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "ListPreferredCredentials": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "ListTablespaces": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "SummarizeAwrDbCpuUsages": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "SummarizeAwrDbMetrics": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "SummarizeAwrDbParameterChanges": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "SummarizeAwrDbParameters": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "SummarizeAwrDbSnapshotRanges": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "SummarizeAwrDbSysstats": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "SummarizeAwrDbTopWaitEvents": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "SummarizeAwrDbWaitEventBuckets": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "SummarizeAwrDbWaitEvents": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "TestPreferredCredential": [
+          "DBMGMT_MANAGED_DB_READ"
+        ],
+        "AddmTasks": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ChangeDatabaseParameters": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "ChangeDatafiles": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "ChangePlanRetention": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "ChangeSpaceBudget": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "ChangeSqlPlanBaselinesAttributes": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "CloneSqlTuningTask": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "CoalesceTablespace": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "ConfigureAutomaticCaptureFilters": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "ConfigureAutomaticSpmEvolveAdvisorTask": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "CreateSqlTuningSet": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "CreateTablespace": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "DeletePreferredCredential": [
+          "DBMGMT_MANAGED_DB_UPDATE"
+        ],
+        "DeleteTablespace": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "DisableAutomaticInitialPlanCapture": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "DisableAutomaticSpmEvolveAdvisorTask": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "DisableHighFrequencyAutomaticSpmEvolveAdvisorTask": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "DisableSqlPlanBaselinesUsage": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "DropSqlPlanBaselines": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "DropSqlsInSqlTuningSet": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "DropSqlTuningSet": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "DropSqlTuningTask": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "EnableAutomaticInitialPlanCapture": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "EnableAutomaticSpmEvolveAdvisorTask": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "EnableHighFrequencyAutomaticSpmEvolveAdvisorTask": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "EnableSqlPlanBaselinesUsage": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "FetchSqlTuningSet": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GenerateAwrSnapshot": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "GetExecutionPlanStatsComparision": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GetOptimizerStatisticsAdvisorExecution": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GetOptimizerStatisticsAdvisorExecutionScript": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GetOptimizerStatisticsCollectionOperation": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GetSqlExecutionPlan": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GetSqlPlanBaseline": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GetSqlPlanBaselineConfiguration": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GetSqlTuningAdvisorTaskSummaryReport": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GetUser": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListAlertLogs": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListAttentionLogs": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListConsumerGroupPrivileges": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListCursorCacheStatements": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListDataAccessContainers": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListDatabaseParameters": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListObjectPrivileges": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListOptimizerStatisticsAdvisorExecutions": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListOptimizerStatisticsCollectionAggregations": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListOptimizerStatisticsCollectionOperations": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListProxiedForUsers": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListProxyUsers": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListRoles": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListSpmJobs": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListSqlPlanBaselines": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListSqlTuningAdvisorTaskFindings": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListSqlTuningAdvisorTaskRecommendations": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListSqlTuningAdvisorTasks": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListSqlTuningSets": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListSystemPrivileges": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListTableStatistics": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ListUsers": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "LoadSqlPlanBaselinesFromAwr": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "LoadSqlPlanBaselinesFromCursorCache": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "LoadSqlTuningSet": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "ModifySnapshotSettings": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "ResetDatabaseParameters": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "RunHistoricAddm": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "SaveSqlTuningSetAs": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "ShrinkTablespace": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "StartSqlTuningTask": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "SummarizeSqlPlanBaselines": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "SummarizeSqlPlanBaselinesByLastExecution": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "UpdateManagedDatabase": [
+          "DBMGMT_MANAGED_DB_UPDATE"
+        ],
+        "UpdatePreferredCredential": [
+          "DBMGMT_MANAGED_DB_UPDATE"
+        ],
+        "UpdateTablespace": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_WRITE"
+        ],
+        "ValidateBasicFilter": [
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-private-endpoints",
+      "description": "Database Management private endpoints",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-private-endpoints",
+      "verbs": {
+        "inspect": [
+          "ListDbManagementPrivateEndpoints"
+        ],
+        "read": [
+          "GetDbManagementPrivateEndpoint"
+        ],
+        "use": [
+          "UpdateDbManagementPrivateEndpoint"
+        ],
+        "manage": [
+          "CreateDbManagementPrivateEndpoint",
+          "DeleteDbManagementPrivateEndpoint",
+          "ChangeDbManagementPrivateEndpointCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-work-requests",
+      "description": "Database Management work requests",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-work-requests",
+      "verbs": {
+        "inspect": [
+          "ListWorkRequests"
+        ],
+        "read": [
+          "ListWorkRequestLogs",
+          "ListWorkRequestErrors",
+          "GetWorkRequest"
+        ],
+        "use": [],
+        "manage": []
+      }
+    },
+    {
+      "resource_family": "dbmgmt-external-dbsystem-discoveries",
+      "description": "Database Management external DB system discoveries",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-external-dbsystem-discoveries",
+      "verbs": {
+        "inspect": [
+          "ListExternalDbSystemDiscoveries"
+        ],
+        "read": [
+          "GetExternalDbSystemDiscovery"
+        ],
+        "use": [
+          "PatchExternalDbSystemDiscovery",
+          "UpdateExternalDbSystemDiscovery"
+        ],
+        "manage": [
+          "CreateExternalDbSystemDiscovery",
+          "DeleteExternalDbSystemDiscovery"
+        ]
+      },
+      "api_permission_tokens": {
+        "CreateExternalDbSystem": [
+          "DBMGMT_EXTERNAL_DBSYSTEM_CREATE",
+          "DBMGMT_EXTERNAL_DBSYSTEM_DISCOVERY_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-external-dbsystems",
+      "description": "Database Management external DB systems",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-external-dbsystems",
+      "verbs": {
+        "inspect": [
+          "ListExternalAsmInstances",
+          "ListExternalAsms",
+          "ListExternalClusterInstances",
+          "ListExternalClusters",
+          "ListExternalDatabases",
+          "ListExternalDbHomes",
+          "ListExternalDbNodes",
+          "ListExternalDbSystemConnectors",
+          "ListExternalDbSystems",
+          "ListExternalListeners"
+        ],
+        "read": [
+          "CheckExternalDbSystemConnectorConnectionStatus",
+          "GetExternalAsm",
+          "GetExternalAsmInstance",
+          "GetExternalAsmMetrics",
+          "GetExternalCluster",
+          "GetExternalClusterInstance",
+          "GetExternalClusterMetrics",
+          "GetExternalDbHome",
+          "GetExternalDbNode",
+          "GetExternalDbNodeMetrics",
+          "GetExternalDbSystem",
+          "GetExternalDbSystemAvailabilityMetrics",
+          "GetExternalDbSystemConnector",
+          "GetExternalListener",
+          "GetExternalListenerMetrics",
+          "ListExternalListenerServices"
+        ],
+        "use": [
+          "DisableExternalDbSystemDatabaseManagement",
+          "DisableExternalDbSystemStackMonitoring",
+          "EnableExternalDbSystemDatabaseManagement",
+          "EnableExternalDbSystemStackMonitoring",
+          "GetExternalAsmConfiguration",
+          "ListExternalAsmDiskGroups",
+          "ListExternalAsmUsers",
+          "UpdateExternalAsm",
+          "UpdateExternalAsmInstance",
+          "UpdateExternalCluster",
+          "UpdateExternalClusterInstance",
+          "UpdateExternalDbHome",
+          "UpdateExternalDbNode",
+          "UpdateExternalDbSystem",
+          "UpdateExternalDbSystemConnector",
+          "UpdateExternalListener"
+        ],
+        "manage": [
+          "ChangeExternalDbSystemCompartment",
+          "CreateExternalDbSystemConnector",
+          "DeleteExternalDbSystem",
+          "DeleteExternalDbSystemConnector"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListExternalListenerServices": [
+          "DBMGMT_EXTERNAL_DBSYSTEM_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GetExternalAsmConfiguration": [
+          "DBMGMT_EXTERNAL_DBSYSTEM_READ",
+          "DBMGMT_EXTERNAL_DBSYSTEM_CONTENT_READ"
+        ],
+        "ListExternalAsmDiskGroups": [
+          "DBMGMT_EXTERNAL_DBSYSTEM_READ",
+          "DBMGMT_EXTERNAL_DBSYSTEM_CONTENT_READ"
+        ],
+        "ListExternalAsmUsers": [
+          "DBMGMT_EXTERNAL_DBSYSTEM_READ",
+          "DBMGMT_EXTERNAL_DBSYSTEM_CONTENT_READ"
+        ],
+        "CreateExternalDbSystem": [
+          "DBMGMT_EXTERNAL_DBSYSTEM_CREATE",
+          "DBMGMT_EXTERNAL_DBSYSTEM_DISCOVERY_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-cloud-dbsystem-discoveries",
+      "description": "Database Management cloud DB system discoveries",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-cloud-dbsystem-discoveries",
+      "verbs": {
+        "inspect": [
+          "ListCloudDbSystemDiscoveries"
+        ],
+        "read": [
+          "GetCloudDbSystemDiscovery"
+        ],
+        "use": [
+          "PatchCloudDbSystemDiscovery",
+          "UpdateCloudDbSystemDiscovery"
+        ],
+        "manage": [
+          "CreateCloudDbSystemDiscovery",
+          "DeleteCloudDbSystemDiscovery"
+        ]
+      },
+      "api_permission_tokens": {
+        "CreateCloudDbSystem": [
+          "DBMGMT_CLOUD_DBSYSTEM_CREATE",
+          "DBMGMT_CLOUD_DBSYSTEM_DISCOVERY_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-cloud-dbsystems",
+      "description": "Database Management cloud DB systems",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-cloud-dbsystems",
+      "verbs": {
+        "inspect": [
+          "ListCloudAsmInstances",
+          "ListCloudAsms",
+          "ListCloudClusterInstances",
+          "ListCloudClusters",
+          "ListCloudDatabases",
+          "ListCloudDbHomes",
+          "ListCloudDbNodes",
+          "ListCloudDbSystemConnectors",
+          "ListCloudDbSystems",
+          "ListCloudListeners"
+        ],
+        "read": [
+          "CheckCloudDbSystemConnectorConnectionStatus",
+          "GetCloudAsm",
+          "GetCloudAsmInstance",
+          "GetCloudAsmMetrics",
+          "GetCloudCluster",
+          "GetCloudClusterInstance",
+          "GetCloudClusterMetrics",
+          "GetCloudDbHome",
+          "GetCloudDbNode",
+          "GetCloudDbNodeMetrics",
+          "GetCloudDbSystem",
+          "GetCloudDbSystemAvailabilityMetrics",
+          "GetCloudDbSystemConnector",
+          "GetCloudListener",
+          "GetCloudListenerMetrics",
+          "ListCloudListenerServices"
+        ],
+        "use": [
+          "DisableCloudDbSystemDatabaseManagement",
+          "DisableCloudDbSystemStackMonitoring",
+          "EnableCloudDbSystemDatabaseManagement",
+          "EnableCloudDbSystemStackMonitoring",
+          "GetCloudAsmConfiguration",
+          "ListCloudAsmDiskGroups",
+          "ListCloudAsmUsers",
+          "UpdateCloudAsm",
+          "UpdateCloudAsmInstance",
+          "UpdateCloudCluster",
+          "UpdateCloudClusterInstance",
+          "UpdateCloudDbHome",
+          "UpdateCloudDbNode",
+          "UpdateCloudDbSystem",
+          "UpdateCloudDbSystemConnector",
+          "UpdateCloudListener"
+        ],
+        "manage": [
+          "CreateCloudDbSystemConnector",
+          "DeleteCloudDbSystem",
+          "DeleteCloudDbSystemConnector"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListCloudListenerServices": [
+          "DBMGMT_CLOUD_DBSYSTEM_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "GetCloudAsmConfiguration": [
+          "DBMGMT_CLOUD_DBSYSTEM_READ",
+          "DBMGMT_CLOUD_DBSYSTEM_CONTENT_READ"
+        ],
+        "ListCloudAsmDiskGroups": [
+          "DBMGMT_CLOUD_DBSYSTEM_READ",
+          "DBMGMT_CLOUD_DBSYSTEM_CONTENT_READ"
+        ],
+        "ListCloudAsmUsers": [
+          "DBMGMT_CLOUD_DBSYSTEM_READ",
+          "DBMGMT_CLOUD_DBSYSTEM_CONTENT_READ"
+        ],
+        "CreateCloudDbSystem": [
+          "DBMGMT_CLOUD_DBSYSTEM_CREATE",
+          "DBMGMT_CLOUD_DBSYSTEM_DISCOVERY_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-external-exadata",
+      "description": "Database Management external Exadata",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-external-exadata",
+      "verbs": {
+        "inspect": [
+          "ListExternalExadataInfrastructures",
+          "ListExternalExadataStorageServerConnectors",
+          "ListExternalExadataStorageServers"
+        ],
+        "read": [
+          "CheckExternalExadataStorageServerConnector",
+          "GetExternalExadataInfrastructure",
+          "GetExternalExadataStorageGrid",
+          "GetExternalExadataStorageServer",
+          "GetExternalExadataStorageServerConnector",
+          "GetExadataInfrastructureFleetHealthMetrics"
+        ],
+        "use": [
+          "DisableExternalExadataInfrastructureManagement",
+          "EnableExternalExadataInfrastructureManagement",
+          "GetIormPlan",
+          "GetOpenAlertHistory",
+          "GetTopSqlCpuActivity",
+          "UpdateExternalExadataInfrastructure",
+          "UpdateExternalExadataStorageServerConnector"
+        ],
+        "manage": [
+          "ChangeExternalExadataInfrastructureCompartment",
+          "CreateExternalExadataInfrastructure",
+          "CreateExternalExadataStorageServerConnector",
+          "DeleteExternalExadataInfrastructure",
+          "DeleteExternalExadataStorageServerConnector",
+          "DiscoverExternalExadataInfrastructure"
+        ]
+      },
+      "api_permission_tokens": {
+        "GetExadataInfrastructureFleetHealthMetrics": [
+          "DBMGMT_EXTERNAL_EXADATA_READ",
+          "DBMGMT_CLOUD_EXADATA_READ"
+        ],
+        "GetIormPlan": [
+          "DBMGMT_EXTERNAL_EXADATA_READ",
+          "DBMGMT_EXTERNAL_EXADATA_CONTENT_READ"
+        ],
+        "GetOpenAlertHistory": [
+          "DBMGMT_EXTERNAL_EXADATA_READ",
+          "DBMGMT_EXTERNAL_EXADATA_CONTENT_READ"
+        ],
+        "GetTopSqlCpuActivity": [
+          "DBMGMT_EXTERNAL_EXADATA_READ",
+          "DBMGMT_EXTERNAL_EXADATA_CONTENT_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-cloud-exadata",
+      "description": "Database Management cloud Exadata",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-cloud-exadata",
+      "verbs": {
+        "inspect": [
+          "ListCloudExadataInfrastructures",
+          "ListCloudExadataStorageServerConnectors",
+          "ListCloudExadataStorageServers"
+        ],
+        "read": [
+          "CheckCloudExadataStorageServerConnector",
+          "GetCloudExadataInfrastructure",
+          "GetCloudExadataStorageGrid",
+          "GetCloudExadataStorageServer",
+          "GetCloudExadataStorageServerConnector",
+          "GetExadataInfrastructureFleetHealthMetrics"
+        ],
+        "use": [
+          "DisableCloudExadataInfrastructureManagement",
+          "EnableCloudExadataInfrastructureManagement",
+          "GetIormPlan",
+          "GetOpenAlertHistory",
+          "GetTopSqlCpuActivity",
+          "UpdateCloudExadataInfrastructure",
+          "UpdateCloudExadataStorageServerConnector"
+        ],
+        "manage": [
+          "ChangeCloudExadataInfrastructureCompartment",
+          "CreateCloudExadataInfrastructure",
+          "CreateCloudExadataStorageServerConnector",
+          "DeleteCloudExadataInfrastructure",
+          "DeleteCloudExadataStorageServerConnector",
+          "DiscoverCloudExadataInfrastructure"
+        ]
+      },
+      "api_permission_tokens": {
+        "GetExadataInfrastructureFleetHealthMetrics": [
+          "DBMGMT_EXTERNAL_EXADATA_READ",
+          "DBMGMT_CLOUD_EXADATA_READ"
+        ],
+        "GetIormPlan": [
+          "DBMGMT_CLOUD_EXADATA_READ",
+          "DBMGMT_CLOUD_EXADATA_CONTENT_READ"
+        ],
+        "GetOpenAlertHistory": [
+          "DBMGMT_CLOUD_EXADATA_READ",
+          "DBMGMT_CLOUD_EXADATA_CONTENT_READ"
+        ],
+        "GetTopSqlCpuActivity": [
+          "DBMGMT_CLOUD_EXADATA_READ",
+          "DBMGMT_CLOUD_EXADATA_CONTENT_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-named-credentials",
+      "description": "Database Management named credentials",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-named-credentials",
+      "verbs": {
+        "inspect": [
+          "ListNamedCredentials"
+        ],
+        "read": [
+          "GetNamedCredential",
+          "TestNamedCredential"
+        ],
+        "use": [
+          "UpdateNamedCredential"
+        ],
+        "manage": [
+          "ChangeNamedCredentialCompartment",
+          "DeleteNamedCredential",
+          "CreateNamedCredential"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListNamedCredentials": [
+          "DBMGMT_NAMED_CREDENTIAL_INSPECT"
+        ],
+        "GetNamedCredential": [
+          "DBMGMT_NAMED_CREDENTIAL_READ"
+        ],
+        "TestNamedCredential": [
+          "DBMGMT_NAMED_CREDENTIAL_READ",
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "UpdateNamedCredential": [
+          "DBMGMT_NAMED_CREDENTIAL_UPDATE",
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ],
+        "ChangeNamedCredentialCompartment": [
+          "DBMGMT_NAMED_CREDENTIAL_MOVE"
+        ],
+        "DeleteNamedCredential": [
+          "DBMGMT_NAMED_CREDENTIAL_DELETE"
+        ],
+        "CreateNamedCredential": [
+          "DBMGMT_NAMED_CREDENTIAL_CREATE",
+          "DBMGMT_MANAGED_DB_READ",
+          "DBMGMT_MANAGED_DB_CONTENT_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-dblm-vulnerability",
+      "description": "Database Lifecycle Management vulnerability assessment",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-dblm-vulnerability",
+      "verbs": {
+        "inspect": [
+          "ListVulnerabilityScans"
+        ],
+        "read": [
+          "GetVulnerability",
+          "GetVulnerabilityScan",
+          "ListAggregatedVulnerabilityData",
+          "ListNotifications",
+          "ListVulnerabilities",
+          "ListVulnerabilityResources"
+        ],
+        "use": [],
+        "manage": [
+          "CreateVulnerabilityScan",
+          "Ingest",
+          "IngestError",
+          "IngestWorkDetails"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListVulnerabilityScans": [
+          "DBMGMT_DBLM_VUL_ASSESSMENT_INSPECT"
+        ],
+        "GetVulnerability": [
+          "DBMGMT_DBLM_VUL_ASSESSMENT_READ"
+        ],
+        "GetVulnerabilityScan": [
+          "DBMGMT_DBLM_VUL_ASSESSMENT_READ"
+        ],
+        "ListAggregatedVulnerabilityData": [
+          "DBMGMT_DBLM_VUL_ASSESSMENT_READ"
+        ],
+        "ListNotifications": [
+          "DBMGMT_DBLM_VUL_ASSESSMENT_READ"
+        ],
+        "ListVulnerabilities": [
+          "DBMGMT_DBLM_VUL_ASSESSMENT_READ"
+        ],
+        "ListVulnerabilityResources": [
+          "DBMGMT_DBLM_VUL_ASSESSMENT_READ"
+        ],
+        "CreateVulnerabilityScan": [
+          "DBMGMT_DBLM_VUL_ASSESSMENT_CREATE"
+        ],
+        "Ingest": [
+          "DBMGMT_DBLM_INGEST"
+        ],
+        "IngestError": [
+          "DBMGMT_DBLM_INGEST"
+        ],
+        "IngestWorkDetails": [
+          "DBMGMT_DBLM_INGEST"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-dblm-workrequest",
+      "description": "Database Lifecycle Management work requests",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-dblm-workrequest",
+      "verbs": {
+        "inspect": [
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "ListWorkRequests"
+        ],
+        "read": [
+          "GetWorkRequest"
+        ],
+        "use": [],
+        "manage": []
+      },
+      "api_permission_tokens": {
+        "ListWorkRequestErrors": [
+          "DBMGMT_DBLM_WORK_REQUEST_INSPECT"
+        ],
+        "ListWorkRequestLogs": [
+          "DBMGMT_DBLM_WORK_REQUEST_INSPECT"
+        ],
+        "ListWorkRequests": [
+          "DBMGMT_DBLM_WORK_REQUEST_INSPECT"
+        ],
+        "GetWorkRequest": [
+          "DBMGMT_DBLM_WORK_REQUEST_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-dblm-patch-mgmt",
+      "description": "Database Lifecycle Management patch management",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-dblm-patch-mgmt",
+      "verbs": {
+        "inspect": [
+          "GetReleaseVersionDetail",
+          "ListDatabases",
+          "ListPatchOperations",
+          "ListPatchTasks",
+          "ListPatchTaskSteps",
+          "ListSoftwareImages"
+        ],
+        "read": [
+          "GetPatchInfoStore",
+          "GetPatchManagement",
+          "GetPatchOperation",
+          "GetPatchTask",
+          "GetPatchTaskStep",
+          "GetSoftwareImage",
+          "Subscribe",
+          "Unsubscribe"
+        ],
+        "use": [],
+        "manage": [
+          "AbortPatchOperation",
+          "ChangePatchOperationCompartment",
+          "CheckPatchConflict",
+          "CreateSoftwareImage",
+          "CreateSoftwareImageVersion",
+          "DeletePatchOperation",
+          "DeleteSoftwareImage",
+          "PatchResources",
+          "QuickValidations",
+          "RetryPatchOperation",
+          "UpdatePatchOperation",
+          "UpdateSoftwareImage",
+          "UpdateSoftwareImageVersion",
+          "ValidateMosCredentials"
+        ]
+      },
+      "api_permission_tokens": {
+        "GetReleaseVersionDetail": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_INSPECT"
+        ],
+        "ListDatabases": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_INSPECT"
+        ],
+        "ListPatchOperations": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_INSPECT"
+        ],
+        "ListPatchTasks": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_INSPECT"
+        ],
+        "ListPatchTaskSteps": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_INSPECT"
+        ],
+        "ListSoftwareImages": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_INSPECT"
+        ],
+        "GetPatchInfoStore": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_READ"
+        ],
+        "GetPatchManagement": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_READ"
+        ],
+        "GetPatchOperation": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_READ"
+        ],
+        "GetPatchTask": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_READ"
+        ],
+        "GetPatchTaskStep": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_READ"
+        ],
+        "GetSoftwareImage": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_READ"
+        ],
+        "Subscribe": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_READ"
+        ],
+        "Unsubscribe": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_READ"
+        ],
+        "AbortPatchOperation": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_UPDATE"
+        ],
+        "ChangePatchOperationCompartment": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_MOVE"
+        ],
+        "CheckPatchConflict": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_CREATE"
+        ],
+        "CreateSoftwareImage": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_CREATE"
+        ],
+        "CreateSoftwareImageVersion": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_UPDATE"
+        ],
+        "DeletePatchOperation": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_DELETE"
+        ],
+        "DeleteSoftwareImage": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_DELETE"
+        ],
+        "PatchResources": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_CREATE"
+        ],
+        "QuickValidations": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_CREATE"
+        ],
+        "RetryPatchOperation": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_UPDATE"
+        ],
+        "UpdatePatchOperation": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_UPDATE"
+        ],
+        "UpdateSoftwareImage": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_UPDATE"
+        ],
+        "UpdateSoftwareImageVersion": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_UPDATE"
+        ],
+        "ValidateMosCredentials": [
+          "DBMGMT_DBLM_PATCH_MANAGEMENT_CREATE"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-dblm-patch-operations",
+      "description": "Database Lifecycle Management patch operations",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-dblm-patch-operations",
+      "verbs": {
+        "inspect": [
+          "GetReleaseVersionDetail",
+          "ListPatchOperations",
+          "ListPatchTasks",
+          "ListPatchTaskSteps",
+          "ListSoftwareImages"
+        ],
+        "read": [
+          "GetPatchInfoStore",
+          "GetPatchOperation",
+          "GetPatchTask",
+          "GetPatchTaskStep",
+          "GetSoftwareImage",
+          "Subscribe",
+          "Unsubscribe"
+        ],
+        "use": [],
+        "manage": [
+          "AbortPatchOperation",
+          "ChangePatchOperationCompartment",
+          "DeletePatchOperation",
+          "Ingest",
+          "IngestError",
+          "IngestWorkDetails",
+          "PatchResources",
+          "QuickValidations",
+          "RetryPatchOperation",
+          "UpdatePatchOperation"
+        ]
+      },
+      "api_permission_tokens": {
+        "AbortPatchOperation": [
+          "DBMGMT_DBLM_PATCH_OPERATION_UPDATE"
+        ],
+        "ChangePatchOperationCompartment": [
+          "DBMGMT_DBLM_PATCH_OPERATION_MOVE"
+        ],
+        "DeletePatchOperation": [
+          "DBMGMT_DBLM_PATCH_OPERATION_DELETE"
+        ],
+        "Ingest": [
+          "DBMGMT_DBLM_INGEST"
+        ],
+        "IngestError": [
+          "DBMGMT_DBLM_INGEST"
+        ],
+        "IngestWorkDetails": [
+          "DBMGMT_DBLM_INGEST"
+        ],
+        "PatchResources": [
+          "DBMGMT_DBLM_PATCH_OPERATION_CREATE"
+        ],
+        "QuickValidations": [
+          "DBMGMT_DBLM_PATCH_OPERATION_CREATE"
+        ],
+        "RetryPatchOperation": [
+          "DBMGMT_DBLM_PATCH_OPERATION_UPDATE"
+        ],
+        "UpdatePatchOperation": [
+          "DBMGMT_DBLM_PATCH_OPERATION_UPDATE"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-sqlwatch-fleet",
+      "description": "SQL Performance Watch fleets",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-sqlwatch-fleet",
+      "verbs": {
+        "inspect": [],
+        "read": [
+          "GetSqlWatchFleet",
+          "GetSqlWatchFleetComparison",
+          "ListSqlWatchFleetComparisons"
+        ],
+        "use": [
+          "UpdateSqlWatchFleetComparison"
+        ],
+        "manage": [
+          "CreateSqlWatchFleetComparison",
+          "DeleteSqlWatchFleetComparison"
+        ]
+      },
+      "api_permission_tokens": {
+        "GetSqlWatchFleet": [
+          "DBMGMT_SPA_FLEET_DB_READ"
+        ],
+        "GetSqlWatchFleetComparison": [
+          "DBMGMT_SPA_FLEET_DB_READ"
+        ],
+        "ListSqlWatchFleetComparisons": [
+          "DBMGMT_SPA_FLEET_DB_READ"
+        ],
+        "UpdateSqlWatchFleetComparison": [
+          "DBMGMT_SPA_FLEET_DB_COMPARISON_UPDATE"
+        ],
+        "CreateSqlWatchFleetComparison": [
+          "DBMGMT_SPA_FLEET_DB_COMPARISON_CREATE"
+        ],
+        "DeleteSqlWatchFleetComparison": [
+          "DBMGMT_SPA_FLEET_DB_COMPARISON_DELETE"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-sqlwatch-spa",
+      "description": "SQL Performance Watch SPA tasks",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-sqlwatch-spa",
+      "verbs": {
+        "inspect": [
+          "ListSqlWatchTasks"
+        ],
+        "read": [
+          "GetSqlWatchTask",
+          "GetSqlWatchTaskComparison",
+          "GetSqlWatchTaskTrial",
+          "ListSqlWatchTaskComparisonParameters",
+          "ListSqlWatchTaskComparisons",
+          "ListSqlWatchTaskExecutionParameters",
+          "ListSqlWatchTaskExecutionTypes",
+          "ListSqlWatchTaskInitialParameters",
+          "ListSqlWatchTaskMetrics",
+          "ListSqlWatchTaskTrialParameters",
+          "ListSqlWatchTaskTrials",
+          "ListSqlWatchTaskTypes",
+          "ListSqlWatchTuningSets",
+          "SummarizeActionSummarizeLatestComparisons",
+          "SummarizeByStatus",
+          "SummarizeByType"
+        ],
+        "use": [
+          "CompleteSpaTask",
+          "InterruptSpaTask",
+          "ResumeSpaTask",
+          "UpdateSqlWatchTask",
+          "UpdateSqlWatchTaskComparison",
+          "UpdateSqlWatchTaskTrial"
+        ],
+        "manage": [
+          "CreateSqlWatchDbLink",
+          "CreateSqlWatchTask",
+          "CreateSqlWatchTaskComparison",
+          "CreateSqlWatchTaskTrial",
+          "DeleteSqlWatchDbLink",
+          "DeleteSqlWatchTask",
+          "DeleteSqlWatchTaskComparison",
+          "DeleteSqlWatchTaskTrial",
+          "GetSqlWatchDbLink",
+          "ListCreateLikeParameters",
+          "ListSqlWatchDbLinks",
+          "PublishSqlResult",
+          "UpdateSqlWatchDbLink"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListSqlWatchTasks": [
+          "DBMGMT_SPA_TASK_INSPECT"
+        ],
+        "GetSqlWatchTask": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "GetSqlWatchTaskComparison": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "GetSqlWatchTaskTrial": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "ListSqlWatchTaskComparisonParameters": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "ListSqlWatchTaskComparisons": [
+          "DBMGMT_SPA_TASK_COMPARISON_READ"
+        ],
+        "ListSqlWatchTaskExecutionParameters": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "ListSqlWatchTaskExecutionTypes": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "ListSqlWatchTaskInitialParameters": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "ListSqlWatchTaskMetrics": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "ListSqlWatchTaskTrialParameters": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "ListSqlWatchTaskTrials": [
+          "DBMGMT_SPA_TASK_TRIAL_READ"
+        ],
+        "ListSqlWatchTaskTypes": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "ListSqlWatchTuningSets": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "SummarizeActionSummarizeLatestComparisons": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "SummarizeByStatus": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "SummarizeByType": [
+          "DBMGMT_SPA_TASK_READ"
+        ],
+        "CompleteSpaTask": [
+          "DBMGMT_SPA_TASK_COMPLETE"
+        ],
+        "InterruptSpaTask": [
+          "DBMGMT_SPA_TASK_INTERRUPT"
+        ],
+        "ResumeSpaTask": [
+          "DBMGMT_SPA_TASK_RESUME"
+        ],
+        "UpdateSqlWatchTask": [
+          "DBMGMT_SPA_TASK_UPDATE"
+        ],
+        "UpdateSqlWatchTaskComparison": [
+          "DBMGMT_SPA_TASK_UPDATE"
+        ],
+        "UpdateSqlWatchTaskTrial": [
+          "DBMGMT_SPA_TASK_UPDATE"
+        ],
+        "CreateSqlWatchDbLink": [
+          "DBMGMT_SPA_TASK_CREATE"
+        ],
+        "CreateSqlWatchTask": [
+          "DBMGMT_SPA_TASK_CREATE"
+        ],
+        "CreateSqlWatchTaskComparison": [
+          "DBMGMT_SPA_TASK_COMPARISON_CREATE"
+        ],
+        "CreateSqlWatchTaskTrial": [
+          "DBMGMT_SPA_TASK_TRIAL_CREATE"
+        ],
+        "DeleteSqlWatchDbLink": [
+          "DBMGMT_SPA_TASK_CREATE"
+        ],
+        "DeleteSqlWatchTask": [
+          "DBMGMT_SPA_TASK_DELETE"
+        ],
+        "DeleteSqlWatchTaskComparison": [
+          "DBMGMT_SPA_TASK_COMPARISON_DELETE"
+        ],
+        "DeleteSqlWatchTaskTrial": [
+          "DBMGMT_SPA_TASK_TRIAL_DELETE"
+        ],
+        "GetSqlWatchDbLink": [
+          "DBMGMT_SPA_TASK_CREATE"
+        ],
+        "ListCreateLikeParameters": [
+          "DBMGMT_SPA_TASK_TRIAL_CREATE"
+        ],
+        "ListSqlWatchDbLinks": [
+          "DBMGMT_SPA_TASK_CREATE"
+        ],
+        "PublishSqlResult": [
+          "DBMGMT_SPA_TASK_PUBLISH_SQL_RESULT"
+        ],
+        "UpdateSqlWatchDbLink": [
+          "DBMGMT_SPA_TASK_CREATE"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-managed-mysql-databases",
+      "description": "Database Management managed MySQL databases",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-managed-mysql-databases",
+      "verbs": {
+        "inspect": [
+          "ListManagedMySqlDatabases"
+        ],
+        "read": [
+          "GetHeatWaveFleetMetric",
+          "GetManagedMySqlDatabase",
+          "GetMySqlFleetMetric",
+          "SummarizeManagedMySqlDatabaseAvailabilityMetrics"
+        ],
+        "use": [
+          "ChangeMysqlDatabaseManagementType",
+          "GetBinaryLogInformation",
+          "GetGeneralReplicationInformation",
+          "GetMySqlQueryDetails",
+          "ListHighAvailabilityMembers",
+          "ListInboundReplications",
+          "ListManagedMySqlDatabaseConfigurationData",
+          "ListManagedMySqlDatabaseSqlData",
+          "ListMySqlDigestErrors",
+          "ListOutboundReplications"
+        ],
+        "manage": []
+      },
+      "api_permission_tokens": {
+        "ListManagedMySqlDatabases": [
+          "DBMGMT_MANAGED_MYSQL_DB_INSPECT"
+        ],
+        "GetHeatWaveFleetMetric": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ"
+        ],
+        "GetManagedMySqlDatabase": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ"
+        ],
+        "GetMySqlFleetMetric": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ"
+        ],
+        "SummarizeManagedMySqlDatabaseAvailabilityMetrics": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ"
+        ],
+        "ChangeMysqlDatabaseManagementType": [
+          "DBMGMT_MANAGED_MYSQL_DB_UPDATE"
+        ],
+        "GetBinaryLogInformation": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ",
+          "DBMGMT_MANAGED_MYSQL_DB_CONTENT_READ"
+        ],
+        "GetGeneralReplicationInformation": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ",
+          "DBMGMT_MANAGED_MYSQL_DB_CONTENT_READ"
+        ],
+        "GetMySqlQueryDetails": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ",
+          "DBMGMT_MANAGED_MYSQL_DB_CONTENT_READ",
+          "DBMGMT_MANAGED_MYSQL_DB_DISPLAY_EXPLAIN_PLAN"
+        ],
+        "ListHighAvailabilityMembers": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ",
+          "DBMGMT_MANAGED_MYSQL_DB_CONTENT_READ"
+        ],
+        "ListInboundReplications": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ",
+          "DBMGMT_MANAGED_MYSQL_DB_CONTENT_READ"
+        ],
+        "ListManagedMySqlDatabaseConfigurationData": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ",
+          "DBMGMT_MANAGED_MYSQL_DB_CONTENT_READ"
+        ],
+        "ListManagedMySqlDatabaseSqlData": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ",
+          "DBMGMT_MANAGED_MYSQL_DB_CONTENT_READ"
+        ],
+        "ListMySqlDigestErrors": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ",
+          "DBMGMT_MANAGED_MYSQL_DB_CONTENT_READ"
+        ],
+        "ListOutboundReplications": [
+          "DBMGMT_MANAGED_MYSQL_DB_READ",
+          "DBMGMT_MANAGED_MYSQL_DB_CONTENT_READ"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-external-mysql-databases",
+      "description": "Database Management external MySQL databases",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-external-mysql-databases",
+      "verbs": {
+        "inspect": [
+          "ListExternalMySqlDatabases"
+        ],
+        "read": [
+          "GetExternalMySqlDatabase",
+          "CheckExternalMySqlDatabaseConnectorConnectionStatus"
+        ],
+        "use": [
+          "UpdateExternalMysqlDatabase",
+          "CreateExternalMySqlDatabaseConnector",
+          "DeleteExternalMySqlDatabaseConnector",
+          "DisableExternalMySqlDatabaseManagement",
+          "EnableExternalMySqlDatabaseManagement"
+        ],
+        "manage": [
+          "CreateExternalMySqlDatabase",
+          "DeleteExternalMySqlDatabase"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListExternalMySqlDatabases": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_INSPECT"
+        ],
+        "GetExternalMySqlDatabase": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_READ"
+        ],
+        "CheckExternalMySqlDatabaseConnectorConnectionStatus": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_READ",
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_UPDATE"
+        ],
+        "UpdateExternalMysqlDatabase": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_UPDATE"
+        ],
+        "CreateExternalMySqlDatabaseConnector": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_UPDATE",
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_CREATE"
+        ],
+        "DeleteExternalMySqlDatabaseConnector": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_UPDATE",
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_DELETE"
+        ],
+        "DisableExternalMySqlDatabaseManagement": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_UPDATE",
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_UPDATE"
+        ],
+        "EnableExternalMySqlDatabaseManagement": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_UPDATE",
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_UPDATE"
+        ],
+        "CreateExternalMySqlDatabase": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_CREATE"
+        ],
+        "DeleteExternalMySqlDatabase": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_DELETE"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-external-mysql-database-connectors",
+      "description": "Database Management external MySQL database connectors",
+      "source_section": "Details for Verb + Resource-Type Combinations > dbmgmt-external-mysql-database-connectors",
+      "verbs": {
+        "inspect": [
+          "ListMySqlDatabaseConnectors"
+        ],
+        "read": [
+          "GetExternalMySqlDatabaseConnector"
+        ],
+        "use": [
+          "UpdateExternalMysqlDatabaseConnector",
+          "CheckExternalMySqlDatabaseConnectorConnectionStatus",
+          "DisableExternalMySqlDatabaseManagement",
+          "EnableExternalMySqlDatabaseManagement"
+        ],
+        "manage": [
+          "CreateExternalMySqlDatabaseConnector",
+          "DeleteExternalMySqlDatabaseConnector"
+        ]
+      },
+      "api_permission_tokens": {
+        "ListMySqlDatabaseConnectors": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_INSPECT"
+        ],
+        "GetExternalMySqlDatabaseConnector": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_READ"
+        ],
+        "UpdateExternalMysqlDatabaseConnector": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_UPDATE"
+        ],
+        "CheckExternalMySqlDatabaseConnectorConnectionStatus": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_READ",
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_UPDATE"
+        ],
+        "DisableExternalMySqlDatabaseManagement": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_UPDATE",
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_UPDATE"
+        ],
+        "EnableExternalMySqlDatabaseManagement": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_UPDATE",
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_UPDATE"
+        ],
+        "CreateExternalMySqlDatabaseConnector": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_UPDATE",
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_CREATE"
+        ],
+        "DeleteExternalMySqlDatabaseConnector": [
+          "DBMGMT_EXTERNAL_MYSQL_DB_UPDATE",
+          "DBMGMT_EXTERNAL_MYSQL_DB_CONNECTOR_DELETE"
+        ]
+      }
+    },
+    {
+      "resource_family": "dbmgmt-dblm-family",
+      "description": "Database Lifecycle Management aggregate family",
+      "source_section": "Resource-types > Aggregate Resource-types",
+      "includes": [
+        "dbmgmt-dblm-vulnerability",
+        "dbmgmt-dblm-workrequest",
+        "dbmgmt-dblm-patch-mgmt",
+        "dbmgmt-dblm-patch-operations"
+      ],
+      "verbs": {
+        "inspect": [],
+        "read": [],
+        "use": [],
+        "manage": []
+      }
+    },
+    {
+      "resource_family": "dbmgmt-mysql-family",
+      "description": "Database Management MySQL aggregate family",
+      "source_section": "Resource-types > HeatWave and External MySQL DB System Resource-types",
+      "includes": [
+        "dbmgmt-managed-mysql-databases",
+        "dbmgmt-external-mysql-databases",
+        "dbmgmt-external-mysql-database-connectors"
+      ],
+      "verbs": {
+        "inspect": [],
+        "read": [],
+        "use": [],
+        "manage": []
+      }
+    },
+    {
+      "resource_family": "dbmgmt-family",
+      "description": "Database Management aggregate family",
+      "source_section": "Resource-types > Aggregate Resource-types",
+      "includes": [
+        "dbmgmt-jobs",
+        "dbmgmt-managed-database-groups",
+        "dbmgmt-managed-databases",
+        "dbmgmt-private-endpoints",
+        "dbmgmt-work-requests",
+        "dbmgmt-external-dbsystem-discoveries",
+        "dbmgmt-external-dbsystems",
+        "dbmgmt-cloud-dbsystem-discoveries",
+        "dbmgmt-cloud-dbsystems",
+        "dbmgmt-external-exadata",
+        "dbmgmt-cloud-exadata",
+        "dbmgmt-named-credentials",
+        "dbmgmt-dblm-family",
+        "dbmgmt-sqlwatch-fleet",
+        "dbmgmt-sqlwatch-spa",
+        "dbmgmt-mysql-family"
+      ],
+      "verbs": {
+        "inspect": [],
+        "read": [],
+        "use": [],
+        "manage": []
+      }
+    }
+  ]
+}

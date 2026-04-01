@@ -1,0 +1,359 @@
+{
+  "service": "stack-monitoring",
+  "service_name": "Stack Monitoring",
+  "description": "Linked policy reference resource-types for Stack Monitoring and AppMgmt.",
+  "resources": [
+    {
+      "resource_family": "appmgmt-family",
+      "description": "AppMgmt aggregate resource-type",
+      "includes": [
+        "appmgmt-monitored-instance",
+        "appmgmt-work-request"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "stack-monitoring-family",
+      "description": "Stack Monitoring aggregate resource-type",
+      "includes": [
+        "stack-monitoring-resource",
+        "stack-monitoring-resource-type",
+        "stack-monitoring-task",
+        "stack-monitoring-discovery-job",
+        "stack-monitoring-work-request",
+        "stack-monitoring-metric-extension",
+        "stack-monitoring-config",
+        "stack-monitoring-baselineable-metric",
+        "stack-monitoring-process-set",
+        "stack-monitoring-monitoring-template",
+        "stack-monitoring-defined-monitoring-template"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "appmgmt-monitored-instance",
+      "description": "AppMgmt monitored instance",
+      "verbs": {
+        "inspect": [
+          "ListMonitoredInstances"
+        ],
+        "read": [
+          "ListMonitoredInstances",
+          "GetMonitoredInstance"
+        ],
+        "use": [
+          "ListMonitoredInstances",
+          "GetMonitoredInstance",
+          "UpdateMonitoredInstance"
+        ],
+        "manage": [
+          "ListMonitoredInstances",
+          "GetMonitoredInstance",
+          "UpdateMonitoredInstance",
+          "CreateMonitoredInstance",
+          "DeleteMonitoredInstance"
+        ]
+      }
+    },
+    {
+      "resource_family": "appmgmt-work-request",
+      "description": "AppMgmt work request",
+      "verbs": {
+        "inspect": [
+          "ListWorkRequests"
+        ],
+        "read": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "use": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "manage": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-resource",
+      "description": "Stack monitoring resource",
+      "verbs": {
+        "inspect": [
+          "ListMonitoredResources"
+        ],
+        "read": [
+          "ListMonitoredResources",
+          "GetMonitoredResource"
+        ],
+        "use": [
+          "ListMonitoredResources",
+          "GetMonitoredResource",
+          "UpdateMonitoredResource"
+        ],
+        "manage": [
+          "ListMonitoredResources",
+          "GetMonitoredResource",
+          "UpdateMonitoredResource",
+          "CreateMonitoredResource",
+          "DeleteMonitoredResource"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-resource-type",
+      "description": "Stack monitoring resource type",
+      "verbs": {
+        "inspect": [
+          "ListMonitoredResourceTypes"
+        ],
+        "read": [
+          "ListMonitoredResourceTypes",
+          "GetMonitoredResourceType"
+        ],
+        "use": [
+          "ListMonitoredResourceTypes",
+          "GetMonitoredResourceType"
+        ],
+        "manage": [
+          "ListMonitoredResourceTypes",
+          "GetMonitoredResourceType"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-task",
+      "description": "Stack monitoring task",
+      "verbs": {
+        "inspect": [
+          "ListTasks"
+        ],
+        "read": [
+          "ListTasks",
+          "GetTask"
+        ],
+        "use": [
+          "ListTasks",
+          "GetTask",
+          "UpdateTask"
+        ],
+        "manage": [
+          "ListTasks",
+          "GetTask",
+          "UpdateTask",
+          "CreateTask",
+          "DeleteTask"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-discovery-job",
+      "description": "Stack monitoring discovery job",
+      "verbs": {
+        "inspect": [
+          "ListDiscoveryJobs"
+        ],
+        "read": [
+          "ListDiscoveryJobs",
+          "GetDiscoveryJob"
+        ],
+        "use": [
+          "ListDiscoveryJobs",
+          "GetDiscoveryJob",
+          "UpdateDiscoveryJob"
+        ],
+        "manage": [
+          "ListDiscoveryJobs",
+          "GetDiscoveryJob",
+          "UpdateDiscoveryJob",
+          "CreateDiscoveryJob",
+          "DeleteDiscoveryJob"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-work-request",
+      "description": "Stack monitoring work request",
+      "verbs": {
+        "inspect": [
+          "ListWorkRequests"
+        ],
+        "read": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "use": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "manage": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-metric-extension",
+      "description": "Stack monitoring metric extension",
+      "verbs": {
+        "inspect": [
+          "ListMetricExtensions"
+        ],
+        "read": [
+          "ListMetricExtensions",
+          "GetMetricExtension"
+        ],
+        "use": [
+          "ListMetricExtensions",
+          "GetMetricExtension",
+          "UpdateMetricExtension"
+        ],
+        "manage": [
+          "ListMetricExtensions",
+          "GetMetricExtension",
+          "UpdateMetricExtension",
+          "CreateMetricExtension",
+          "DeleteMetricExtension"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-config",
+      "description": "Stack monitoring config",
+      "verbs": {
+        "inspect": [
+          "ListConfigs"
+        ],
+        "read": [
+          "ListConfigs",
+          "GetConfig"
+        ],
+        "use": [
+          "ListConfigs",
+          "GetConfig",
+          "UpdateConfig"
+        ],
+        "manage": [
+          "ListConfigs",
+          "GetConfig",
+          "UpdateConfig",
+          "CreateConfig",
+          "DeleteConfig"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-baselineable-metric",
+      "description": "Stack monitoring baselineable metric",
+      "verbs": {
+        "inspect": [
+          "ListBaselineableMetrics"
+        ],
+        "read": [
+          "ListBaselineableMetrics",
+          "GetBaselineableMetric"
+        ],
+        "use": [
+          "ListBaselineableMetrics",
+          "GetBaselineableMetric",
+          "UpdateBaselineableMetric"
+        ],
+        "manage": [
+          "ListBaselineableMetrics",
+          "GetBaselineableMetric",
+          "UpdateBaselineableMetric",
+          "CreateBaselineableMetric",
+          "DeleteBaselineableMetric"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-process-set",
+      "description": "Stack monitoring process set",
+      "verbs": {
+        "inspect": [
+          "ListProcessSets"
+        ],
+        "read": [
+          "ListProcessSets",
+          "GetProcessSet"
+        ],
+        "use": [
+          "ListProcessSets",
+          "GetProcessSet",
+          "UpdateProcessSet"
+        ],
+        "manage": [
+          "ListProcessSets",
+          "GetProcessSet",
+          "UpdateProcessSet",
+          "CreateProcessSet",
+          "DeleteProcessSet"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-monitoring-template",
+      "description": "Stack monitoring template",
+      "verbs": {
+        "inspect": [
+          "ListMonitoringTemplates"
+        ],
+        "read": [
+          "ListMonitoringTemplates",
+          "GetMonitoringTemplate"
+        ],
+        "use": [
+          "ListMonitoringTemplates",
+          "GetMonitoringTemplate",
+          "UpdateMonitoringTemplate"
+        ],
+        "manage": [
+          "ListMonitoringTemplates",
+          "GetMonitoringTemplate",
+          "UpdateMonitoringTemplate",
+          "CreateMonitoringTemplate",
+          "DeleteMonitoringTemplate"
+        ]
+      }
+    },
+    {
+      "resource_family": "stack-monitoring-defined-monitoring-template",
+      "description": "Stack monitoring defined monitoring template",
+      "verbs": {
+        "inspect": [
+          "ListDefinedMonitoringTemplates"
+        ],
+        "read": [
+          "ListDefinedMonitoringTemplates",
+          "GetDefinedMonitoringTemplate"
+        ],
+        "use": [
+          "ListDefinedMonitoringTemplates",
+          "GetDefinedMonitoringTemplate",
+          "UpdateDefinedMonitoringTemplate"
+        ],
+        "manage": [
+          "ListDefinedMonitoringTemplates",
+          "GetDefinedMonitoringTemplate",
+          "UpdateDefinedMonitoringTemplate",
+          "CreateDefinedMonitoringTemplate",
+          "DeleteDefinedMonitoringTemplate"
+        ]
+      }
+    }
+  ]
+}

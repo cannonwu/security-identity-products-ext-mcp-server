@@ -1,0 +1,226 @@
+{
+  "service": "file-storage",
+  "service_name": "File Storage Service",
+  "description": "Linked policy reference resource-types for File Storage Service.",
+  "resources": [
+    {
+      "resource_family": "file-family",
+      "description": "File Storage aggregate resource-type",
+      "includes": [
+        "file-systems",
+        "filesystem-snapshot-policies",
+        "mount-targets",
+        "outbound-connectors",
+        "export-sets",
+        "replications",
+        "replication-targets",
+        "fss-work-requests"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "file-systems",
+      "description": "File systems",
+      "verbs": {
+        "inspect": [
+          "ListFileSystems"
+        ],
+        "read": [
+          "ListFileSystems",
+          "GetFileSystem"
+        ],
+        "use": [
+          "ListFileSystems",
+          "GetFileSystem",
+          "UpdateFileSystem"
+        ],
+        "manage": [
+          "ListFileSystems",
+          "GetFileSystem",
+          "UpdateFileSystem",
+          "CreateFileSystem",
+          "DeleteFileSystem",
+          "ChangeFileSystemCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "filesystem-snapshot-policies",
+      "description": "Filesystem snapshot policies",
+      "verbs": {
+        "inspect": [
+          "ListSnapshotPolicies"
+        ],
+        "read": [
+          "ListSnapshotPolicies",
+          "GetSnapshotPolicy"
+        ],
+        "use": [
+          "ListSnapshotPolicies",
+          "GetSnapshotPolicy",
+          "UpdateSnapshotPolicy"
+        ],
+        "manage": [
+          "ListSnapshotPolicies",
+          "GetSnapshotPolicy",
+          "UpdateSnapshotPolicy",
+          "CreateSnapshotPolicy",
+          "DeleteSnapshotPolicy",
+          "ChangeSnapshotPolicyCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "mount-targets",
+      "description": "Mount targets",
+      "verbs": {
+        "inspect": [
+          "ListMountTargets"
+        ],
+        "read": [
+          "ListMountTargets",
+          "GetMountTarget"
+        ],
+        "use": [
+          "ListMountTargets",
+          "GetMountTarget",
+          "UpdateMountTarget"
+        ],
+        "manage": [
+          "ListMountTargets",
+          "GetMountTarget",
+          "UpdateMountTarget",
+          "CreateMountTarget",
+          "DeleteMountTarget",
+          "ChangeMountTargetCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "outbound-connectors",
+      "description": "Outbound connectors",
+      "verbs": {
+        "inspect": [
+          "ListOutboundConnectors"
+        ],
+        "read": [
+          "ListOutboundConnectors",
+          "GetOutboundConnector"
+        ],
+        "use": [
+          "ListOutboundConnectors",
+          "GetOutboundConnector",
+          "UpdateOutboundConnector"
+        ],
+        "manage": [
+          "ListOutboundConnectors",
+          "GetOutboundConnector",
+          "UpdateOutboundConnector",
+          "CreateOutboundConnector",
+          "DeleteOutboundConnector",
+          "ChangeOutboundConnectorCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "export-sets",
+      "description": "Export sets",
+      "verbs": {
+        "inspect": [
+          "ListExportSets"
+        ],
+        "read": [
+          "ListExportSets",
+          "GetExportSet"
+        ],
+        "use": [
+          "ListExportSets",
+          "GetExportSet",
+          "UpdateExportSet"
+        ],
+        "manage": [
+          "ListExportSets",
+          "GetExportSet",
+          "UpdateExportSet",
+          "CreateExportSet",
+          "DeleteExportSet",
+          "ChangeExportSetCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "replications",
+      "description": "Replications",
+      "verbs": {
+        "inspect": [
+          "ListReplications"
+        ],
+        "read": [
+          "ListReplications",
+          "GetReplication"
+        ],
+        "use": [
+          "ListReplications",
+          "GetReplication"
+        ],
+        "manage": [
+          "ListReplications",
+          "GetReplication",
+          "CreateReplication",
+          "DeleteReplication"
+        ]
+      }
+    },
+    {
+      "resource_family": "replication-targets",
+      "description": "Replication targets",
+      "verbs": {
+        "inspect": [
+          "ListReplicationTargets"
+        ],
+        "read": [
+          "ListReplicationTargets",
+          "GetReplicationTarget"
+        ],
+        "use": [
+          "ListReplicationTargets",
+          "GetReplicationTarget"
+        ],
+        "manage": [
+          "ListReplicationTargets",
+          "GetReplicationTarget",
+          "CreateReplicationTarget",
+          "DeleteReplicationTarget",
+          "ChangeReplicationTargetCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "fss-work-requests",
+      "description": "File Storage work requests",
+      "verbs": {
+        "inspect": [
+          "ListWorkRequests"
+        ],
+        "read": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "use": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "manage": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ]
+      }
+    }
+  ]
+}

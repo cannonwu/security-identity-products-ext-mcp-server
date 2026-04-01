@@ -1,0 +1,559 @@
+{
+  "service": "storage",
+  "service_name": "Object Storage",
+  "description": "Oracle Cloud Object Storage - buckets and objects",
+  "source_pages": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/objectstoragepolicyreference.htm",
+      "description": "Object Storage policy reference covering resource types, verb/resource combinations, and required API permissions",
+      "fetched_on": "2026-03-23"
+    }
+  ],
+  "resources": [
+    {
+      "resource_family": "buckets",
+      "description": "Object Storage buckets",
+      "source_section": "Details for Object Storage and Archive Storage / object-family / buckets",
+      "api_permission_tokens": {
+        "HeadBucket": [
+          "BUCKET_INSPECT"
+        ],
+        "ListBuckets": [
+          "BUCKET_INSPECT"
+        ],
+        "GetBucket": [
+          "BUCKET_READ"
+        ],
+        "ListMultipartUploads": [
+          "BUCKET_READ"
+        ],
+        "GetObjectLifecyclePolicy": [
+          "BUCKET_READ"
+        ],
+        "GetRetentionRule": [
+          "BUCKET_READ"
+        ],
+        "ListRetentionRules": [
+          "BUCKET_READ"
+        ],
+        "GetReplicationPolicy": [
+          "BUCKET_READ"
+        ],
+        "ListReplicationPolicies": [
+          "BUCKET_READ"
+        ],
+        "ListReplicationSources": [
+          "BUCKET_READ"
+        ],
+        "GetPreauthenticatedRequest": [
+          "PAR_MANAGE",
+          "BUCKET_READ"
+        ],
+        "ListPreauthenticatedRequests": [
+          "PAR_MANAGE",
+          "BUCKET_READ"
+        ],
+        "UpdateBucket": [
+          "BUCKET_UPDATE"
+        ],
+        "DeleteObjectLifecyclePolicy": [
+          "BUCKET_UPDATE"
+        ],
+        "ReencryptBucket": [
+          "BUCKET_UPDATE"
+        ],
+        "PutObjectLifecyclePolicy": [
+          "BUCKET_UPDATE",
+          "OBJECT_CREATE",
+          "OBJECT_DELETE"
+        ],
+        "CreateBucket": [
+          "BUCKET_CREATE"
+        ],
+        "DeleteBucket": [
+          "BUCKET_DELETE"
+        ],
+        "CreatePreauthenticatedRequest": [
+          "PAR_MANAGE"
+        ],
+        "DeletePreauthenticatedRequest": [
+          "PAR_MANAGE"
+        ],
+        "CreateRetentionRule": [
+          "BUCKET_UPDATE",
+          "RETENTION_RULE_MANAGE",
+          "RETENTION_RULE_LOCK"
+        ],
+        "UpdateRetentionRule": [
+          "BUCKET_UPDATE",
+          "RETENTION_RULE_MANAGE",
+          "RETENTION_RULE_LOCK"
+        ],
+        "DeleteRetentionRule": [
+          "BUCKET_UPDATE",
+          "RETENTION_RULE_MANAGE"
+        ],
+        "CreateReplicationPolicy": [
+          "OBJECT_READ",
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE",
+          "OBJECT_INSPECT",
+          "OBJECT_DELETE",
+          "OBJECT_RESTORE",
+          "BUCKET_READ",
+          "BUCKET_UPDATE"
+        ],
+        "DeleteReplicationPolicy": [
+          "OBJECT_READ",
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE",
+          "OBJECT_INSPECT",
+          "OBJECT_DELETE",
+          "OBJECT_RESTORE",
+          "BUCKET_READ",
+          "BUCKET_UPDATE"
+        ],
+        "MakeBucketWritable": [
+          "OBJECT_READ",
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE",
+          "OBJECT_INSPECT",
+          "OBJECT_DELETE",
+          "BUCKET_READ",
+          "BUCKET_UPDATE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "HeadBucket",
+          "ListBuckets",
+          "GetBucket",
+          "CreateBucket",
+          "UpdateBucket",
+          "DeleteBucket",
+          "ListMultipartUploads",
+          "GetObjectLifecyclePolicy",
+          "DeleteObjectLifecyclePolicy",
+          "GetRetentionRule",
+          "ListRetentionRules",
+          "CreateRetentionRule",
+          "UpdateRetentionRule",
+          "DeleteRetentionRule",
+          "GetReplicationPolicy",
+          "ListReplicationPolicies",
+          "ListReplicationSources",
+          "CreatePreauthenticatedRequest",
+          "GetPreauthenticatedRequest",
+          "ListPreauthenticatedRequests",
+          "DeletePreauthenticatedRequest",
+          "ReencryptBucket"
+        ],
+        "use": [
+          "HeadBucket",
+          "ListBuckets",
+          "GetBucket",
+          "ListMultipartUploads",
+          "GetObjectLifecyclePolicy",
+          "GetRetentionRule",
+          "ListRetentionRules",
+          "GetReplicationPolicy",
+          "ListReplicationPolicies",
+          "ListReplicationSources",
+          "GetPreauthenticatedRequest",
+          "ListPreauthenticatedRequests",
+          "UpdateBucket",
+          "DeleteObjectLifecyclePolicy",
+          "ReencryptBucket"
+        ],
+        "read": [
+          "HeadBucket",
+          "ListBuckets",
+          "GetBucket",
+          "ListMultipartUploads",
+          "GetObjectLifecyclePolicy",
+          "GetRetentionRule",
+          "ListRetentionRules",
+          "GetReplicationPolicy",
+          "ListReplicationPolicies",
+          "ListReplicationSources",
+          "GetPreauthenticatedRequest",
+          "ListPreauthenticatedRequests"
+        ],
+        "inspect": [
+          "HeadBucket",
+          "ListBuckets"
+        ]
+      }
+    },
+    {
+      "resource_family": "objects",
+      "description": "Objects within buckets",
+      "source_section": "Details for Object Storage and Archive Storage / object-family / objects",
+      "api_permission_tokens": {
+        "HeadObject": [
+          "OBJECT_READ",
+          "OBJECT_INSPECT"
+        ],
+        "ListObjects": [
+          "OBJECT_INSPECT"
+        ],
+        "ListMultipartUploadParts": [
+          "OBJECT_INSPECT"
+        ],
+        "GetObject": [
+          "OBJECT_READ"
+        ],
+        "PutObject": [
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE"
+        ],
+        "ReencryptObject": [
+          "OBJECT_READ",
+          "OBJECT_OVERWRITE"
+        ],
+        "CopyObject": [
+          "OBJECT_READ",
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE",
+          "OBJECT_INSPECT"
+        ],
+        "RenameObject": [
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE"
+        ],
+        "DeleteObject": [
+          "OBJECT_DELETE"
+        ],
+        "DeleteObjectVersion": [
+          "OBJECT_VERSION_DELETE"
+        ],
+        "RestoreObjects": [
+          "OBJECT_RESTORE"
+        ],
+        "UpdateObjectStorageTier": [
+          "OBJECT_UPDATE_TIER"
+        ],
+        "CreateMultipartUpload": [
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE"
+        ],
+        "UploadPart": [
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE"
+        ],
+        "CommitMultipartUpload": [
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE"
+        ],
+        "AbortMultipartUpload": [
+          "OBJECT_DELETE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "GetObject",
+          "HeadObject",
+          "ListObjects",
+          "PutObject",
+          "DeleteObject",
+          "DeleteObjectVersion",
+          "ReencryptObject",
+          "RestoreObjects",
+          "UpdateObjectStorageTier",
+          "CreateMultipartUpload",
+          "UploadPart",
+          "CommitMultipartUpload",
+          "AbortMultipartUpload",
+          "CopyObject",
+          "RenameObject",
+          "ListMultipartUploadParts"
+        ],
+        "use": [
+          "GetObject",
+          "HeadObject",
+          "ListObjects",
+          "PutObject",
+          "ReencryptObject",
+          "ListMultipartUploadParts"
+        ],
+        "read": [
+          "GetObject",
+          "HeadObject",
+          "ListObjects",
+          "ListMultipartUploadParts"
+        ],
+        "inspect": [
+          "HeadObject",
+          "ListObjects",
+          "ListMultipartUploadParts"
+        ]
+      }
+    },
+    {
+      "resource_family": "object-family",
+      "description": "All object storage resources (buckets and objects)",
+      "source_section": "Details for Object Storage and Archive Storage / Resource-Types / object-family",
+      "api_permission_tokens": {
+        "HeadBucket": [
+          "BUCKET_INSPECT"
+        ],
+        "ListBuckets": [
+          "BUCKET_INSPECT"
+        ],
+        "GetBucket": [
+          "BUCKET_READ"
+        ],
+        "ListMultipartUploads": [
+          "BUCKET_READ"
+        ],
+        "GetObjectLifecyclePolicy": [
+          "BUCKET_READ"
+        ],
+        "GetRetentionRule": [
+          "BUCKET_READ"
+        ],
+        "ListRetentionRules": [
+          "BUCKET_READ"
+        ],
+        "GetReplicationPolicy": [
+          "BUCKET_READ"
+        ],
+        "ListReplicationPolicies": [
+          "BUCKET_READ"
+        ],
+        "ListReplicationSources": [
+          "BUCKET_READ"
+        ],
+        "GetPreauthenticatedRequest": [
+          "PAR_MANAGE",
+          "BUCKET_READ"
+        ],
+        "ListPreauthenticatedRequests": [
+          "PAR_MANAGE",
+          "BUCKET_READ"
+        ],
+        "UpdateBucket": [
+          "BUCKET_UPDATE"
+        ],
+        "DeleteObjectLifecyclePolicy": [
+          "BUCKET_UPDATE"
+        ],
+        "ReencryptBucket": [
+          "BUCKET_UPDATE"
+        ],
+        "PutObjectLifecyclePolicy": [
+          "BUCKET_UPDATE",
+          "OBJECT_CREATE",
+          "OBJECT_DELETE"
+        ],
+        "CreateBucket": [
+          "BUCKET_CREATE"
+        ],
+        "DeleteBucket": [
+          "BUCKET_DELETE"
+        ],
+        "CreatePreauthenticatedRequest": [
+          "PAR_MANAGE"
+        ],
+        "DeletePreauthenticatedRequest": [
+          "PAR_MANAGE"
+        ],
+        "CreateRetentionRule": [
+          "BUCKET_UPDATE",
+          "RETENTION_RULE_MANAGE",
+          "RETENTION_RULE_LOCK"
+        ],
+        "UpdateRetentionRule": [
+          "BUCKET_UPDATE",
+          "RETENTION_RULE_MANAGE",
+          "RETENTION_RULE_LOCK"
+        ],
+        "DeleteRetentionRule": [
+          "BUCKET_UPDATE",
+          "RETENTION_RULE_MANAGE"
+        ],
+        "CreateReplicationPolicy": [
+          "OBJECT_READ",
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE",
+          "OBJECT_INSPECT",
+          "OBJECT_DELETE",
+          "OBJECT_RESTORE",
+          "BUCKET_READ",
+          "BUCKET_UPDATE"
+        ],
+        "DeleteReplicationPolicy": [
+          "OBJECT_READ",
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE",
+          "OBJECT_INSPECT",
+          "OBJECT_DELETE",
+          "OBJECT_RESTORE",
+          "BUCKET_READ",
+          "BUCKET_UPDATE"
+        ],
+        "MakeBucketWritable": [
+          "OBJECT_READ",
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE",
+          "OBJECT_INSPECT",
+          "OBJECT_DELETE",
+          "BUCKET_READ",
+          "BUCKET_UPDATE"
+        ],
+        "HeadObject": [
+          "OBJECT_READ",
+          "OBJECT_INSPECT"
+        ],
+        "ListObjects": [
+          "OBJECT_INSPECT"
+        ],
+        "ListMultipartUploadParts": [
+          "OBJECT_INSPECT"
+        ],
+        "GetObject": [
+          "OBJECT_READ"
+        ],
+        "PutObject": [
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE"
+        ],
+        "ReencryptObject": [
+          "OBJECT_READ",
+          "OBJECT_OVERWRITE"
+        ],
+        "CopyObject": [
+          "OBJECT_READ",
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE",
+          "OBJECT_INSPECT"
+        ],
+        "RenameObject": [
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE"
+        ],
+        "DeleteObject": [
+          "OBJECT_DELETE"
+        ],
+        "DeleteObjectVersion": [
+          "OBJECT_VERSION_DELETE"
+        ],
+        "RestoreObjects": [
+          "OBJECT_RESTORE"
+        ],
+        "UpdateObjectStorageTier": [
+          "OBJECT_UPDATE_TIER"
+        ],
+        "CreateMultipartUpload": [
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE"
+        ],
+        "UploadPart": [
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE"
+        ],
+        "CommitMultipartUpload": [
+          "OBJECT_CREATE",
+          "OBJECT_OVERWRITE"
+        ],
+        "AbortMultipartUpload": [
+          "OBJECT_DELETE"
+        ]
+      },
+      "verbs": {
+        "manage": [
+          "HeadBucket",
+          "ListBuckets",
+          "GetBucket",
+          "CreateBucket",
+          "UpdateBucket",
+          "DeleteBucket",
+          "ListMultipartUploads",
+          "GetObjectLifecyclePolicy",
+          "DeleteObjectLifecyclePolicy",
+          "GetRetentionRule",
+          "ListRetentionRules",
+          "CreateRetentionRule",
+          "UpdateRetentionRule",
+          "DeleteRetentionRule",
+          "GetReplicationPolicy",
+          "ListReplicationPolicies",
+          "ListReplicationSources",
+          "CreatePreauthenticatedRequest",
+          "GetPreauthenticatedRequest",
+          "ListPreauthenticatedRequests",
+          "DeletePreauthenticatedRequest",
+          "ReencryptBucket",
+          "GetObject",
+          "HeadObject",
+          "ListObjects",
+          "PutObject",
+          "DeleteObject",
+          "DeleteObjectVersion",
+          "ReencryptObject",
+          "RestoreObjects",
+          "UpdateObjectStorageTier",
+          "CreateMultipartUpload",
+          "UploadPart",
+          "CommitMultipartUpload",
+          "AbortMultipartUpload",
+          "CopyObject",
+          "RenameObject",
+          "ListMultipartUploadParts",
+          "PutObjectLifecyclePolicy",
+          "CreateReplicationPolicy",
+          "DeleteReplicationPolicy",
+          "MakeBucketWritable"
+        ],
+        "use": [
+          "HeadBucket",
+          "ListBuckets",
+          "GetBucket",
+          "ListMultipartUploads",
+          "GetObjectLifecyclePolicy",
+          "GetRetentionRule",
+          "ListRetentionRules",
+          "GetReplicationPolicy",
+          "ListReplicationPolicies",
+          "ListReplicationSources",
+          "GetPreauthenticatedRequest",
+          "ListPreauthenticatedRequests",
+          "UpdateBucket",
+          "DeleteObjectLifecyclePolicy",
+          "ReencryptBucket",
+          "GetObject",
+          "HeadObject",
+          "ListObjects",
+          "PutObject",
+          "ReencryptObject",
+          "ListMultipartUploadParts"
+        ],
+        "read": [
+          "HeadBucket",
+          "ListBuckets",
+          "GetBucket",
+          "ListMultipartUploads",
+          "GetObjectLifecyclePolicy",
+          "GetRetentionRule",
+          "ListRetentionRules",
+          "GetReplicationPolicy",
+          "ListReplicationPolicies",
+          "ListReplicationSources",
+          "GetPreauthenticatedRequest",
+          "ListPreauthenticatedRequests",
+          "GetObject",
+          "ListObjects",
+          "HeadObject",
+          "ListMultipartUploadParts"
+        ],
+        "inspect": [
+          "HeadBucket",
+          "ListBuckets",
+          "HeadObject",
+          "ListObjects",
+          "ListMultipartUploadParts"
+        ]
+      }
+    }
+  ]
+}

@@ -18,6 +18,7 @@ from .resources.generated_resources import build_compartment_tree, build_policy_
 from .resources.static_resources import POLICY_REFERENCE
 from .services.compartments import CompartmentService
 from .services.domains import DomainService
+from .services.policy_access_analyzer import PolicyAccessAnalyzer
 from .services.policy_analyzer import PolicyAnalyzer
 from .services.policies import PolicyService
 from .services.principals import PrincipalService
@@ -34,6 +35,7 @@ def build_server(config: ServerConfig) -> FastMCP:
     domains = DomainService(identity)
     policies = PolicyService(identity, compartments)
     analyzer = PolicyAnalyzer()
+    access_analyzer = PolicyAccessAnalyzer()
 
     server = FastMCP(
         name="oci-sip-mcp",
@@ -53,7 +55,7 @@ def build_server(config: ServerConfig) -> FastMCP:
 
     tenancy_tools.register(server, identity, compartments, domains)
     principal_tools.register(server, principals, domains)
-    policy_tools.register(server, policies, analyzer)
+    policy_tools.register(server, policies, analyzer, access_analyzer)
 
     @server.resource("oci-sip://policy-reference/basics")
     def policy_reference() -> str:

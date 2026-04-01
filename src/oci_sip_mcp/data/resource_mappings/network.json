@@ -1,0 +1,357 @@
+{
+  "service": "network",
+  "service_name": "Virtual Cloud Network",
+  "description": "Oracle Cloud Network - VCNs, subnets, DRGs, NSGs, etc.",
+  "source_pages": [
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-ResourceTypes.htm",
+      "description": "Core services resource types for Networking, Compute, and Block Volume",
+      "fetched_on": "2026-03-19"
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-Details_for_Verb__ResourceType_Combinations.htm",
+      "description": "Core services verb/resource combinations",
+      "fetched_on": "2026-03-19"
+    },
+    {
+      "url": "https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/corepolicyreference_topic-Permissions_Required_for_Each_API_Operation.htm",
+      "description": "Core services API operations and required permissions",
+      "fetched_on": "2026-03-23"
+    }
+  ],
+  "resources": [
+    {
+      "resource_family": "vcns",
+      "description": "Virtual Cloud Networks",
+      "source_section": "Core Services API Operations / virtual-network-family",
+      "api_permission_tokens": {
+        "ListVcns": ["VCN_READ"],
+        "GetVcn": ["VCN_READ"],
+        "CreateVcn": ["VCN_CREATE"],
+        "UpdateVcn": ["VCN_UPDATE"],
+        "DeleteVcn": ["VCN_DELETE"],
+        "AddVcnCidr": ["VCN_UPDATE"],
+        "ModifyVcnCidr": ["VCN_UPDATE"],
+        "RemoveVcnCidr": ["VCN_UPDATE"],
+        "ChangeVcnCompartment": ["VCN_MOVE"]
+      },
+      "verbs": {
+        "manage": [
+          "GetVcn",
+          "ListVcns",
+          "CreateVcn",
+          "UpdateVcn",
+          "DeleteVcn",
+          "ChangeVcnCompartment",
+          "AddVcnCidr",
+          "RemoveVcnCidr",
+          "ModifyVcnCidr"
+        ],
+        "use": [
+          "GetVcn",
+          "ListVcns"
+        ],
+        "read": [
+          "GetVcn",
+          "ListVcns"
+        ],
+        "inspect": [
+          "GetVcn",
+          "ListVcns"
+        ]
+      }
+    },
+    {
+      "resource_family": "subnets",
+      "description": "VCN Subnets",
+      "source_section": "Core Services API Operations / virtual-network-family",
+      "api_permission_tokens": {
+        "ListSubnets": ["SUBNET_READ"],
+        "GetSubnet": ["SUBNET_READ"],
+        "CreateSubnet": ["SUBNET_CREATE", "VCN_ATTACH", "ROUTE_TABLE_ATTACH", "SECURITY_LIST_ATTACH", "DHCP_ATTACH"],
+        "UpdateSubnet": ["SUBNET_UPDATE", "ROUTE_TABLE_ATTACH", "ROUTE_TABLE_DETACH", "SECURITY_LIST_ATTACH", "SECURITY_LIST_DETACH", "DHCP_ATTACH", "DHCP_DETACH"],
+        "DeleteSubnet": ["SUBNET_DELETE", "VCN_DETACH", "ROUTE_TABLE_DETACH", "SECURITY_LIST_DETACH", "DHCP_DETACH"],
+        "ChangeSubnetCompartment": ["SUBNET_MOVE"]
+      },
+      "verbs": {
+        "manage": [
+          "GetSubnet",
+          "ListSubnets",
+          "CreateSubnet",
+          "UpdateSubnet",
+          "DeleteSubnet",
+          "ChangeSubnetCompartment"
+        ],
+        "use": [
+          "GetSubnet",
+          "ListSubnets"
+        ],
+        "read": [
+          "GetSubnet",
+          "ListSubnets"
+        ],
+        "inspect": [
+          "GetSubnet",
+          "ListSubnets"
+        ]
+      }
+    },
+    {
+      "resource_family": "security-lists",
+      "description": "Network Security Lists (stateful firewalls)",
+      "source_section": "Core Services API Operations / virtual-network-family",
+      "api_permission_tokens": {
+        "ListSecurityLists": ["SECURITY_LIST_READ"],
+        "GetSecurityList": ["SECURITY_LIST_READ"],
+        "CreateSecurityList": ["SECURITY_LIST_CREATE", "VCN_ATTACH"],
+        "UpdateSecurityList": ["SECURITY_LIST_UPDATE"],
+        "DeleteSecurityList": ["SECURITY_LIST_DELETE", "VCN_DETACH"],
+        "ChangeSecurityListCompartment": ["SECURITY_LIST_MOVE"]
+      },
+      "verbs": {
+        "manage": [
+          "GetSecurityList",
+          "ListSecurityLists",
+          "CreateSecurityList",
+          "UpdateSecurityList",
+          "DeleteSecurityList",
+          "ChangeSecurityListCompartment"
+        ],
+        "use": [
+          "GetSecurityList",
+          "ListSecurityLists"
+        ],
+        "read": [
+          "GetSecurityList",
+          "ListSecurityLists"
+        ],
+        "inspect": [
+          "GetSecurityList",
+          "ListSecurityLists"
+        ]
+      }
+    },
+    {
+      "resource_family": "network-security-groups",
+      "description": "Network Security Groups (stateless firewalls)",
+      "source_section": "Core Services API Operations / virtual-network-family",
+      "api_permission_tokens": {
+        "ListNetworkSecurityGroups": ["NETWORK_SECURITY_GROUP_READ"],
+        "GetNetworkSecurityGroup": ["NETWORK_SECURITY_GROUP_READ"],
+        "CreateNetworkSecurityGroup": ["NETWORK_SECURITY_GROUP_CREATE", "VCN_ATTACH"],
+        "UpdateNetworkSecurityGroup": ["NETWORK_SECURITY_GROUP_UPDATE"],
+        "DeleteNetworkSecurityGroup": ["NETWORK_SECURITY_GROUP_DELETE", "VCN_DETACH"],
+        "AddNetworkSecurityGroupSecurityRules": ["NETWORK_SECURITY_GROUP_UPDATE_SECURITY_RULES", "NETWORK_SECURITY_GROUP_INSPECT"],
+        "UpdateNetworkSecurityGroupSecurityRules": ["NETWORK_SECURITY_GROUP_UPDATE_SECURITY_RULES", "NETWORK_SECURITY_GROUP_INSPECT"],
+        "RemoveNetworkSecurityGroupSecurityRules": ["NETWORK_SECURITY_GROUP_UPDATE_SECURITY_RULES"],
+        "ChangeNetworkSecurityGroupCompartment": ["NETWORK_SECURITY_GROUP_MOVE"]
+      },
+      "verbs": {
+        "manage": [
+          "GetNetworkSecurityGroup",
+          "ListNetworkSecurityGroups",
+          "CreateNetworkSecurityGroup",
+          "UpdateNetworkSecurityGroup",
+          "DeleteNetworkSecurityGroup",
+          "AddNetworkSecurityGroupSecurityRules",
+          "RemoveNetworkSecurityGroupSecurityRules",
+          "UpdateNetworkSecurityGroupSecurityRules",
+          "ChangeNetworkSecurityGroupCompartment"
+        ],
+        "use": [
+          "GetNetworkSecurityGroup",
+          "ListNetworkSecurityGroups"
+        ],
+        "read": [
+          "GetNetworkSecurityGroup",
+          "ListNetworkSecurityGroups"
+        ],
+        "inspect": [
+          "GetNetworkSecurityGroup",
+          "ListNetworkSecurityGroups"
+        ]
+      }
+    },
+    {
+      "resource_family": "drgs",
+      "description": "Dynamic Routing Gateways",
+      "source_section": "Core Services API Operations / drgs",
+      "api_permission_tokens": {
+        "ListDrgs": ["DRG_READ"],
+        "GetDrg": ["DRG_READ"],
+        "CreateDrg": ["DRG_CREATE"],
+        "UpdateDrg": ["DRG_UPDATE"],
+        "DeleteDrg": ["DRG_DELETE"],
+        "GetAllDrgAttachments": ["DRG_READ"],
+        "UpgradeDrg": ["DRG_UPDATE"],
+        "ChangeDrgCompartment": ["DRG_MOVE"]
+      },
+      "verbs": {
+        "manage": [
+          "GetDrg",
+          "ListDrgs",
+          "CreateDrg",
+          "UpdateDrg",
+          "DeleteDrg",
+          "GetAllDrgAttachments",
+          "UpgradeDrg",
+          "ChangeDrgCompartment"
+        ],
+        "use": [
+          "GetDrg",
+          "ListDrgs",
+          "GetAllDrgAttachments"
+        ],
+        "read": [
+          "GetDrg",
+          "ListDrgs",
+          "GetAllDrgAttachments"
+        ],
+        "inspect": [
+          "GetDrg",
+          "ListDrgs",
+          "GetAllDrgAttachments"
+        ]
+      }
+    },
+    {
+      "resource_family": "drg-attachments",
+      "description": "DRG Attachments (VCN, virtual circuit, remote peering)",
+      "source_section": "Core Services API Operations / drg-attachment",
+      "api_permission_tokens": {
+        "ListDrgAttachments": ["DRG_ATTACHMENT_READ"],
+        "GetDrgAttachment": ["DRG_ATTACHMENT_READ"],
+        "CreateDrgAttachment": ["DRG_ATTACH", "VCN_ATTACH", "ROUTE_TABLE_ATTACH"],
+        "UpdateDrgAttachment": ["DRG_ATTACHMENT_UPDATE", "ROUTE_TABLE_ATTACH"],
+        "DeleteDrgAttachment": ["DRG_DETACH", "VCN_DETACH"],
+        "ChangeDrgAttachmentCompartment": ["DRG_ATTACHMENT_UPDATE"]
+      },
+      "verbs": {
+        "manage": [
+          "GetDrgAttachment",
+          "ListDrgAttachments",
+          "CreateDrgAttachment",
+          "UpdateDrgAttachment",
+          "DeleteDrgAttachment",
+          "ChangeDrgAttachmentCompartment"
+        ],
+        "use": [
+          "GetDrgAttachment",
+          "ListDrgAttachments",
+          "CreateDrgAttachment",
+          "UpdateDrgAttachment",
+          "DeleteDrgAttachment"
+        ],
+        "read": [
+          "GetDrgAttachment",
+          "ListDrgAttachments"
+        ],
+        "inspect": [
+          "GetDrgAttachment",
+          "ListDrgAttachments"
+        ]
+      }
+    },
+    {
+      "resource_family": "internet-gateways",
+      "description": "Internet Gateways",
+      "source_section": "Core Services API Operations / virtual-network-family",
+      "api_permission_tokens": {
+        "ListInternetGateways": ["INTERNET_GATEWAY_READ"],
+        "GetInternetGateway": ["INTERNET_GATEWAY_READ"],
+        "CreateInternetGateway": ["INTERNET_GATEWAY_CREATE", "VCN_ATTACH"],
+        "UpdateInternetGateway": ["INTERNET_GATEWAY_UPDATE"],
+        "DeleteInternetGateway": ["INTERNET_GATEWAY_DELETE", "VCN_DETACH"],
+        "ChangeInternetGatewayCompartment": ["INTERNET_GATEWAY_MOVE"]
+      },
+      "verbs": {
+        "manage": [
+          "GetInternetGateway",
+          "ListInternetGateways",
+          "CreateInternetGateway",
+          "UpdateInternetGateway",
+          "DeleteInternetGateway",
+          "ChangeInternetGatewayCompartment"
+        ],
+        "use": [
+          "GetInternetGateway",
+          "ListInternetGateways"
+        ],
+        "read": [
+          "GetInternetGateway",
+          "ListInternetGateways"
+        ],
+        "inspect": [
+          "GetInternetGateway",
+          "ListInternetGateways"
+        ]
+      }
+    },
+    {
+      "resource_family": "route-tables",
+      "description": "Route Tables",
+      "source_section": "Core Services API Operations / virtual-network-family",
+      "api_permission_tokens": {
+        "ListRouteTables": ["ROUTE_TABLE_READ"],
+        "GetRouteTable": ["ROUTE_TABLE_READ"],
+        "CreateRouteTable": ["ROUTE_TABLE_CREATE", "VCN_ATTACH", "INTERNET_GATEWAY_ATTACH", "DRG_ATTACH", "PRIVATE_IP_ROUTE_TABLE_ATTACH", "LOCAL_PEERING_GATEWAY_ATTACH", "NAT_GATEWAY_ATTACH", "SERVICE_GATEWAY_ATTACH"],
+        "UpdateRouteTable": ["ROUTE_TABLE_UPDATE", "INTERNET_GATEWAY_ATTACH", "INTERNET_GATEWAY_DETACH", "DRG_ATTACH", "DRG_DETACH", "PRIVATE_IP_ROUTE_TABLE_ATTACH", "PRIVATE_IP_ROUTE_TABLE_DETACH", "LOCAL_PEERING_GATEWAY_ATTACH", "LOCAL_PEERING_GATEWAY_DETACH", "NAT_GATEWAY_ATTACH", "NAT_GATEWAY_DETACH", "SERVICE_GATEWAY_ATTACH", "SERVICE_GATEWAY_DETACH"],
+        "DeleteRouteTable": ["ROUTE_TABLE_DELETE", "VCN_DETACH", "INTERNET_GATEWAY_DETACH", "DRG_DETACH", "PRIVATE_IP_ROUTE_TABLE_DETACH", "LOCAL_PEERING_GATEWAY_DETACH", "NAT_GATEWAY_DETACH", "SERVICE_GATEWAY_DETACH"],
+        "ChangeRouteTableCompartment": ["ROUTE_TABLE_MOVE"]
+      },
+      "verbs": {
+        "manage": [
+          "GetRouteTable",
+          "ListRouteTables",
+          "CreateRouteTable",
+          "UpdateRouteTable",
+          "DeleteRouteTable",
+          "ChangeRouteTableCompartment"
+        ],
+        "use": [
+          "GetRouteTable",
+          "ListRouteTables"
+        ],
+        "read": [
+          "GetRouteTable",
+          "ListRouteTables"
+        ],
+        "inspect": [
+          "GetRouteTable",
+          "ListRouteTables"
+        ]
+      }
+    },
+    {
+      "resource_family": "virtual-networks",
+      "description": "All VCN resources (family of all network resources)",
+      "source_section": "Core Services API Operations / virtual-network-family",
+      "verbs": {
+        "manage": [
+          "GetVcn", "ListVcns", "CreateVcn", "UpdateVcn", "DeleteVcn",
+          "GetSubnet", "ListSubnets", "CreateSubnet", "UpdateSubnet", "DeleteSubnet",
+          "GetSecurityList", "ListSecurityLists", "CreateSecurityList", "UpdateSecurityList", "DeleteSecurityList",
+          "GetNetworkSecurityGroup", "ListNetworkSecurityGroups", "CreateNetworkSecurityGroup", "UpdateNetworkSecurityGroup", "DeleteNetworkSecurityGroup",
+          "GetInternetGateway", "ListInternetGateways", "CreateInternetGateway", "UpdateInternetGateway", "DeleteInternetGateway",
+          "GetRouteTable", "ListRouteTables", "CreateRouteTable", "UpdateRouteTable", "DeleteRouteTable",
+          "ChangeVcnCompartment", "ChangeSubnetCompartment", "ChangeSecurityListCompartment", "ChangeNetworkSecurityGroupCompartment", "ChangeInternetGatewayCompartment", "ChangeRouteTableCompartment"
+        ],
+        "use": [
+          "GetVcn", "ListVcns", "GetSubnet", "ListSubnets", "GetSecurityList", "ListSecurityLists",
+          "GetNetworkSecurityGroup", "ListNetworkSecurityGroups", "GetInternetGateway", "ListInternetGateways",
+          "GetRouteTable", "ListRouteTables"
+        ],
+        "read": [
+          "GetVcn", "ListVcns", "GetSubnet", "ListSubnets", "GetSecurityList", "ListSecurityLists",
+          "GetNetworkSecurityGroup", "ListNetworkSecurityGroups", "GetInternetGateway", "ListInternetGateways",
+          "GetRouteTable", "ListRouteTables"
+        ],
+        "inspect": [
+          "GetVcn", "ListVcns", "GetSubnet", "ListSubnets", "GetSecurityList", "ListSecurityLists",
+          "GetNetworkSecurityGroup", "ListNetworkSecurityGroups", "GetInternetGateway", "ListInternetGateways",
+          "GetRouteTable", "ListRouteTables"
+        ]
+      }
+    }
+  ]
+}

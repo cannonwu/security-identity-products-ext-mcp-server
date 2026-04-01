@@ -1,0 +1,220 @@
+{
+  "service": "kubernetes-engine",
+  "service_name": "Kubernetes Engine",
+  "description": "Linked policy reference resource-types for OKE.",
+  "resources": [
+    {
+      "resource_family": "cluster-family",
+      "description": "Kubernetes Engine aggregate family",
+      "includes": [
+        "clusters",
+        "cluster-node-pools",
+        "cluster-pod-shapes",
+        "cluster-virtualnode-pools",
+        "cluster-work-requests",
+        "cluster-workload-mappings"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "clusters",
+      "description": "Kubernetes clusters",
+      "verbs": {
+        "inspect": [
+          "ListClusters",
+          "ListWorkRequests"
+        ],
+        "read": [
+          "ListClusters",
+          "ListWorkRequests",
+          "GetCluster",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "ListAddons",
+          "GetAddon",
+          "GetCredentialRotationStatus"
+        ],
+        "use": [
+          "ListClusters",
+          "ListWorkRequests",
+          "GetCluster",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "ListAddons",
+          "GetAddon",
+          "GetCredentialRotationStatus",
+          "CreateKubeconfig"
+        ],
+        "manage": [
+          "ListClusters",
+          "ListWorkRequests",
+          "GetCluster",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "ListAddons",
+          "GetAddon",
+          "GetCredentialRotationStatus",
+          "CreateKubeconfig",
+          "CreateCluster",
+          "UpdateCluster",
+          "DeleteCluster",
+          "UpdateClusterEndpointConfig",
+          "AdministerK8s",
+          "JoinCluster",
+          "InstallAddon",
+          "UpdateAddon",
+          "DisableAddon",
+          "StartCredentialRotation",
+          "CompleteCredentialRotation"
+        ]
+      }
+    },
+    {
+      "resource_family": "cluster-node-pools",
+      "description": "Kubernetes node pools",
+      "verbs": {
+        "inspect": [
+          "ListNodePools",
+          "ListWorkRequests"
+        ],
+        "read": [
+          "ListNodePools",
+          "GetNodePool",
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "use": [
+          "ListNodePools",
+          "GetNodePool",
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "manage": [
+          "ListNodePools",
+          "GetNodePool",
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "CreateNodePool",
+          "UpdateNodePool",
+          "DeleteNodePool"
+        ]
+      }
+    },
+    {
+      "resource_family": "cluster-pod-shapes",
+      "description": "Kubernetes pod shapes",
+      "verbs": {
+        "inspect": [
+          "ListPodShapes"
+        ],
+        "read": [
+          "ListPodShapes"
+        ],
+        "use": [
+          "ListPodShapes"
+        ],
+        "manage": [
+          "ListPodShapes"
+        ]
+      }
+    },
+    {
+      "resource_family": "cluster-virtualnode-pools",
+      "description": "Kubernetes virtual node pools",
+      "verbs": {
+        "inspect": [
+          "ListVirtualNodePools",
+          "ListPodShapes"
+        ],
+        "read": [
+          "ListVirtualNodePools",
+          "ListPodShapes",
+          "GetVirtualNodePool",
+          "ListVirtualNodes",
+          "GetVirtualNode"
+        ],
+        "use": [
+          "ListVirtualNodePools",
+          "ListPodShapes",
+          "GetVirtualNodePool",
+          "ListVirtualNodes",
+          "GetVirtualNode"
+        ],
+        "manage": [
+          "ListVirtualNodePools",
+          "ListPodShapes",
+          "GetVirtualNodePool",
+          "ListVirtualNodes",
+          "GetVirtualNode",
+          "CreateVirtualNodePool",
+          "UpdateVirtualNodePool",
+          "DeleteVirtualNodePool",
+          "UpdateVirtualNode",
+          "DeleteVirtualNode"
+        ]
+      }
+    },
+    {
+      "resource_family": "cluster-work-requests",
+      "description": "Kubernetes work requests",
+      "verbs": {
+        "inspect": [
+          "ListWorkRequests"
+        ],
+        "read": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "use": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "manage": [
+          "ListWorkRequests",
+          "GetWorkRequest",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "DeleteWorkRequest"
+        ]
+      }
+    },
+    {
+      "resource_family": "cluster-workload-mappings",
+      "description": "Kubernetes workload mappings",
+      "verbs": {
+        "inspect": [
+          "ListWorkloadMappings"
+        ],
+        "read": [
+          "ListWorkloadMappings",
+          "GetWorkloadMapping"
+        ],
+        "use": [
+          "ListWorkloadMappings",
+          "GetWorkloadMapping",
+          "UpdateWorkloadMapping"
+        ],
+        "manage": [
+          "ListWorkloadMappings",
+          "GetWorkloadMapping",
+          "UpdateWorkloadMapping",
+          "CreateWorkloadMapping",
+          "DeleteWorkloadMapping"
+        ]
+      }
+    }
+  ]
+}

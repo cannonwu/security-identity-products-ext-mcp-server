@@ -1,0 +1,175 @@
+{
+  "service": "email-delivery",
+  "service_name": "Email Delivery Service",
+  "description": "Linked policy reference resource-types for Email Delivery.",
+  "resources": [
+    {
+      "resource_family": "email-family",
+      "description": "Email Delivery aggregate resource-type",
+      "includes": [
+        "email-domains",
+        "email-work-requests",
+        "approved-senders",
+        "suppressions",
+        "custom-return-path",
+        "dkims"
+      ],
+      "verbs": {}
+    },
+    {
+      "resource_family": "email-domains",
+      "description": "Email domains",
+      "verbs": {
+        "inspect": [
+          "ListEmailDomains"
+        ],
+        "read": [
+          "ListEmailDomains",
+          "GetEmailDomain"
+        ],
+        "use": [
+          "ListEmailDomains",
+          "GetEmailDomain",
+          "UpdateEmailDomain"
+        ],
+        "manage": [
+          "ListEmailDomains",
+          "GetEmailDomain",
+          "UpdateEmailDomain",
+          "CreateEmailDomain",
+          "DeleteEmailDomain",
+          "ChangeEmailDomainCompartment"
+        ]
+      }
+    },
+    {
+      "resource_family": "email-work-requests",
+      "description": "Email work requests",
+      "verbs": {
+        "inspect": [
+          "ListWorkRequests",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs"
+        ],
+        "read": [
+          "ListWorkRequests",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "GetWorkRequest"
+        ],
+        "use": [
+          "ListWorkRequests",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "GetWorkRequest"
+        ],
+        "manage": [
+          "ListWorkRequests",
+          "ListWorkRequestErrors",
+          "ListWorkRequestLogs",
+          "GetWorkRequest"
+        ]
+      }
+    },
+    {
+      "resource_family": "approved-senders",
+      "description": "Approved senders",
+      "verbs": {
+        "inspect": [
+          "ListSenders"
+        ],
+        "read": [
+          "ListSenders",
+          "GetSender"
+        ],
+        "use": [
+          "ListSenders",
+          "GetSender",
+          "SmtpSend"
+        ],
+        "manage": [
+          "ListSenders",
+          "GetSender",
+          "SmtpSend",
+          "CreateSender",
+          "UpdateSender",
+          "DeleteSender",
+          "MoveSender"
+        ]
+      }
+    },
+    {
+      "resource_family": "suppressions",
+      "description": "Suppressions",
+      "verbs": {
+        "inspect": [
+          "ListSuppression"
+        ],
+        "read": [
+          "ListSuppression",
+          "GetSuppression"
+        ],
+        "use": [
+          "ListSuppression",
+          "GetSuppression"
+        ],
+        "manage": [
+          "ListSuppression",
+          "GetSuppression",
+          "CreateSuppression",
+          "DeleteSuppression"
+        ]
+      }
+    },
+    {
+      "resource_family": "custom-return-path",
+      "description": "Custom return path",
+      "verbs": {
+        "inspect": [
+          "ListEmailReturnPaths"
+        ],
+        "read": [
+          "ListEmailReturnPaths",
+          "GetEmailReturnPath"
+        ],
+        "use": [
+          "ListEmailReturnPaths",
+          "GetEmailReturnPath",
+          "UpdateEmailReturnPath"
+        ],
+        "manage": [
+          "ListEmailReturnPaths",
+          "GetEmailReturnPath",
+          "UpdateEmailReturnPath",
+          "CreateEmailReturnPath",
+          "DeleteEmailReturnPath"
+        ]
+      }
+    },
+    {
+      "resource_family": "dkims",
+      "description": "DKIM resources",
+      "verbs": {
+        "inspect": [
+          "ListDkims"
+        ],
+        "read": [
+          "ListDkims",
+          "GetDkim"
+        ],
+        "use": [
+          "ListDkims",
+          "GetDkim",
+          "UpdateDkim"
+        ],
+        "manage": [
+          "ListDkims",
+          "GetDkim",
+          "UpdateDkim",
+          "CreateDkim",
+          "DeleteDkim"
+        ]
+      }
+    }
+  ]
+}
